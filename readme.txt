@@ -24,6 +24,16 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 3. Go to Easy Liveblogs > Settings and configure the options
 4. For more information you can visit the [documentation](https://doubletakepigeon.com/docs/easy-liveblogs/?utm_source=docs&utm_medium=installation_tab&utm_content=documentation&utm_campaign=readme) page.
 
+== Screenshots ==
+
+1. Front-end liveblog example
+2. Front-end liveblog example 2
+3. Liveblog entry in admin
+4. Post as liveblog in admin
+5. Liveblog entries in admin
+6. Posts filtered on liveblogs
+7. Settings
+
 == Changelog ==
 
 = 1.0, May 12, 2019 =
