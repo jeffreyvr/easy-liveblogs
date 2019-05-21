@@ -27,9 +27,10 @@ function elb_liveblogs_parse_filter($query) {
 add_filter( 'parse_query', 'elb_liveblogs_parse_filter' );
 
 /**
+ * Add quicklinks
  *
- * @param  [type] $quicklinks [description]
- * @return [type]             [description]
+ * @param  array $quicklinks
+ * @return array
  */
 function elb_liveblogs_add_quicklinks( $quicklinks ) {
 
