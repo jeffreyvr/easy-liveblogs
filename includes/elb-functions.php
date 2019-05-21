@@ -251,22 +251,3 @@ function elb_get_theme() {
 function elb_get_liveblog_title_prefix() {
 	return apply_filters( 'elb_liveblog_title_prefix', __( 'Liveblog', ELB_TEXT_DOMAIN ) . ' - ' );
 }
-
-/**
- * Get error message
- *
- * @param  string $status
- * @return string
- */
-function elb_get_license_error_message( $status ) {
-	switch( $status ) {
-		case 'invalid' :
-			$message = __( 'Your license appears to be invalid.', ELB_TEXT_DOMAIN );
-			break;
-		case 'valid' :
-			$message = __( 'Your license key is valid.' );
-			break;
-	}
-
-	return $message;
-}
