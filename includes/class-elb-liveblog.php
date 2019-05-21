@@ -119,8 +119,6 @@ class ELB_Liveblog {
 
 		$args = wp_parse_args( $custom_args, $default_args );
 
-		error_log(print_r($args,true));
-
 		return get_posts( $args );
 	}
 
