@@ -3,8 +3,8 @@ Author URI: https://doubletakepigeon.com
 Plugin URI: https://doubletakepigeon.com
 Contributors: jeffreyvr
 Requires at least: 4.4
-Tested up to: 5.2
-Stable Tag: 1.0
+Tested up to: 5.2.1
+Stable Tag: 1.1
 License: GNU Version 2 or Any Later Version
 
 Live blogging made easy with the Easy Liveblogs plugin from Double Take Pigeon.
