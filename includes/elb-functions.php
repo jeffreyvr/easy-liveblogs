@@ -251,3 +251,47 @@ function elb_get_theme() {
 function elb_get_liveblog_title_prefix() {
 	return apply_filters( 'elb_liveblog_title_prefix', __( 'Liveblog', ELB_TEXT_DOMAIN ) . ' - ' );
 }
+
+/**
+ * Custom the_content alternative
+ *
+ * @return string
+ */
+function elb_get_entry_content() {
+	global $post, $wp_embed;
+
+	$content = do_shortcode( $post->post_content );
+	$content = $wp_embed->autoembed( $content );
+	$content = wpautop( $content );
+
+	return apply_filters( 'elb_entry_content', $content );
+}
+
+/**
+ * Entry content
+ *
+ * @return void
+ */
+function elb_entry_content() {
+	echo elb_get_entry_content();
+}
+
+/**
+ * Get entry title
+ *
+ * @return string
+ */
+function elb_get_entry_title() {
+	global $post;
+
+	return apply_filters( 'elb_entry_title', $post->post_title );
+}
+
+/**
+ * Entry title
+ *
+ * @return void
+ */
+function elb_entry_title() {
+	echo elb_get_entry_title();
+}
