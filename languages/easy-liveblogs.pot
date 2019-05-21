@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2019-05-17 23:21+0200\n"
+"POT-Creation-Date: 2019-05-21 20:06+0200\n"
 "PO-Revision-Date: 2019-05-11 20:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -51,59 +51,59 @@ msgstr ""
 msgid "Plugin settings have been updated."
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:89
+#: includes/admin/elb-register-settings.php:94
 msgid "Theme"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:90
+#: includes/admin/elb-register-settings.php:95
 msgid "Select a theme for your liveblog."
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:93
+#: includes/admin/elb-register-settings.php:98
 msgid "Light"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:94
+#: includes/admin/elb-register-settings.php:99
 msgid "Dark"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:95
+#: includes/admin/elb-register-settings.php:100
 msgid "None"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:101
+#: includes/admin/elb-register-settings.php:106
 msgid "Update interval"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:102
+#: includes/admin/elb-register-settings.php:107
 msgid "Per how many seconds should be checked for new liveblog updates."
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:110
+#: includes/admin/elb-register-settings.php:115
 msgid "Show entries"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:111
+#: includes/admin/elb-register-settings.php:116
 msgid "The amount of entries visible before the load more button."
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:119
+#: includes/admin/elb-register-settings.php:124
 msgid "Post types"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:120
+#: includes/admin/elb-register-settings.php:125
 msgid "Select the post types that need to support liveblogs."
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:127
+#: includes/admin/elb-register-settings.php:132
 msgid "Prefix title"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:128
+#: includes/admin/elb-register-settings.php:133
 msgid "Automatically puts \"Liveblog\" in front of your liveblogs titles."
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:144
+#: includes/admin/elb-register-settings.php:149
 #, php-format
 msgid "The callback function used for the %s setting is missing."
 msgstr ""
@@ -141,14 +141,6 @@ msgstr ""
 #: includes/elb-functions.php:252 includes/elb-metabox.php:16
 #: includes/elb-metabox.php:19
 msgid "Liveblog"
-msgstr ""
-
-#: includes/elb-functions.php:264
-msgid "Your license appears to be invalid."
-msgstr ""
-
-#: includes/elb-functions.php:267
-msgid "Your license key is valid."
 msgstr ""
 
 #: includes/elb-metabox.php:85

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2019-05-17 23:21+0200\n"
-"PO-Revision-Date: 2019-05-17 23:21+0200\n"
+"POT-Creation-Date: 2019-05-21 20:07+0200\n"
+"PO-Revision-Date: 2019-05-21 20:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -51,59 +51,59 @@ msgstr "Easy Liveblog Instellingen"
 msgid "Plugin settings have been updated."
 msgstr "De plugin-instellingen zijn bijgewerkt."
 
-#: includes/admin/elb-register-settings.php:89
+#: includes/admin/elb-register-settings.php:94
 msgid "Theme"
 msgstr "Thema"
 
-#: includes/admin/elb-register-settings.php:90
+#: includes/admin/elb-register-settings.php:95
 msgid "Select a theme for your liveblog."
 msgstr "Selecteer een thema voor de liveblogs."
 
-#: includes/admin/elb-register-settings.php:93
+#: includes/admin/elb-register-settings.php:98
 msgid "Light"
 msgstr "Licht"
 
-#: includes/admin/elb-register-settings.php:94
+#: includes/admin/elb-register-settings.php:99
 msgid "Dark"
 msgstr "Donker"
 
-#: includes/admin/elb-register-settings.php:95
+#: includes/admin/elb-register-settings.php:100
 msgid "None"
 msgstr "Geen"
 
-#: includes/admin/elb-register-settings.php:101
+#: includes/admin/elb-register-settings.php:106
 msgid "Update interval"
 msgstr "Update interval"
 
-#: includes/admin/elb-register-settings.php:102
+#: includes/admin/elb-register-settings.php:107
 msgid "Per how many seconds should be checked for new liveblog updates."
 msgstr "Per hoeveel seconden gecontroleerd moet worden op liveblog updates."
 
-#: includes/admin/elb-register-settings.php:110
+#: includes/admin/elb-register-settings.php:115
 msgid "Show entries"
 msgstr "Toon items"
 
-#: includes/admin/elb-register-settings.php:111
+#: includes/admin/elb-register-settings.php:116
 msgid "The amount of entries visible before the load more button."
 msgstr "Het aantal items dat zichtbaar is voor de toon meer button."
 
-#: includes/admin/elb-register-settings.php:119
+#: includes/admin/elb-register-settings.php:124
 msgid "Post types"
 msgstr "Post types"
 
-#: includes/admin/elb-register-settings.php:120
+#: includes/admin/elb-register-settings.php:125
 msgid "Select the post types that need to support liveblogs."
 msgstr "Selecteer de post types die liveblogs moeten ondersteunen."
 
-#: includes/admin/elb-register-settings.php:127
+#: includes/admin/elb-register-settings.php:132
 msgid "Prefix title"
 msgstr "Voorvoegsel titel"
 
-#: includes/admin/elb-register-settings.php:128
+#: includes/admin/elb-register-settings.php:133
 msgid "Automatically puts \"Liveblog\" in front of your liveblogs titles."
 msgstr "Zet automatisch \"Liveblog\" voor uw titels van liveblogs."
 
-#: includes/admin/elb-register-settings.php:144
+#: includes/admin/elb-register-settings.php:149
 #, php-format
 msgid "The callback function used for the %s setting is missing."
 msgstr "De callback-functie voor %s ontbreekt."
@@ -141,15 +141,7 @@ msgstr "Open"
 #: includes/elb-functions.php:252 includes/elb-metabox.php:16
 #: includes/elb-metabox.php:19
 msgid "Liveblog"
-msgstr ""
-
-#: includes/elb-functions.php:264
-msgid "Your license appears to be invalid."
-msgstr "Uw licentie lijkt ongeldig te zijn."
-
-#: includes/elb-functions.php:267
-msgid "Your license key is valid."
-msgstr "Uw licentiesleutel is geldig."
+msgstr "Liveblog"
 
 #: includes/elb-metabox.php:85
 msgid "Enable liveblog"
@@ -216,7 +208,7 @@ msgstr "Geen liveblog-items gevonden in de prullenbak"
 #. Plugin Name of the plugin/theme
 #: includes/elb-post-types.php:21
 msgid "Easy Liveblogs"
-msgstr ""
+msgstr "Easy Liveblogs"
 
 #: templates/post.php:9
 #, php-format
@@ -226,7 +218,7 @@ msgstr "%s geleden"
 
 #. Plugin URI of the plugin/theme
 msgid "https://doubletakepigeon.com/easy-liveblogs"
-msgstr ""
+msgstr "https://doubletakepigeon.com/easy-liveblogs"
 
 #. Description of the plugin/theme
 msgid ""
@@ -238,11 +230,17 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Double Take Pigeon"
-msgstr ""
+msgstr "Double Take Pigeon"
 
 #. Author URI of the plugin/theme
 msgid "https://www.doubletakepigeon.com"
-msgstr ""
+msgstr "https://www.doubletakepigeon.com"
+
+#~ msgid "Your license appears to be invalid."
+#~ msgstr "Uw licentie lijkt ongeldig te zijn."
+
+#~ msgid "Your license key is valid."
+#~ msgstr "Uw licentiesleutel is geldig."
 
 #~ msgid "General"
 #~ msgstr "Algemeen"
