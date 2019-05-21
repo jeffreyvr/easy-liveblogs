@@ -36,5 +36,9 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 == Changelog ==
 
+= 1.1, May 21, 2019 =
+* Using custom content and title function for liveblog entry to prevent unwanted applied filters.
+* Completed dutch translation.
+
 = 1.0, May 12, 2019 =
 * The very first release of the Easy Liveblogs plugin.

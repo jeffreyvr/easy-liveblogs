@@ -3,7 +3,7 @@
 Plugin Name: Easy Liveblogs
 Plugin URI: https://doubletakepigeon.com/easy-liveblogs
 Description: Live blogging made easy with the Easy Liveblogs plugin from Double Take Pigeon.
-Version: 1.0
+Version: 1.1
 Author: Double Take Pigeon
 Author URI: https://www.doubletakepigeon.com
 Text Domain: easy-liveblogs
@@ -35,7 +35,7 @@ class Easy_Liveblogs {
 	private $plugin_path;
 	private $plugin_url;
 	private $plugin_name = 'Easy Liveblogs';
-	private $plugin_version = '1.0';
+	private $plugin_version = '1.1';
 	private $text_domain = 'easy-liveblogs';
 	public $liveblog;
 
