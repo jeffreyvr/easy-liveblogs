@@ -1,17 +1,17 @@
 <?php
 /*
 Plugin Name: Easy Liveblogs
-Plugin URI: https://doubletakepigeon.com/easy-liveblogs
-Description: Live blogging made easy with the Easy Liveblogs plugin from Double Take Pigeon.
+Plugin URI: https://vanrossum.dev
+Description: Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
 Version: 1.1
-Author: Double Take Pigeon
-Author URI: https://www.doubletakepigeon.com
+Author: Jeffrey van Rossum
+Author URI: https://www.vanrossum.dev
 Text Domain: easy-liveblogs
 Domain Path: /languages
 License: GPL-2.0+
 
 ------------------------------------------------------------------------
-Copyright 2019 Double Take Pigeon, The Netherlands.
+Copyright 2019 Van Rossum Webontwikkeling, The Netherlands.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

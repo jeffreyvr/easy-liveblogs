@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2019-05-21 20:07+0200\n"
-"PO-Revision-Date: 2019-05-21 20:07+0200\n"
+"POT-Creation-Date: 2020-04-07 14:56+0200\n"
+"PO-Revision-Date: 2020-04-07 14:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -113,6 +113,8 @@ msgstr "De callback-functie voor %s ontbreekt."
 msgid ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">View the liveblog</a>"
 msgstr ""
+"<a class=\"elb-view-liveblog-link button\" href=\"%s\">Bekijk de liveblog</"
+"a>"
 
 #: includes/class-elb-liveblog.php:71
 msgid "The liveblog has ended."
@@ -126,11 +128,11 @@ msgstr "Er zijn nog geen liveblog-updates."
 msgid "Load more"
 msgstr "Toon meer"
 
-#: includes/elb-filters.php:47
+#: includes/elb-filters.php:48
 msgid "Liveblogs"
-msgstr ""
+msgstr "Liveblogs"
 
-#: includes/elb-filters.php:77 includes/elb-functions.php:190
+#: includes/elb-filters.php:78 includes/elb-functions.php:190
 msgid "Closed"
 msgstr "Gesloten"
 
@@ -217,24 +219,32 @@ msgid "%s ago"
 msgstr "%s geleden"
 
 #. Plugin URI of the plugin/theme
-msgid "https://doubletakepigeon.com/easy-liveblogs"
-msgstr "https://doubletakepigeon.com/easy-liveblogs"
+msgid "https://vanrossum.dev"
+msgstr "https://vanrossum.dev/nl"
 
 #. Description of the plugin/theme
 msgid ""
-"Live blogging made easy with the Easy Liveblogs plugin from Double Take "
-"Pigeon."
+"Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev."
 msgstr ""
 "Live bloggen wordt gemakkelijk gemaakt met de Easy Liveblogs-plugin van "
-"Double Take Pigeon."
+"vanrossum.dev."
 
 #. Author of the plugin/theme
-msgid "Double Take Pigeon"
-msgstr "Double Take Pigeon"
+msgid "Jeffrey van Rossum"
+msgstr "Jeffrey van Rossum"
 
 #. Author URI of the plugin/theme
-msgid "https://www.doubletakepigeon.com"
-msgstr "https://www.doubletakepigeon.com"
+msgid "https://www.vanrossum.dev"
+msgstr "https://www.vanrossum.dev"
+
+#~ msgid "https://doubletakepigeon.com/easy-liveblogs"
+#~ msgstr "https://doubletakepigeon.com/easy-liveblogs"
+
+#~ msgid "Double Take Pigeon"
+#~ msgstr "Double Take Pigeon"
+
+#~ msgid "https://www.doubletakepigeon.com"
+#~ msgstr "https://www.doubletakepigeon.com"
 
 #~ msgid "Your license appears to be invalid."
 #~ msgstr "Uw licentie lijkt ongeldig te zijn."

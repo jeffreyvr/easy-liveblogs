@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2019-05-21 20:06+0200\n"
+"POT-Creation-Date: 2020-04-07 14:56+0200\n"
 "PO-Revision-Date: 2019-05-11 20:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -126,11 +126,11 @@ msgstr ""
 msgid "Load more"
 msgstr ""
 
-#: includes/elb-filters.php:47
+#: includes/elb-filters.php:48
 msgid "Liveblogs"
 msgstr ""
 
-#: includes/elb-filters.php:77 includes/elb-functions.php:190
+#: includes/elb-filters.php:78 includes/elb-functions.php:190
 msgid "Closed"
 msgstr ""
 
@@ -217,19 +217,18 @@ msgid "%s ago"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://doubletakepigeon.com/easy-liveblogs"
+msgid "https://vanrossum.dev"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Live blogging made easy with the Easy Liveblogs plugin from Double Take "
-"Pigeon."
+"Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Double Take Pigeon"
+msgid "Jeffrey van Rossum"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://www.doubletakepigeon.com"
+msgid "https://www.vanrossum.dev"
 msgstr ""

@@ -1,13 +1,14 @@
 === Easy Liveblogs ===
-Author URI: https://doubletakepigeon.com
-Plugin URI: https://doubletakepigeon.com
+Author URI: https://vanrossum.dev
+Plugin URI: https://vanrossum.dev
 Contributors: jeffreyvr
+Tags: liveblog
 Requires at least: 4.4
-Tested up to: 5.2.1
+Tested up to: 5.4
 Stable Tag: 1.1
 License: GNU Version 2 or Any Later Version
 
-Live blogging made easy with the Easy Liveblogs plugin from Double Take Pigeon.
+Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
 
 == Description ==
 
@@ -22,7 +23,6 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 1. Install the plugin from your WordPress admin, or upload and install the plugin folder to your plugins directory (e.g. /wp-content/plugins/)
 2. Activate the plugin
 3. Go to Easy Liveblogs > Settings and configure the options
-4. For more information you can visit the [documentation](https://doubletakepigeon.com/docs/easy-liveblogs/?utm_source=docs&utm_medium=installation_tab&utm_content=documentation&utm_campaign=readme) page.
 
 == Screenshots ==
 
