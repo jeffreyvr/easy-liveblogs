@@ -5,7 +5,7 @@ Contributors: jeffreyvr
 Tags: liveblog
 Requires at least: 4.4
 Tested up to: 5.4
-Stable Tag: 1.1
+Stable Tag: 1.2
 License: GNU Version 2 or Any Later Version
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -16,7 +16,7 @@ Covering a conference, sports event, breaking news or other quickly developing e
 
 = Built with developers in mind =
 
-The plugin has tons of filter and action hooks so that developers can adjust the plugin to their liking.
+The plugin has tons of filter and action hooks so that developers can adjust the plugin to their liking. Feel free to contribute on [GitHub](https://github.com/jeffreyvr/easy-liveblogs)
 
 == Installation ==
 
@@ -35,6 +35,11 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 7. Settings
 
 == Changelog ==
+
+= 1.2, April 7, 2020 =
+* Minor translation changes.
+* Updated readme.
+* Tested with WordPress 5.4.
 
 = 1.1, May 21, 2019 =
 * Using custom content and title function for liveblog entry to prevent unwanted applied filters.
