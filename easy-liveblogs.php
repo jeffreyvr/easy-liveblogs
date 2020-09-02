@@ -3,7 +3,7 @@
 Plugin Name: Easy Liveblogs
 Plugin URI: https://vanrossum.dev
 Description: Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
-Version: 1.2
+Version: 1.3
 Author: Jeffrey van Rossum
 Author URI: https://www.vanrossum.dev
 Text Domain: easy-liveblogs
@@ -35,7 +35,7 @@ class Easy_Liveblogs {
 	private $plugin_path;
 	private $plugin_url;
 	private $plugin_name = 'Easy Liveblogs';
-	private $plugin_version = '1.2';
+	private $plugin_version = '1.3';
 	private $text_domain = 'easy-liveblogs';
 	public $liveblog;
 

@@ -4,8 +4,8 @@ Plugin URI: https://vanrossum.dev
 Contributors: jeffreyvr
 Tags: liveblog
 Requires at least: 4.4
-Tested up to: 5.4
-Stable Tag: 1.2
+Tested up to: 5.5.1
+Stable Tag: 1.3
 License: GNU Version 2 or Any Later Version
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -35,6 +35,9 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 7. Settings
 
 == Changelog ==
+
+= 1.3, September 2, 2020 =
+* Adding the option to display author (Thanks inerds).
 
 = 1.2, April 7, 2020 =
 * Minor translation changes.
