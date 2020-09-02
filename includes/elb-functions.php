@@ -218,6 +218,19 @@ function elb_get_update_interval() {
 }
 
 /**
+ * Get update interval
+ *
+ * @return boolean
+ */
+function elb_display_author_name() {
+	global $elb_options;
+
+	$display_author = ! empty( $elb_options['display_author'] ) ? true : false;
+
+	return apply_filters( 'elb_display_author', $display_author );
+}
+
+/**
  * Get show entries
  *
  * @return string

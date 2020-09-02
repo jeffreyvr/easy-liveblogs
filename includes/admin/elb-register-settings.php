@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Register settings
- * 
+ *
  * @return void
  */
 function elb_register_settings() {
@@ -100,6 +100,12 @@ function elb_get_registered_settings() {
 				'none' => __( 'None', ELB_TEXT_DOMAIN )
 			),
 			'default_value' => 'light'
+		),
+		array(
+			'id'   => 'display_author',
+			'name' => __( 'Display author', ELB_TEXT_DOMAIN ),
+			'desc' => __( 'Display the author name on liveblog entries.', ELB_TEXT_DOMAIN ),
+			'type' => 'checkbox'
 		),
 		array(
 			'id'   => 'update_interval',

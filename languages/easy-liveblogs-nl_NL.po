@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2020-04-07 14:56+0200\n"
-"PO-Revision-Date: 2020-04-07 15:10+0200\n"
+"POT-Creation-Date: 2020-09-02 16:24+0200\n"
+"PO-Revision-Date: 2020-09-02 16:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -16,8 +16,8 @@ msgstr ""
 "X-Poedit-WPHeader: easy-liveblogs.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -72,38 +72,46 @@ msgid "None"
 msgstr "Geen"
 
 #: includes/admin/elb-register-settings.php:106
+msgid "Display author"
+msgstr "Toon auteur"
+
+#: includes/admin/elb-register-settings.php:107
+msgid "Display the author name on liveblog entries."
+msgstr "Geef de naam van de auteur weer in liveblog-items."
+
+#: includes/admin/elb-register-settings.php:112
 msgid "Update interval"
 msgstr "Update interval"
 
-#: includes/admin/elb-register-settings.php:107
+#: includes/admin/elb-register-settings.php:113
 msgid "Per how many seconds should be checked for new liveblog updates."
 msgstr "Per hoeveel seconden gecontroleerd moet worden op liveblog updates."
 
-#: includes/admin/elb-register-settings.php:115
+#: includes/admin/elb-register-settings.php:121
 msgid "Show entries"
 msgstr "Toon items"
 
-#: includes/admin/elb-register-settings.php:116
+#: includes/admin/elb-register-settings.php:122
 msgid "The amount of entries visible before the load more button."
 msgstr "Het aantal items dat zichtbaar is voor de toon meer button."
 
-#: includes/admin/elb-register-settings.php:124
+#: includes/admin/elb-register-settings.php:130
 msgid "Post types"
 msgstr "Post types"
 
-#: includes/admin/elb-register-settings.php:125
+#: includes/admin/elb-register-settings.php:131
 msgid "Select the post types that need to support liveblogs."
 msgstr "Selecteer de post types die liveblogs moeten ondersteunen."
 
-#: includes/admin/elb-register-settings.php:132
+#: includes/admin/elb-register-settings.php:138
 msgid "Prefix title"
 msgstr "Voorvoegsel titel"
 
-#: includes/admin/elb-register-settings.php:133
+#: includes/admin/elb-register-settings.php:139
 msgid "Automatically puts \"Liveblog\" in front of your liveblogs titles."
 msgstr "Zet automatisch \"Liveblog\" voor uw titels van liveblogs."
 
-#: includes/admin/elb-register-settings.php:149
+#: includes/admin/elb-register-settings.php:155
 #, php-format
 msgid "The callback function used for the %s setting is missing."
 msgstr "De callback-functie voor %s ontbreekt."
@@ -113,8 +121,7 @@ msgstr "De callback-functie voor %s ontbreekt."
 msgid ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">View the liveblog</a>"
 msgstr ""
-"<a class=\"elb-view-liveblog-link button\" href=\"%s\">Bekijk de liveblog</"
-"a>"
+"<a class=\"elb-view-liveblog-link button\" href=\"%s\">Bekijk de liveblog</a>"
 
 #: includes/class-elb-liveblog.php:71
 msgid "The liveblog has ended."
@@ -140,7 +147,7 @@ msgstr "Gesloten"
 msgid "Open"
 msgstr "Open"
 
-#: includes/elb-functions.php:252 includes/elb-metabox.php:16
+#: includes/elb-functions.php:265 includes/elb-metabox.php:16
 #: includes/elb-metabox.php:19
 msgid "Liveblog"
 msgstr "Liveblog"
@@ -217,6 +224,11 @@ msgstr "Easy Liveblogs"
 msgctxt "%s = human-readable time difference"
 msgid "%s ago"
 msgstr "%s geleden"
+
+#: templates/post.php:12
+#, php-format
+msgid "By %s"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "https://vanrossum.dev"
