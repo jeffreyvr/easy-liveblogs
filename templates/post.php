@@ -7,6 +7,7 @@ do_action( 'elb_before_liveblog_post', $post );
 ?>
 
 <p class="elb-liveblog-post-time"><time datetime="<?php echo get_the_time( 'Y-m-d H:i' ); ?>"><?php printf( _x( '%s ago', '%s = human-readable time difference', ELB_TEXT_DOMAIN ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></time></p>
+<p class="elb-liveblog-post-author"><?php echo get_the_author(); ?></p>
 
 <h2 class="elb-liveblog-post-heading"><?php elb_entry_title(); ?></h2>
 

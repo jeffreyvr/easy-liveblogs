@@ -86,12 +86,26 @@ ul.elb-liveblog-list {
 	font-size: 14px;
 }
 
+.elb-liveblog-post-author {
+	margin-top: 4px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
 .elb-theme-light .elb-liveblog-post-time {
 	color: #666;
 }
 
+.elb-theme-light .elb-liveblog-post-author {
+	color: #111;
+}
+
 .elb-theme-dark .elb-liveblog-post-time {
 	color: #eee;
+}
+
+.elb-theme-dark .elb-liveblog-post-author {
+	color: #fff;
 }
 
 #elb-load-more {

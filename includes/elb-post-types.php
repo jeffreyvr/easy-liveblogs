@@ -28,7 +28,7 @@ function elb_setup_post_types() {
 		'show_ui'         => true,
 		'capability_type' => 'post',
 		'map_meta_cap'    => true,
-		'supports'        => array( 'title', 'editor' ),
+		'supports'        => array( 'title','author', 'editor' ),
 		'can_export'      => true,
 		'menu_icon'       => 'dashicons-image-rotate'
 	);
