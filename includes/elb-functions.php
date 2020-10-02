@@ -1,7 +1,9 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Get template part
@@ -17,8 +19,9 @@ function elb_get_template_part( $slug, $name = null, $load = true ) {
 
 	// Setup possible parts
 	$templates = array();
-	if ( isset( $name ) )
-	$templates[] = $slug . '-' . $name . '.php';
+	if ( isset( $name ) ) {
+		$templates[] = $slug . '-' . $name . '.php';
+	}
 	$templates[] = $slug . '.php';
 
 	// Allow template parts to be filtered
@@ -32,8 +35,8 @@ function elb_get_template_part( $slug, $name = null, $load = true ) {
  * Locate template
  *
  * @param  string|array $template_names
- * @param  boolean $load
- * @param  boolean $require_once
+ * @param  boolean      $load
+ * @param  boolean      $require_once
  */
 function elb_locate_template( $template_names, $load = false, $require_once = true ) {
 	// No file found yet
@@ -43,8 +46,9 @@ function elb_locate_template( $template_names, $load = false, $require_once = tr
 	foreach ( (array) $template_names as $template_name ) {
 
 		// Continue if template is empty
-		if ( empty( $template_name ) )
+		if ( empty( $template_name ) ) {
 			continue;
+		}
 
 		// Trim off any slashes from the template name
 		$template_name = ltrim( $template_name, '/' );
@@ -93,15 +97,15 @@ function elb_get_templates_dir() {
  */
 function elb_get_liveblogs() {
 	$args = array(
-		'post_type' => elb_get_supported_post_types(),
+		'post_type'   => elb_get_supported_post_types(),
 		'post_status' => 'publish',
-		'showposts' => -1,
-		'meta_query' => array(
+		'showposts'   => -1,
+		'meta_query'  => array(
 			array(
-				'key' => '_elb_is_liveblog',
+				'key'     => '_elb_is_liveblog',
 				'compare' => 'EXISTS',
-			)
-		)
+			),
+		),
 	);
 
 	$args = apply_filters( 'elb_get_liveblogs_args', $args );
@@ -111,7 +115,7 @@ function elb_get_liveblogs() {
 	$result = array();
 
 	foreach ( $liveblogs as $liveblog ) {
-		$result[$liveblog->ID] = $liveblog->post_title;
+		$result[ $liveblog->ID ] = $liveblog->post_title;
 	}
 
 	return apply_filters( 'elb_get_liveblogs', $result );
@@ -123,21 +127,24 @@ function elb_get_liveblogs() {
  * @return int
  */
 function elb_get_liveblogs_count( $args = array() ) {
-	$default_args = apply_filters( 'elb_get_liveblogs_count_args', array(
-		'post_status' => array( 'publish', 'draft', 'future', 'trash' ),
-		'all_posts' => 1,
-		'post_type' => elb_get_supported_post_types(),
-		'meta_query' => array(
-			array(
-				'key' => '_elb_is_liveblog',
-				'compare' => 'EXISTS',
-			)
+	$default_args = apply_filters(
+		'elb_get_liveblogs_count_args',
+		array(
+			'post_status' => array( 'publish', 'draft', 'future', 'trash' ),
+			'all_posts'   => 1,
+			'post_type'   => elb_get_supported_post_types(),
+			'meta_query'  => array(
+				array(
+					'key'     => '_elb_is_liveblog',
+					'compare' => 'EXISTS',
+				),
+			),
 		)
-	) );
+	);
 
 	$args = wp_parse_args( $args, $default_args );
 
-    $result = new WP_Query($args);
+	$result = new WP_Query( $args );
 
 	return $result->found_posts;
 }
@@ -154,11 +161,10 @@ function elb_is_liveblog() {
 
 	$liveblog = false;
 
-	if ( !empty( $post->ID ) ) {
+	if ( ! empty( $post->ID ) ) {
 		if ( get_post_meta( $post->ID, '_elb_is_liveblog', true ) ) {
 			$liveblog = true;
 		}
-
 	}
 
 	return apply_filters( 'elb_is_liveblog', $liveblog );
@@ -171,7 +177,7 @@ function elb_is_liveblog() {
  * @return string
  */
 function elb_get_liveblog_status( $post_id = null ) {
-	if ( !$post_id ) {
+	if ( ! $post_id ) {
 		global $post;
 		$post_id = $post->ID;
 	}
@@ -185,10 +191,13 @@ function elb_get_liveblog_status( $post_id = null ) {
  * @return array
  */
 function elb_get_liveblog_status_options() {
-	return apply_filters( 'elb_liveblog_status_options', array(
-		'open' => __( 'Open', ELB_TEXT_DOMAIN ),
-		'closed' => __( 'Closed', ELB_TEXT_DOMAIN )
-	) );
+	return apply_filters(
+		'elb_liveblog_status_options',
+		array(
+			'open'   => __( 'Open', ELB_TEXT_DOMAIN ),
+			'closed' => __( 'Closed', ELB_TEXT_DOMAIN ),
+		)
+	);
 }
 
 /**
@@ -199,7 +208,7 @@ function elb_get_liveblog_status_options() {
 function elb_get_supported_post_types() {
 	global $elb_options;
 
-	$post_types = !empty( $elb_options['post_types'] ) ? $elb_options['post_types'] : array( 'post' );
+	$post_types = ! empty( $elb_options['post_types'] ) ? $elb_options['post_types'] : array( 'post' );
 
 	return apply_filters( 'elb_post_types', $post_types );
 }
@@ -212,7 +221,7 @@ function elb_get_supported_post_types() {
 function elb_get_update_interval() {
 	global $elb_options;
 
-	$update_interval = !empty( $elb_options['update_interval'] ) ? $elb_options['update_interval'] : 30;
+	$update_interval = ! empty( $elb_options['update_interval'] ) ? $elb_options['update_interval'] : 30;
 
 	return apply_filters( 'elb_update_interval', $update_interval );
 }
@@ -238,7 +247,7 @@ function elb_display_author_name() {
 function elb_get_show_entries() {
 	global $elb_options;
 
-	$show_entries = !empty( $elb_options['show_entries'] ) ? $elb_options['show_entries'] : 10;
+	$show_entries = ! empty( $elb_options['show_entries'] ) ? $elb_options['show_entries'] : 10;
 
 	return apply_filters( 'elb_show_entries', $show_entries );
 }
@@ -251,7 +260,7 @@ function elb_get_show_entries() {
 function elb_get_theme() {
 	global $elb_options;
 
-	$theme = !empty( $elb_options['theme'] ) ? $elb_options['theme'] : 'light';
+	$theme = ! empty( $elb_options['theme'] ) ? $elb_options['theme'] : 'light';
 
 	return apply_filters( 'elb_theme', $theme );
 }
@@ -307,4 +316,25 @@ function elb_get_entry_title() {
  */
 function elb_entry_title() {
 	echo elb_get_entry_title();
+}
+
+/**
+ * Get highlited entry id.
+ *
+ * @return mixed
+ */
+function elb_get_highlighted_entry_id() {
+	if ( ! isset( $_GET['entry'] ) ) {
+		return;
+	}
+
+	global $post;
+
+	$entry_id = filter_input( INPUT_GET, 'entry', FILTER_SANITIZE_NUMBER_INT );
+
+	if ( get_post_meta( $entry_id, '_elb_liveblog', true ) != $post->ID ) {
+		return;
+	}
+
+	return get_post( $entry_id );
 }

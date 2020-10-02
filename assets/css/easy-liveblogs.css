@@ -21,6 +21,19 @@ ul.elb-liveblog-list {
 	padding-bottom: 30px;
 }
 
+@keyframes elb-liveblog-highlight {
+	0% {
+	  background: #fefcbf;
+	}
+	100% {
+	  background: none;
+	}
+  }
+
+.elb-liveblog .elb-liveblog-highlight {
+	animation: elb-liveblog-highlight 2s;
+}
+
 .elb-liveblog .elb-liveblog-post:last-child {
 	margin-bottom: 30px;
 }
