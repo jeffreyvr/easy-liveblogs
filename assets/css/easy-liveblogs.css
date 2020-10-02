@@ -67,6 +67,18 @@ ul.elb-liveblog-list {
 	margin-top: 0 !important;
 }
 
+.elb-liveblog-post-sharing {
+	margin-top: 10px;
+}
+
+.elb-liveblog-post-sharing a {
+	color: rgba( 0, 0, 0, .5 );
+}
+
+.elb-liveblog-post-sharing a:hover {
+	color: rgba( 0, 0, 0, 1 );
+}
+
 .elb-liveblog-post-content {
 	width: 100%;
 	overflow: hidden;
@@ -118,6 +130,14 @@ ul.elb-liveblog-list {
 
 .elb-theme-dark .elb-liveblog-post-author {
 	color: #fff;
+}
+
+.elb-theme-dark .elb-liveblog-post-sharing a {
+	color: rgba( 255, 255, 255, .6 );
+}
+
+.elb-theme-dark .elb-liveblog-post-sharing a:hover {
+	color: rgba( 255, 255, 255, 1 );
 }
 
 #elb-load-more {

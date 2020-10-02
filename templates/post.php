@@ -16,6 +16,8 @@ do_action( 'elb_before_liveblog_post', $post );
 
 <div class="elb-liveblog-post-content"><?php elb_entry_content(); ?></div>
 
+<?php echo elb_get_template_part( 'sharing' ); ?>
+
 <?php if ( current_user_can( 'edit_post', $post ) ) { ?>
 	<div class="elb-liveblog-actions">
 		<?php edit_post_link(); ?>

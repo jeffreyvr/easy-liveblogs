@@ -81,6 +81,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			require_once $this->get_plugin_path() . 'includes/elb-metabox.php';
 			require_once $this->get_plugin_path() . 'includes/elb-functions.php';
 			require_once $this->get_plugin_path() . 'includes/elb-filters.php';
+			require_once $this->get_plugin_path() . 'includes/elb-social-logos.php';
 			require_once $this->get_plugin_path() . 'includes/admin/elb-pages.php';
 		}
 

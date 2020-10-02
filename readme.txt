@@ -40,6 +40,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 * Added structured data.
 * Added ability to link to specific entry with highlight effect.
 * Update Dutch translation.
+* Added option to show sharing options with entries.
 
 = 1.3, September 2, 2020 =
 * Adding the option to display author (Thanks inerds).

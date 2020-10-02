@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2020-10-02 12:09+0200\n"
-"PO-Revision-Date: 2020-10-02 12:09+0200\n"
+"POT-Creation-Date: 2020-10-02 13:55+0200\n"
+"PO-Revision-Date: 2020-10-02 13:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -21,97 +21,97 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: easy-liveblogs.php:115
+#: easy-liveblogs.php:121
 #, php-format
 msgid "There is %s update."
 msgstr "Er is %s update."
 
-#: easy-liveblogs.php:116
+#: easy-liveblogs.php:122
 #, php-format
 msgid "There are %s updates."
 msgstr "Er zijn %s updates."
 
-#: easy-liveblogs.php:117
+#: easy-liveblogs.php:123
 msgid "That's it."
 msgstr "Dat was het."
 
-#: includes/admin/elb-pages.php:13
+#: includes/admin/elb-pages.php:15
 msgid "Easy Liveblog Settings"
 msgstr "Easy Liveblog Instellingen"
 
-#: includes/admin/elb-pages.php:13
+#: includes/admin/elb-pages.php:15
 msgid "Settings"
 msgstr "Instellingen"
 
-#: includes/admin/elb-pages.php:26
+#: includes/admin/elb-pages.php:28
 msgid "Easy Liveblogs Settings"
 msgstr "Easy Liveblog Instellingen"
 
-#: includes/admin/elb-pages.php:31
+#: includes/admin/elb-pages.php:33
 msgid "Plugin settings have been updated."
 msgstr "De plugin-instellingen zijn bijgewerkt."
 
-#: includes/admin/elb-register-settings.php:94
+#: includes/admin/elb-register-settings.php:99
 msgid "Theme"
 msgstr "Thema"
 
-#: includes/admin/elb-register-settings.php:95
+#: includes/admin/elb-register-settings.php:100
 msgid "Select a theme for your liveblog."
 msgstr "Selecteer een thema voor de liveblogs."
 
-#: includes/admin/elb-register-settings.php:98
+#: includes/admin/elb-register-settings.php:103
 msgid "Light"
 msgstr "Licht"
 
-#: includes/admin/elb-register-settings.php:99
+#: includes/admin/elb-register-settings.php:104
 msgid "Dark"
 msgstr "Donker"
 
-#: includes/admin/elb-register-settings.php:100
+#: includes/admin/elb-register-settings.php:105
 msgid "None"
 msgstr "Geen"
 
-#: includes/admin/elb-register-settings.php:106
+#: includes/admin/elb-register-settings.php:111
 msgid "Display author"
 msgstr "Toon auteur"
 
-#: includes/admin/elb-register-settings.php:107
+#: includes/admin/elb-register-settings.php:112
 msgid "Display the author name on liveblog entries."
 msgstr "Geef de naam van de auteur weer in liveblog-items."
 
-#: includes/admin/elb-register-settings.php:112
+#: includes/admin/elb-register-settings.php:117
 msgid "Update interval"
 msgstr "Update interval"
 
-#: includes/admin/elb-register-settings.php:113
+#: includes/admin/elb-register-settings.php:118
 msgid "Per how many seconds should be checked for new liveblog updates."
 msgstr "Per hoeveel seconden gecontroleerd moet worden op liveblog updates."
 
-#: includes/admin/elb-register-settings.php:121
+#: includes/admin/elb-register-settings.php:126
 msgid "Show entries"
 msgstr "Toon items"
 
-#: includes/admin/elb-register-settings.php:122
+#: includes/admin/elb-register-settings.php:127
 msgid "The amount of entries visible before the load more button."
 msgstr "Het aantal items dat zichtbaar is voor de toon meer button."
 
-#: includes/admin/elb-register-settings.php:130
+#: includes/admin/elb-register-settings.php:135
 msgid "Post types"
 msgstr "Post types"
 
-#: includes/admin/elb-register-settings.php:131
+#: includes/admin/elb-register-settings.php:136
 msgid "Select the post types that need to support liveblogs."
 msgstr "Selecteer de post types die liveblogs moeten ondersteunen."
 
-#: includes/admin/elb-register-settings.php:138
+#: includes/admin/elb-register-settings.php:143
 msgid "Prefix title"
 msgstr "Voorvoegsel titel"
 
-#: includes/admin/elb-register-settings.php:139
+#: includes/admin/elb-register-settings.php:144
 msgid "Automatically puts \"Liveblog\" in front of your liveblogs titles."
 msgstr "Zet automatisch \"Liveblog\" voor uw titels van liveblogs."
 
-#: includes/admin/elb-register-settings.php:155
+#: includes/admin/elb-register-settings.php:161
 #, php-format
 msgid "The callback function used for the %s setting is missing."
 msgstr "De callback-functie voor %s ontbreekt."
@@ -135,11 +135,11 @@ msgstr "Er zijn nog geen liveblog-updates."
 msgid "Load more"
 msgstr "Toon meer"
 
-#: includes/elb-filters.php:48
+#: includes/elb-filters.php:57
 msgid "Liveblogs"
 msgstr "Liveblogs"
 
-#: includes/elb-filters.php:78 includes/elb-functions.php:198
+#: includes/elb-filters.php:87 includes/elb-functions.php:198
 msgid "Closed"
 msgstr "Gesloten"
 
@@ -147,75 +147,75 @@ msgstr "Gesloten"
 msgid "Open"
 msgstr "Open"
 
-#: includes/elb-functions.php:274 includes/elb-metabox.php:16
-#: includes/elb-metabox.php:19
+#: includes/elb-functions.php:274 includes/elb-metabox.php:18
+#: includes/elb-metabox.php:21
 msgid "Liveblog"
 msgstr "Liveblog"
 
-#: includes/elb-metabox.php:85
+#: includes/elb-metabox.php:87
 msgid "Enable liveblog"
 msgstr "Liveblog inschakelen"
 
-#: includes/elb-metabox.php:94
+#: includes/elb-metabox.php:96
 msgid "Status"
 msgstr "Status"
 
-#: includes/elb-metabox.php:122
+#: includes/elb-metabox.php:124
 msgid "Select liveblog"
 msgstr "Selecteer liveblog"
 
-#: includes/elb-metabox.php:129
+#: includes/elb-metabox.php:131
 msgid "There is no liveblog created yet."
 msgstr "Er is nog geen liveblog gemaakt."
 
-#: includes/elb-post-types.php:9
+#: includes/elb-post-types.php:11
 msgctxt "post type general name"
 msgid "Liveblog Entries"
 msgstr "Liveblog Items"
 
-#: includes/elb-post-types.php:10
+#: includes/elb-post-types.php:12
 msgctxt "post type singular name"
 msgid "Entry"
 msgstr "Item"
 
-#: includes/elb-post-types.php:11
+#: includes/elb-post-types.php:13
 msgid "Add New"
 msgstr "Voeg toe"
 
-#: includes/elb-post-types.php:12
+#: includes/elb-post-types.php:14
 msgid "Add New Entry"
 msgstr "Nieuw item toevoegen"
 
-#: includes/elb-post-types.php:13
+#: includes/elb-post-types.php:15
 msgid "Edit Entry"
 msgstr "Bewerk item"
 
-#: includes/elb-post-types.php:14
+#: includes/elb-post-types.php:16
 msgid "New Entry"
 msgstr "Nieuw item"
 
-#: includes/elb-post-types.php:15
+#: includes/elb-post-types.php:17
 msgid "All Liveblog Entries"
 msgstr "Alle liveblog-items"
 
-#: includes/elb-post-types.php:16
+#: includes/elb-post-types.php:18
 msgid "View Entry"
 msgstr "Bekijk item"
 
-#: includes/elb-post-types.php:17
+#: includes/elb-post-types.php:19
 msgid "Search Liveblog Entries"
 msgstr "Zoek liveblog-items"
 
-#: includes/elb-post-types.php:18
+#: includes/elb-post-types.php:20
 msgid "No Liveblog Entries found"
 msgstr "Geen liveblog-items gevonden"
 
-#: includes/elb-post-types.php:19
+#: includes/elb-post-types.php:21
 msgid "No Liveblog Entries found in Trash"
 msgstr "Geen liveblog-items gevonden in de prullenbak"
 
 #. Plugin Name of the plugin/theme
-#: includes/elb-post-types.php:21
+#: includes/elb-post-types.php:23
 msgid "Easy Liveblogs"
 msgstr "Easy Liveblogs"
 
@@ -229,6 +229,18 @@ msgstr "%s geleden"
 #, php-format
 msgid "By %s"
 msgstr "Door %s"
+
+#: templates/sharing.php:2
+msgid "Share via Facebook"
+msgstr "Deel via Facebook"
+
+#: templates/sharing.php:6
+msgid "Share via Twitter"
+msgstr "Deel via Twitter"
+
+#: templates/sharing.php:10
+msgid "Share via email"
+msgstr "Deel via e-mail"
 
 #. Plugin URI of the plugin/theme
 msgid "https://vanrossum.dev"

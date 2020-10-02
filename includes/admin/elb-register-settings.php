@@ -113,6 +113,12 @@ function elb_get_registered_settings() {
 				'type' => 'checkbox',
 			),
 			array(
+				'id'   => 'display_social_sharing',
+				'name' => __( 'Display social sharing', ELB_TEXT_DOMAIN ),
+				'desc' => __( 'Display the social sharing options.', ELB_TEXT_DOMAIN ),
+				'type' => 'checkbox',
+			),
+			array(
 				'id'            => 'update_interval',
 				'name'          => __( 'Update interval', ELB_TEXT_DOMAIN ),
 				'desc'          => __( 'Per how many seconds should be checked for new liveblog updates.', ELB_TEXT_DOMAIN ),

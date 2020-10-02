@@ -227,7 +227,7 @@ function elb_get_update_interval() {
 }
 
 /**
- * Get update interval
+ * Display author name.
  *
  * @return boolean
  */
@@ -237,6 +237,19 @@ function elb_display_author_name() {
 	$display_author = ! empty( $elb_options['display_author'] ) ? true : false;
 
 	return apply_filters( 'elb_display_author', $display_author );
+}
+
+/**
+ * Display social sharing.
+ *
+ * @return boolean
+ */
+function elb_display_social_sharing() {
+	global $elb_options;
+
+	$display_social_sharing = ! empty( $elb_options['display_social_sharing'] ) ? true : false;
+
+	return apply_filters( 'elb_display_social_sharing', $display_social_sharing );
 }
 
 /**
@@ -337,4 +350,17 @@ function elb_get_highlighted_entry_id() {
 	}
 
 	return get_post( $entry_id );
+}
+
+/**
+ * Get entry URL.
+ *
+ * @return string
+ */
+function elb_get_entry_url() {
+	global $post;
+
+	$liveblog_id = get_post_meta( $post->ID, '_elb_liveblog', true );
+
+	return add_query_arg( 'entry', $post->ID, get_permalink( $liveblog_id ) );
 }
