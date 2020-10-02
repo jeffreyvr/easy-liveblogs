@@ -16,7 +16,7 @@ Covering a conference, sports event, breaking news or other quickly developing e
 
 = Built with developers in mind =
 
-The plugin has tons of filter and action hooks so that developers can adjust the plugin to their liking. Feel free to contribute on [GitHub](https://github.com/jeffreyvr/easy-liveblogs)
+The plugin has tons of filter and action hooks so that developers can adjust the plugin to their liking. Feel free to contribute on [GitHub](https://github.com/jeffreyvr/easy-liveblogs).
 
 == Installation ==
 
@@ -35,6 +35,11 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 7. Settings
 
 == Changelog ==
+
+= 1.4, October 2, 2020 =
+* Added structured data.
+* Added ability to link to specific entry with highlight effect.
+* Update Dutch translation.
 
 = 1.3, September 2, 2020 =
 * Adding the option to display author (Thanks inerds).
