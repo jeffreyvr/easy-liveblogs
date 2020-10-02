@@ -5,7 +5,7 @@ Contributors: jeffreyvr
 Tags: liveblog
 Requires at least: 4.4
 Tested up to: 5.5.1
-Stable Tag: 1.3
+Stable Tag: 1.4
 License: GNU Version 2 or Any Later Version
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
