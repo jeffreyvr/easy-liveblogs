@@ -1,7 +1,9 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 function elb_setup_post_types() {
 	/** Liveblog Entries Post Type */
@@ -18,9 +20,9 @@ function elb_setup_post_types() {
 		'not_found'          => __( 'No Liveblog Entries found', ELB_TEXT_DOMAIN ),
 		'not_found_in_trash' => __( 'No Liveblog Entries found in Trash', ELB_TEXT_DOMAIN ),
 		'parent_item_colon'  => '',
-		'menu_name'          => __( 'Easy Liveblogs', ELB_TEXT_DOMAIN )
+		'menu_name'          => __( 'Easy Liveblogs', ELB_TEXT_DOMAIN ),
 	);
-	$args = array(
+	$args   = array(
 		'labels'          => apply_filters( 'elb_post_type_labels', $labels ),
 		'public'          => false,
 		'query_var'       => false,
@@ -30,7 +32,7 @@ function elb_setup_post_types() {
 		'map_meta_cap'    => true,
 		'supports'        => array( 'title', 'author', 'editor' ),
 		'can_export'      => true,
-		'menu_icon'       => 'dashicons-image-rotate'
+		'menu_icon'       => 'dashicons-image-rotate',
 	);
 	register_post_type( 'elb_entry', $args );
 }

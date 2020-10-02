@@ -141,9 +141,12 @@ class ELB_Liveblog {
 	 * @return string
 	 */
 	public function post( $post, $args = array() ) {
-		$args = wp_parse_args( $args, array(
-			'class' => array( 'elb-liveblog-post' )
-		) );
+		$args = wp_parse_args(
+			$args,
+			array(
+				'class' => array( 'elb-liveblog-post' ),
+			)
+		);
 
 		$classes = apply_filters( 'elb_liveblog_list_item_classes', implode( ' ', $args['class'] ) );
 
@@ -275,7 +278,6 @@ class ELB_Liveblog {
 		$metadata['liveBlogUpdate'] = $entries;
 
 		$metadata = apply_filters( 'easy_liveblogs_liveblog_metadata', $metadata, $post );
-
 		?>
 		<script type="application/ld+json"><?php echo wp_json_encode( $metadata ); ?></script>
 		<?php

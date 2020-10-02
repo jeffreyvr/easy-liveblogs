@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2020-09-02 16:24+0200\n"
-"PO-Revision-Date: 2020-09-02 16:24+0200\n"
+"POT-Creation-Date: 2020-10-02 12:09+0200\n"
+"PO-Revision-Date: 2020-10-02 12:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -116,22 +116,22 @@ msgstr "Zet automatisch \"Liveblog\" voor uw titels van liveblogs."
 msgid "The callback function used for the %s setting is missing."
 msgstr "De callback-functie voor %s ontbreekt."
 
-#: includes/class-elb-liveblog.php:59
+#: includes/class-elb-liveblog.php:62
 #, php-format
 msgid ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">View the liveblog</a>"
 msgstr ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">Bekijk de liveblog</a>"
 
-#: includes/class-elb-liveblog.php:71
+#: includes/class-elb-liveblog.php:74
 msgid "The liveblog has ended."
 msgstr "Dit liveblog is afgelopen."
 
-#: includes/class-elb-liveblog.php:77
+#: includes/class-elb-liveblog.php:80
 msgid "No liveblog updates yet."
 msgstr "Er zijn nog geen liveblog-updates."
 
-#: includes/class-elb-liveblog.php:103
+#: includes/class-elb-liveblog.php:113
 msgid "Load more"
 msgstr "Toon meer"
 
@@ -139,15 +139,15 @@ msgstr "Toon meer"
 msgid "Liveblogs"
 msgstr "Liveblogs"
 
-#: includes/elb-filters.php:78 includes/elb-functions.php:190
+#: includes/elb-filters.php:78 includes/elb-functions.php:198
 msgid "Closed"
 msgstr "Gesloten"
 
-#: includes/elb-functions.php:189
+#: includes/elb-functions.php:197
 msgid "Open"
 msgstr "Open"
 
-#: includes/elb-functions.php:265 includes/elb-metabox.php:16
+#: includes/elb-functions.php:274 includes/elb-metabox.php:16
 #: includes/elb-metabox.php:19
 msgid "Liveblog"
 msgstr "Liveblog"
@@ -228,7 +228,7 @@ msgstr "%s geleden"
 #: templates/post.php:12
 #, php-format
 msgid "By %s"
-msgstr ""
+msgstr "Door %s"
 
 #. Plugin URI of the plugin/theme
 msgid "https://vanrossum.dev"

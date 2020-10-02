@@ -4,7 +4,9 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Add options link
@@ -31,9 +33,9 @@ function elb_options_page() {
 				<div class="updated"><p><?php _e( 'Plugin settings have been updated.', ELB_TEXT_DOMAIN ); ?></p></div>
 			<?php } ?>
 
-			<?php settings_fields('elb_settings'); ?>
-	        <?php do_settings_sections('elb_settings_general'); ?>
-	        <?php submit_button(); ?>
+			<?php settings_fields( 'elb_settings' ); ?>
+			<?php do_settings_sections( 'elb_settings_general' ); ?>
+			<?php submit_button(); ?>
 
 		</form>
 

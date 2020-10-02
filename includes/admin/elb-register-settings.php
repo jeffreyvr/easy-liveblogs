@@ -1,6 +1,8 @@
 <?php
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Register settings
@@ -20,16 +22,19 @@ function elb_register_settings() {
 		);
 
 		foreach ( $settings as $option ) {
-			$args = wp_parse_args( $option, array(
-				'section'       => $section,
-				'id'            => null,
-				'desc'          => '',
-				'name'          => '',
-				'size'          => null,
-				'options'       => '',
-				'chosen'        => null,
-				'placeholder'   => null,
-			) );
+			$args = wp_parse_args(
+				$option,
+				array(
+					'section'     => $section,
+					'id'          => null,
+					'desc'        => '',
+					'name'        => '',
+					'size'        => null,
+					'options'     => '',
+					'chosen'      => null,
+					'placeholder' => null,
+				)
+			);
 
 			add_settings_field(
 				'elb_settings[' . $args['id'] . ']',
@@ -40,7 +45,6 @@ function elb_register_settings() {
 				$args
 			);
 		}
-
 	}
 
 }
@@ -63,7 +67,7 @@ function elb_get_settings() {
 function elb_get_options() {
 	global $elb_options;
 
-	return !empty( $elb_options ) ? $elb_options : array();
+	return ! empty( $elb_options ) ? $elb_options : array();
 }
 
 /**
@@ -88,58 +92,60 @@ function elb_get_option( $key = '', $default = false ) {
  * @return array
  */
 function elb_get_registered_settings() {
-	$elb_settings = array( 'general' => array(
-		array(
-			'id'   => 'theme',
-			'name' => __( 'Theme', ELB_TEXT_DOMAIN ),
-			'desc' => __( 'Select a theme for your liveblog.', ELB_TEXT_DOMAIN ),
-			'type' => 'select',
-			'options' => array(
-				'light' => __( 'Light', ELB_TEXT_DOMAIN ),
-				'dark' => __( 'Dark', ELB_TEXT_DOMAIN ),
-				'none' => __( 'None', ELB_TEXT_DOMAIN )
+	$elb_settings = array(
+		'general' => array(
+			array(
+				'id'            => 'theme',
+				'name'          => __( 'Theme', ELB_TEXT_DOMAIN ),
+				'desc'          => __( 'Select a theme for your liveblog.', ELB_TEXT_DOMAIN ),
+				'type'          => 'select',
+				'options'       => array(
+					'light' => __( 'Light', ELB_TEXT_DOMAIN ),
+					'dark'  => __( 'Dark', ELB_TEXT_DOMAIN ),
+					'none'  => __( 'None', ELB_TEXT_DOMAIN ),
+				),
+				'default_value' => 'light',
 			),
-			'default_value' => 'light'
+			array(
+				'id'   => 'display_author',
+				'name' => __( 'Display author', ELB_TEXT_DOMAIN ),
+				'desc' => __( 'Display the author name on liveblog entries.', ELB_TEXT_DOMAIN ),
+				'type' => 'checkbox',
+			),
+			array(
+				'id'            => 'update_interval',
+				'name'          => __( 'Update interval', ELB_TEXT_DOMAIN ),
+				'desc'          => __( 'Per how many seconds should be checked for new liveblog updates.', ELB_TEXT_DOMAIN ),
+				'type'          => 'number',
+				'min'           => 10,
+				'max'           => 360,
+				'default_value' => 30,
+			),
+			array(
+				'id'            => 'show_entries',
+				'name'          => __( 'Show entries', ELB_TEXT_DOMAIN ),
+				'desc'          => __( 'The amount of entries visible before the load more button.', ELB_TEXT_DOMAIN ),
+				'type'          => 'number',
+				'min'           => 1,
+				'max'           => 20,
+				'default_value' => 10,
+			),
+			array(
+				'id'            => 'post_types',
+				'name'          => __( 'Post types', ELB_TEXT_DOMAIN ),
+				'desc'          => __( 'Select the post types that need to support liveblogs.', ELB_TEXT_DOMAIN ),
+				'type'          => 'multiple_select',
+				'options'       => get_post_types(),
+				'default_value' => array( 'post' ),
+			),
+			array(
+				'id'   => 'prefix_title',
+				'name' => __( 'Prefix title', ELB_TEXT_DOMAIN ),
+				'desc' => __( 'Automatically puts "Liveblog" in front of your liveblogs titles.', ELB_TEXT_DOMAIN ),
+				'type' => 'checkbox',
+			),
 		),
-		array(
-			'id'   => 'display_author',
-			'name' => __( 'Display author', ELB_TEXT_DOMAIN ),
-			'desc' => __( 'Display the author name on liveblog entries.', ELB_TEXT_DOMAIN ),
-			'type' => 'checkbox'
-		),
-		array(
-			'id'   => 'update_interval',
-			'name' => __( 'Update interval', ELB_TEXT_DOMAIN ),
-			'desc' => __( 'Per how many seconds should be checked for new liveblog updates.', ELB_TEXT_DOMAIN ),
-			'type' => 'number',
-			'min' => 10,
-			'max' => 360,
-			'default_value' => 30
-		),
-		array(
-			'id'   => 'show_entries',
-			'name' => __( 'Show entries', ELB_TEXT_DOMAIN ),
-			'desc' => __( 'The amount of entries visible before the load more button.', ELB_TEXT_DOMAIN ),
-			'type' => 'number',
-			'min' => 1,
-			'max' => 20,
-			'default_value' => 10
-		),
-		array(
-			'id' => 'post_types',
-			'name' => __( 'Post types', ELB_TEXT_DOMAIN ),
-			'desc' => __( 'Select the post types that need to support liveblogs.', ELB_TEXT_DOMAIN ),
-			'type' => 'multiple_select',
-			'options' => get_post_types(),
-			'default_value' => array( 'post' )
-		),
-		array(
-			'id'   => 'prefix_title',
-			'name' => __( 'Prefix title', ELB_TEXT_DOMAIN ),
-			'desc' => __( 'Automatically puts "Liveblog" in front of your liveblogs titles.', ELB_TEXT_DOMAIN ),
-			'type' => 'checkbox'
-		)
-	) );
+	);
 
 	return apply_filters( 'elb_registered_settings', $elb_settings );
 }
@@ -168,8 +174,8 @@ function elb_checkbox_callback( $args ) {
 
 	$checked = checked( isset( $elb_options[ $args['id'] ] ) ? $elb_options[ $args['id'] ] : '', '1', false );
 
-	$html = '<input type="checkbox" ' . $checked . ' id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" value="1" />';
-	$html .= '<label for="elb_settings[' . $args['id'] . ']">'  . $args['desc'] . '</label>';
+	$html  = '<input type="checkbox" ' . $checked . ' id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" value="1" />';
+	$html .= '<label for="elb_settings[' . $args['id'] . ']">' . $args['desc'] . '</label>';
 
 	echo $html;
 }
@@ -185,8 +191,8 @@ function elb_text_callback( $args ) {
 
 	$value = isset( $elb_options[ $args['id'] ] ) ? $elb_options[ $args['id'] ] : '';
 
-	$html = '<input type="text" id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" value="' . $value . '" />';
-	$html .= '<label for="elb_settings[' . $args['id'] . ']">'  . $args['desc'] . '</label>';
+	$html  = '<input type="text" id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" value="' . $value . '" />';
+	$html .= '<label for="elb_settings[' . $args['id'] . ']">' . $args['desc'] . '</label>';
 
 	echo $html;
 }
@@ -204,7 +210,7 @@ function elb_select_callback( $args ) {
 
 	$html = '<select id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" />';
 
-	if ( !empty( $args['options'] ) ) {
+	if ( ! empty( $args['options'] ) ) {
 		foreach ( $args['options'] as $option_value => $option_name ) {
 			$selected = selected( $value, $option_value, false );
 
@@ -214,7 +220,7 @@ function elb_select_callback( $args ) {
 
 	$html .= '</select>';
 
-	$html .= '<label for="elb_settings[' . $args['id'] . ']">'  . $args['desc'] . '</label>';
+	$html .= '<label for="elb_settings[' . $args['id'] . ']">' . $args['desc'] . '</label>';
 
 	echo $html;
 }
@@ -232,10 +238,10 @@ function elb_multiple_select_callback( $args ) {
 
 	$html = '<select multiple id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . '][]" />';
 
-	if ( !empty( $args['options'] ) ) {
+	if ( ! empty( $args['options'] ) ) {
 		foreach ( $args['options'] as $option_value => $option_name ) {
 
-			$selected = in_array( $option_value, is_array( $value ) ? $value : array() )  ? 'selected' : null;
+			$selected = in_array( $option_value, is_array( $value ) ? $value : array() ) ? 'selected' : null;
 
 			$html .= '<option value=' . $option_value . ' ' . $selected . '>' . $option_name . '</option>';
 		}
@@ -243,7 +249,7 @@ function elb_multiple_select_callback( $args ) {
 
 	$html .= '</select>';
 
-	$html .= '<label for="elb_settings[' . $args['id'] . ']">'  . $args['desc'] . '</label>';
+	$html .= '<label for="elb_settings[' . $args['id'] . ']">' . $args['desc'] . '</label>';
 
 	echo $html;
 }
@@ -257,12 +263,12 @@ function elb_multiple_select_callback( $args ) {
 function elb_number_callback( $args ) {
 	global $elb_options;
 
-	$value 	= isset( $elb_options[ $args['id'] ] ) ? $elb_options[ $args['id'] ] : $args['default_value'];
-	$min 	= !empty( $args['min'] ) ? 'min="' . $args['min'] . '"' : null;
-	$max 	= !empty( $args['max'] ) ? 'max="' . $args['max'] . '"' : null;
+	$value = isset( $elb_options[ $args['id'] ] ) ? $elb_options[ $args['id'] ] : $args['default_value'];
+	$min   = ! empty( $args['min'] ) ? 'min="' . $args['min'] . '"' : null;
+	$max   = ! empty( $args['max'] ) ? 'max="' . $args['max'] . '"' : null;
 
-	$html = '<input type="number" ' . $min . ' ' . $max . ' id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" value="' . $value . '" />';
-	$html .= '<label for="elb_settings[' . $args['id'] . ']">'  . $args['desc'] . '</label>';
+	$html  = '<input type="number" ' . $min . ' ' . $max . ' id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" value="' . $value . '" />';
+	$html .= '<label for="elb_settings[' . $args['id'] . ']">' . $args['desc'] . '</label>';
 
 	echo $html;
 }

@@ -1,25 +1,34 @@
 <?php
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-function elb_liveblogs_parse_filter($query) {
+
+/**
+ * Parse filter.
+ *
+ * @param WP_Query $query The WP Query.
+ * @return void
+ */
+function elb_liveblogs_parse_filter( $query ) {
 	global $pagenow, $elb_options;
 
 	$current_page = isset( $_GET['post_type'] ) ? $_GET['post_type'] : '';
 
-	if (! is_admin() ) {
+	if ( ! is_admin() ) {
 		return $query;
 	}
 
-	if ( !in_array( $current_page, elb_get_supported_post_types() ) &&  'edit.php' !== $pagenow ) {
+	if ( ! in_array( $current_page, elb_get_supported_post_types() ) && 'edit.php' !== $pagenow ) {
 		return $query;
 	}
 
 	if ( isset( $_GET['is-elb-liveblog'] ) ) {
-		$query->query_vars['meta_key'] = '_elb_is_liveblog';
-	    $query->query_vars['meta_value'] = '1';
-	    $query->query_vars['meta_compare'] = '=';
+		$query->query_vars['meta_key']     = '_elb_is_liveblog';
+		$query->query_vars['meta_value']   = '1';
+		$query->query_vars['meta_compare'] = '=';
 	}
 
 	return $query;
@@ -34,7 +43,7 @@ add_filter( 'parse_query', 'elb_liveblogs_parse_filter' );
  */
 function elb_liveblogs_add_quicklinks( $quicklinks ) {
 
-	if ( !in_array( get_query_var( 'post_type' ), elb_get_supported_post_types() ) ) {
+	if ( ! in_array( get_query_var( 'post_type' ), elb_get_supported_post_types() ) ) {
 		return $quicklinks;
 	}
 
@@ -45,10 +54,10 @@ function elb_liveblogs_add_quicklinks( $quicklinks ) {
 		$current = isset( $_GET['is-elb-liveblog'] ) ? 'current' : null;
 
 		$quicklinks['elb_liveblogs'] = sprintf(
-	        '<a href="%s" class="' . $current . '">' . __( 'Liveblogs', ELB_TEXT_DOMAIN ).' <span class="count">(%d)</span></a>',
-	        admin_url('edit.php?post_type=' . get_query_var( 'post_type' ) ) . '&amp;is-elb-liveblog=1',
+			'<a href="%s" class="' . $current . '">' . __( 'Liveblogs', ELB_TEXT_DOMAIN ) . ' <span class="count">(%d)</span></a>',
+			admin_url( 'edit.php?post_type=' . get_query_var( 'post_type' ) ) . '&amp;is-elb-liveblog=1',
 			$liveblog_count
-	    );
+		);
 	}
 
 	return $quicklinks;
@@ -69,7 +78,7 @@ add_action( 'init', 'elb_liveblog_register_quicklink_filters' );
  *
  * Maybe sets liveblog status after post title in admin area.
  *
- * @param  array $post_states
+ * @param  array   $post_states
  * @param  WP_Post $post
  * @return array
  */
@@ -90,18 +99,18 @@ add_filter( 'display_post_states', 'elb_liveblog_post_state', 2, 10 );
 function elb_is_prefix_title_enabled() {
 	global $elb_options;
 
-	return apply_filters( 'elb_prefix_title_enabled', !empty( $elb_options['prefix_title'] ) ? true : false );
+	return apply_filters( 'elb_prefix_title_enabled', ! empty( $elb_options['prefix_title'] ) ? true : false );
 }
 
 /**
  * Apply title prefix
  *
  * @param  string $title
- * @param  int $post_id
+ * @param  int    $post_id
  * @return string
  */
 function elb_apply_title_prefix( $title, $post_id = null ) {
-	if ( elb_is_liveblog() && !is_admin() && elb_is_prefix_title_enabled() ) {
+	if ( elb_is_liveblog() && ! is_admin() && elb_is_prefix_title_enabled() ) {
 		return elb_get_liveblog_title_prefix() . $title;
 	}
 

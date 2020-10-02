@@ -4,7 +4,9 @@
  */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Register all the meta boxes for the Download custom post type
@@ -13,7 +15,7 @@ function elb_add_meta_box() {
 	$post_types = elb_get_supported_post_types();
 
 	foreach ( $post_types as $post_type ) {
-		add_meta_box( 'elb_liveblog_meta_box', __( 'Liveblog', ELB_TEXT_DOMAIN ),  'elb_render_liveblog_meta_box', $post_type, 'normal', 'high' );
+		add_meta_box( 'elb_liveblog_meta_box', __( 'Liveblog', ELB_TEXT_DOMAIN ), 'elb_render_liveblog_meta_box', $post_type, 'normal', 'high' );
 	}
 
 	add_meta_box( 'elb_entry_meta_box', __( 'Liveblog', ELB_TEXT_DOMAIN ), 'elb_render_entry_meta_box', 'elb_entry', 'normal', 'high' );
@@ -28,7 +30,7 @@ add_action( 'add_meta_boxes', 'elb_add_meta_box' );
 function elb_liveblog_meta_box_fields() {
 	$fields = array(
 		'_elb_is_liveblog',
-		'_elb_status'
+		'_elb_status',
 	);
 
 	return apply_filters( 'elb_liveblog_meta_box_fields_save', $fields );
@@ -41,7 +43,7 @@ function elb_liveblog_meta_box_fields() {
  */
 function elb_entry_meta_box_fields() {
 	$fields = array(
-		'_elb_liveblog'
+		'_elb_liveblog',
 	);
 
 	return apply_filters( 'elb_entry_meta_box_fields_save', $fields );
@@ -87,13 +89,13 @@ function elb_render_liveblog_options( $post_id ) {
 	</div>
 	<?php
 
-	if ( !empty( $is_liveblog ) ) {
+	if ( ! empty( $is_liveblog ) ) {
 		$status = get_post_meta( $post_id, '_elb_status', true );
 		?>
 		<div>
 		<label for="elb_status"><?php _e( 'Status', ELB_TEXT_DOMAIN ); ?></label>
 			<select name="_elb_status" id="elb_status">
-				<?php foreach( elb_get_liveblog_status_options() as $option_value => $option_name ) { ?>
+				<?php foreach ( elb_get_liveblog_status_options() as $option_value => $option_name ) { ?>
 					<option value="<?php echo $option_value; ?>" <?php selected( $option_value, $status, true ); ?>><?php echo $option_name; ?></option>
 				<?php } ?>
 				</select>
@@ -136,7 +138,7 @@ add_action( 'elb_entry_meta_box_fields', 'elb_render_entry_options', 1 );
 /**
  * Liveblog meta box save
  *
- * @param  int $post_id
+ * @param  int    $post_id
  * @param  object $post
  */
 function elb_liveblog_meta_box_save( $post_id, $post ) {
@@ -145,7 +147,7 @@ function elb_liveblog_meta_box_save( $post_id, $post ) {
 		return;
 	}
 
-	if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( defined( 'DOING_AJAX') && DOING_AJAX ) || isset( $_REQUEST['bulk_edit'] ) ) {
+	if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || isset( $_REQUEST['bulk_edit'] ) ) {
 		return;
 	}
 
@@ -169,7 +171,6 @@ function elb_liveblog_meta_box_save( $post_id, $post ) {
 		} else {
 			delete_post_meta( $post_id, $field );
 		}
-
 	}
 
 	do_action( 'elb_liveblog_after_save', $post_id, $post, $fields );
@@ -180,7 +181,7 @@ add_action( 'save_post', 'elb_liveblog_meta_box_save', 10, 2 );
 /**
  * Liveblog meta box save
  *
- * @param  int $post_id
+ * @param  int    $post_id
  * @param  object $post
  */
 function elb_entry_meta_box_save( $post_id, $post ) {
@@ -189,7 +190,7 @@ function elb_entry_meta_box_save( $post_id, $post ) {
 		return;
 	}
 
-	if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( defined( 'DOING_AJAX') && DOING_AJAX ) || isset( $_REQUEST['bulk_edit'] ) ) {
+	if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || isset( $_REQUEST['bulk_edit'] ) ) {
 		return;
 	}
 
@@ -211,7 +212,6 @@ function elb_entry_meta_box_save( $post_id, $post ) {
 		} else {
 			delete_post_meta( $post_id, $field );
 		}
-
 	}
 
 	do_action( 'elb_entry_save', $post_id, $post );
