@@ -86,9 +86,9 @@ class ELB_Liveblog {
 			setup_postdata( $post );
 
 			$content .= $this->post( $post, array( 'class' => array( 'elb-liveblog-highlighted-post', 'elb-liveblog-post' ) ) );
-
-			wp_reset_postdata();
 		}
+
+		wp_reset_postdata();
 
 		if ( ! empty( $posts ) ) {
 
