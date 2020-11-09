@@ -275,7 +275,7 @@ class ELB_Liveblog {
 
 		wp_reset_postdata();
 
-		$metadata['liveBlogUpdate'] = $entries;
+		$metadata['liveBlogUpdate'] = $entries ?? array();
 
 		$metadata = apply_filters( 'easy_liveblogs_liveblog_metadata', $metadata, $post );
 		?>
