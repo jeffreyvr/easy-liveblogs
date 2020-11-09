@@ -4,8 +4,8 @@ Plugin URI: https://vanrossum.dev
 Contributors: jeffreyvr
 Tags: liveblog
 Requires at least: 4.4
-Tested up to: 5.5.1
-Stable Tag: 1.4
+Tested up to: 5.5.3
+Stable Tag: 1.5
 License: GNU Version 2 or Any Later Version
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -35,6 +35,12 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 7. Settings
 
 == Changelog ==
+
+= 1.5, November 9, 2020 =
+* Fix not resetting postdata when no entries are listed yet.
+* Fix warning notice on empty entries in schema.
+* Add inline-block styling to social media icons to prevent some themes displaying the icons over multiple lines.
+* Update Dutch translation.
 
 = 1.4, October 2, 2020 =
 * Added structured data.
