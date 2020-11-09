@@ -73,6 +73,7 @@ ul.elb-liveblog-list {
 
 .elb-liveblog-post-sharing a {
 	color: rgba( 0, 0, 0, .5 );
+	display: inline-block;
 }
 
 .elb-liveblog-post-sharing a:hover {
