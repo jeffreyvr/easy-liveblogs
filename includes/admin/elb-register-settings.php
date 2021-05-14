@@ -133,7 +133,7 @@ function elb_get_registered_settings() {
 				'desc'          => __( 'The amount of entries visible before the load more button.', ELB_TEXT_DOMAIN ),
 				'type'          => 'number',
 				'min'           => 1,
-				'max'           => 20,
+				'max'           => 50,
 				'default_value' => 10,
 			),
 			array(
