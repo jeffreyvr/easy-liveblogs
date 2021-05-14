@@ -3,8 +3,9 @@ Author URI: https://vanrossum.dev
 Plugin URI: https://vanrossum.dev
 Contributors: jeffreyvr
 Tags: liveblog
+Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
-Tested up to: 5.5.3
+Tested up to: 5.7.2
 Stable Tag: 1.5
 License: GNU Version 2 or Any Later Version
 
