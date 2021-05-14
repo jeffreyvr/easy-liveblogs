@@ -24,7 +24,7 @@
 
 			$.ajax({
 				url: elb.ajax_url,
-				method: 'post',
+				method: 'get',
 				dataType: 'json',
 				data: {
 					action: 'elb_update_liveblog',
@@ -92,7 +92,7 @@
 
 			$.ajax({
 				url: elb.ajax_url,
-				method: 'post',
+				method: 'get',
 				dataType: 'json',
 				data: {
 					action: 'elb_load_more',
