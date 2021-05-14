@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class ELB_Liveblog {
 	private $liveblog_post_id;
-	private $showposts = 2;
+	private $showposts;
 
 	/**
 	 * Construct
@@ -212,7 +212,7 @@ class ELB_Liveblog {
 				'date_query' => array(
 					'before' => (string) $_REQUEST['before'],
 				),
-				'showposts'  => $this->showposts,
+				'showposts'  => elb_get_show_entries(),
 			)
 		);
 
