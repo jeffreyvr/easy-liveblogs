@@ -37,6 +37,12 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 == Changelog ==
 
+= 1.6, May 14, 2021 =
+* Use GET requests instead of POST on liveblog refresh and load more actions.
+* Increased the limit on the setting for liveblog entries being shown from 20 to 50.
+* Now loads the same amount of entries on loading more as the initial amount.
+* Updated readme.
+
 = 1.5, November 9, 2020 =
 * Fix not resetting postdata when no entries are listed yet.
 * Fix warning notice on empty entries in schema.
