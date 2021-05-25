@@ -37,7 +37,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 == Changelog ==
 
-= 1.6.2, May 14, 2021 =
+= 1.6.2, May 25, 2021 =
 * Fixed issue where update polling was done on non liveblog pages. (Thanks for reporting @briandd)
 
 = 1.6.1, May 14, 2021 =
