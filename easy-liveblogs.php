@@ -3,7 +3,7 @@
 Plugin Name: Easy Liveblogs
 Plugin URI: https://vanrossum.dev
 Description: Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
-Version: 1.6.1
+Version: 1.6.2
 Author: Jeffrey van Rossum
 Author URI: https://www.vanrossum.dev
 Text Domain: easy-liveblogs
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		private $plugin_path;
 		private $plugin_url;
 		private $plugin_name    = 'Easy Liveblogs';
-		private $plugin_version = '1.6.1';
+		private $plugin_version = '1.6.2';
 		private $text_domain    = 'easy-liveblogs';
 		public $liveblog;
 
@@ -60,7 +60,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				add_action( 'wp_enqueue_scripts', array( self::$instance, 'register_styles' ) );
 				add_action( 'admin_enqueue_scripts', array( self::$instance, 'register_styles' ) );
 				add_action( 'wp_enqueue_scripts', array( self::$instance, 'register_scripts' ) );
-				add_Action( 'admin_enqueue_scripts', array( self::$instance, 'register_scripts' ) );
+				add_action( 'admin_enqueue_scripts', array( self::$instance, 'register_scripts' ) );
 			}
 
 			return self::$instance;
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				wp_enqueue_script( 'elb-admin', $this->get_plugin_url() . 'assets/js/easy-liveblogs-admin.js', array( 'jquery', 'selectize' ), $this->plugin_version );
 			}
 
-			if ( ! is_admin() && is_singular( elb_get_supported_post_types() ) ) {
+			if ( ! is_admin() && is_singular( elb_get_supported_post_types() ) && elb_is_liveblog() ) {
 				wp_enqueue_script( 'elb', $this->get_plugin_url() . 'assets/js/easy-liveblogs.js', array( 'jquery' ), $this->plugin_version );
 				wp_localize_script(
 					'elb',
