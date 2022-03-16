@@ -37,6 +37,9 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 == Changelog ==
 
+= Unreleased =
+* Only list open liveblogs in entry screen.
+
 = 1.6.2, May 25, 2021 =
 * Fixed issue where update polling was done on non liveblog pages. (Thanks for reporting @briandd)
 

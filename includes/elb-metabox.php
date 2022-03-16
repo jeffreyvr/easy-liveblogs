@@ -113,6 +113,11 @@ add_action( 'elb_liveblog_meta_box_fields', 'elb_render_liveblog_options', 1 );
  */
 function elb_render_entry_options( $post_id ) {
 	$liveblog = get_post_meta( $post_id, '_elb_liveblog', true );
+	$status = false;
+
+	if ( !empty( $liveblog ) ) {
+		$status = elb_get_liveblog_status( $liveblog );
+	}
 
 	$liveblogs = elb_get_liveblogs_by_status( 'open' );
 
@@ -120,7 +125,9 @@ function elb_render_entry_options( $post_id ) {
 
 	?>
 
-	<?php if ( $liveblogs ) { ?>
+	<?php if ( $status === 'closed' ) { ?>
+		<p><?php printf( __( 'This item is attached to a <a href="%s">closed</a> liveblog.', ELB_TEXT_DOMAIN ), get_edit_post_link( $liveblog ) ); ?></p>
+	<?php } elseif ( $liveblogs ) { ?>
 		<label for="elb-liveblog"><?php _e( 'Select liveblog', ELB_TEXT_DOMAIN ); ?><label>
 			<select name="_elb_liveblog" id="elb-liveblog" class="elb-selectize">
 				<?php foreach ( $liveblogs as $liveblog_id => $liveblog_title ) { ?>

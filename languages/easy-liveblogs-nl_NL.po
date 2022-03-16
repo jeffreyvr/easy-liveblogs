@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2020-11-09 14:06+0100\n"
-"PO-Revision-Date: 2020-11-09 14:07+0100\n"
+"POT-Creation-Date: 2022-03-16 15:10+0100\n"
+"PO-Revision-Date: 2022-03-16 15:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: easy-liveblogs.php\n"
@@ -147,15 +147,15 @@ msgstr "Toon meer"
 msgid "Liveblogs"
 msgstr "Liveblogs"
 
-#: includes/elb-filters.php:87 includes/elb-functions.php:198
+#: includes/elb-filters.php:87 includes/elb-functions.php:239
 msgid "Closed"
 msgstr "Gesloten"
 
-#: includes/elb-functions.php:197
+#: includes/elb-functions.php:238
 msgid "Open"
 msgstr "Open"
 
-#: includes/elb-functions.php:287 includes/elb-metabox.php:18
+#: includes/elb-functions.php:328 includes/elb-metabox.php:18
 #: includes/elb-metabox.php:21
 msgid "Liveblog"
 msgstr "Liveblog"
@@ -168,11 +168,16 @@ msgstr "Liveblog inschakelen"
 msgid "Status"
 msgstr "Status"
 
-#: includes/elb-metabox.php:124
+#: includes/elb-metabox.php:129
+#, php-format
+msgid "This item is attached to a <a href=\"%s\">closed</a> liveblog."
+msgstr "Dit item is gekoppeld aan een <a href=\"%s\">gesloten</a> liveblog."
+
+#: includes/elb-metabox.php:131
 msgid "Select liveblog"
 msgstr "Selecteer liveblog"
 
-#: includes/elb-metabox.php:131
+#: includes/elb-metabox.php:138
 msgid "There is no liveblog created yet."
 msgstr "Er is nog geen liveblog gemaakt."
 
