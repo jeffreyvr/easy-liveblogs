@@ -89,26 +89,52 @@ function elb_get_templates_dir() {
 }
 
 /**
- * Get liveblogs
+ * Get liveblogs by status.
  *
- * Get all published liveblogs.
- *
+ * @param string $status
  * @return array
  */
-function elb_get_liveblogs() {
+function elb_get_liveblogs_by_status( $status ) {
+	$meta_query = array(
+		array(
+			'key'     => '_elb_is_liveblog',
+			'compare' => 'EXISTS',
+		)
+	);
+
+	if ( $status === 'closed' ) {
+		$meta_query[] = array(
+			'key'     => '_elb_status',
+			'compare' => '=',
+			'value' => 'closed'
+		);
+	} elseif( $status === 'open' ) {
+		$meta_query[] = array(
+			'relation' => 'OR',
+			array(
+				'key'     => '_elb_status',
+				'compare' => 'NOT EXISTS'
+			),
+			array(
+				'key'     => '_elb_status',
+				'compare' => 'IS',
+				'value' => 'open'
+			)
+		);
+	}
+
 	$args = array(
 		'post_type'   => elb_get_supported_post_types(),
 		'post_status' => 'publish',
 		'showposts'   => -1,
-		'meta_query'  => array(
-			array(
-				'key'     => '_elb_is_liveblog',
-				'compare' => 'EXISTS',
-			),
-		),
+		'meta_query'  => $meta_query
 	);
 
-	$args = apply_filters( 'elb_get_liveblogs_args', $args );
+	if ( $status === 'all' ) {
+		$args = apply_filters( "elb_get_liveblogs_args", $args );
+	} else {
+		$args = apply_filters( "elb_get_{$status}_liveblogs_args", $args );
+	}
 
 	$liveblogs = get_posts( $args );
 
@@ -118,7 +144,22 @@ function elb_get_liveblogs() {
 		$result[ $liveblog->ID ] = $liveblog->post_title;
 	}
 
-	return apply_filters( 'elb_get_liveblogs', $result );
+	if ( $status === 'all' ) {
+		return apply_filters( "elb_get_liveblogs", $result );
+	}
+
+	return apply_filters( "elb_get_{$status}_liveblogs", $result );
+}
+
+/**
+ * Get liveblogs
+ *
+ * Get all published liveblogs.
+ *
+ * @return array
+ */
+function elb_get_liveblogs() {
+	return elb_get_liveblogs_by_status( 'all' );
 }
 
 /**

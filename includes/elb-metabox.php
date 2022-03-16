@@ -114,7 +114,7 @@ add_action( 'elb_liveblog_meta_box_fields', 'elb_render_liveblog_options', 1 );
 function elb_render_entry_options( $post_id ) {
 	$liveblog = get_post_meta( $post_id, '_elb_liveblog', true );
 
-	$liveblogs = elb_get_liveblogs();
+	$liveblogs = elb_get_liveblogs_by_status( 'open' );
 
 	do_action( 'elb_before_entry_options', $post_id );
 
