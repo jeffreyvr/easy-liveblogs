@@ -5,7 +5,7 @@ Contributors: jeffreyvr
 Tags: liveblog
 Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
-Tested up to: 5.7.2
+Tested up to: 5.9
 Stable Tag: 1.6.2
 License: GNU Version 2 or Any Later Version
 
