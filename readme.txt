@@ -6,7 +6,7 @@ Tags: liveblog
 Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
 Tested up to: 5.9
-Stable Tag: 1.6.2
+Stable Tag: 1.7.0
 License: MIT
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -38,10 +38,13 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+
+= 1.7.0, March 22, 2022 =
 * Only list open liveblogs in entry screen.
 * Fixed issue where one liveblog item might be skipped when other item is on the exact same datetime.
 * Show the liveblog to which an item is attached in the admin overview as a column.
 * Add the direct link of liveblogs items inside the item meta box.
+* Use a transient to cache the liveblog entries for meta data.
 
 = 1.6.2, May 25, 2021 =
 * Fixed issue where update polling was done on non liveblog pages. (Thanks for reporting @briandd)
