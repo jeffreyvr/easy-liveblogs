@@ -30,7 +30,7 @@
 					action: 'elb_update_liveblog',
 					exclude: elb_exclude,
 					liveblog: elb.liveblog,
-					after: elb_liveblog.find('li:first > .elb-liveblog-post-time > time').attr('datetime')
+					after: elb_liveblog.find('li:first').attr('data-elb-post-datetime')
 				},
 				success: function (posts) {
 
@@ -95,8 +95,9 @@
 				method: 'get',
 				dataType: 'json',
 				data: {
+					liveblog: elb.liveblog,
 					action: 'elb_load_more',
-					before: elb_liveblog.find('li:last > .elb-liveblog-post-time > time').attr('datetime')
+					before: elb_liveblog.find('li:last').attr('data-elb-post-datetime')
 				},
 				success: function (posts) {
 					elb_load_more_btn.removeAttr('disabled');

@@ -171,7 +171,7 @@ class ELB_Liveblog {
 	public function update() {
 		global $post;
 
-		$after    = isset( $_REQUEST['after'] ) ? (string) $_REQUEST['after'] : '';
+		$after    = isset( $_REQUEST['after'] ) ? gmdate( "Y-m-d H:i:s", (string) $_REQUEST['after'] ) : '';
 		$exclude  = isset( $_REQUEST['exclude'] ) ? (array) $_REQUEST['exclude'] : array();
 		$liveblog = isset( $_REQUEST['liveblog'] ) ? (int) $_REQUEST['liveblog'] : '';
 
@@ -210,8 +210,9 @@ class ELB_Liveblog {
 		$posts = $this->get_posts(
 			array(
 				'date_query' => array(
-					'before' => (string) $_REQUEST['before'],
+					'before' => gmdate("Y-m-d H:i:s", (string) $_REQUEST['before'])
 				),
+				'meta_value' => (string) $_REQUEST['liveblog'],
 				'showposts'  => elb_get_show_entries(),
 			)
 		);
