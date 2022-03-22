@@ -40,6 +40,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 = Unreleased =
 * Only list open liveblogs in entry screen.
 * Fixed issue where one liveblog item might be skipped when other item is on the exact same datetime.
+* Show the liveblog to which an item is attached in the admin overview as a column.
 
 = 1.6.2, May 25, 2021 =
 * Fixed issue where update polling was done on non liveblog pages. (Thanks for reporting @briandd)

@@ -133,3 +133,41 @@ function elb_apply_title_prefix_filter_condition( $query ) {
 	}
 }
 add_action( 'loop_start', 'elb_apply_title_prefix_filter_condition', 1, 10 );
+
+/**
+ * Adds the liveblog column to the entries overview.
+ *
+ * @param array $columns
+ * @return array
+ */
+function elb_set_elb_entry_liveblog_column( $columns ) {
+	$columns['elb_liveblog'] = __( 'Liveblog', ELB_TEXT_DOMAIN );
+
+	return $columns;
+}
+add_filter( 'manage_elb_entry_posts_columns', 'elb_set_elb_entry_liveblog_column' );
+
+/**
+ * Adds the liveblog link in the Liveblog column.
+ *
+ * @param string  $column
+ * @param integer $post_id
+ * @return void
+ */
+function elb_populate_elb_entry_liveblog_column( $column, $post_id ) {
+	if ( $column !== 'elb_liveblog' ) {
+		return;
+	}
+
+	$liveblog_id = get_post_meta( $post_id, '_elb_liveblog', true );
+
+	if ( ! empty( $liveblog_id ) ) {
+		$url   = get_edit_post_link( $liveblog_id );
+		$title = get_the_title( $liveblog_id );
+
+		echo '<a href="' . $url . '">' . $title . '</a>';
+	} else {
+		echo '-';
+	}
+}
+add_action( 'manage_elb_entry_posts_custom_column', 'elb_populate_elb_entry_liveblog_column', 10, 2 );
