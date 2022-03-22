@@ -128,17 +128,27 @@ function elb_render_entry_options( $post_id ) {
 	<?php if ( $status === 'closed' ) { ?>
 		<p><?php printf( __( 'This item is attached to a <a href="%s">closed</a> liveblog.', ELB_TEXT_DOMAIN ), get_edit_post_link( $liveblog ) ); ?></p>
 	<?php } elseif ( $liveblogs ) { ?>
-		<label for="elb-liveblog"><?php _e( 'Select liveblog', ELB_TEXT_DOMAIN ); ?><label>
+		<div>
+			<label for="elb-liveblog"><?php _e( 'Select liveblog', ELB_TEXT_DOMAIN ); ?><label>
 			<select name="_elb_liveblog" id="elb-liveblog" class="elb-selectize">
 				<?php foreach ( $liveblogs as $liveblog_id => $liveblog_title ) { ?>
 					<option value="<?php echo $liveblog_id; ?>" <?php selected( $liveblog, $liveblog_id, true ); ?>><?php echo $liveblog_title; ?></option>
 				<?php } ?>
 			</select>
-		<?php } else { ?>
-			<p><?php _e( 'There is no liveblog created yet.', ELB_TEXT_DOMAIN ); ?></p>
+		</div>
+
+		<?php if ( ! empty( $liveblog_id ) ) { ?>
+			<div>
+				<label for="elb-liveblog-entry-link"><?php _e( 'Direct link to entry', ELB_TEXT_DOMAIN ); ?><label>
+				<input type="text" id="elb-liveblog-entry-link" onclick="this.focus(); this.select()" value="<?php echo add_query_arg( 'entry', $post_id, get_permalink( $liveblog ) ); ?>" readonly="readonly" class="widefat">
+			</div>
 		<?php } ?>
-		<?php
-		do_action( 'elb_after_entry_options', $post_id );
+	<?php } else { ?>
+		<p><?php _e( 'There is no liveblog created yet.', ELB_TEXT_DOMAIN ); ?></p>
+	<?php } ?>
+
+	<?php
+	do_action( 'elb_after_entry_options', $post_id );
 }
 add_action( 'elb_entry_meta_box_fields', 'elb_render_entry_options', 1 );
 

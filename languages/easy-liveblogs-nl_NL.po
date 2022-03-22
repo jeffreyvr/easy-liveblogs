@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2022-03-16 15:10+0100\n"
-"PO-Revision-Date: 2022-03-16 15:10+0100\n"
+"POT-Creation-Date: 2022-03-22 15:00+0100\n"
+"PO-Revision-Date: 2022-03-22 15:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -21,17 +21,17 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: easy-liveblogs.php:121
+#: easy-liveblogs.php:109
 #, php-format
 msgid "There is %s update."
 msgstr "Er is %s update."
 
-#: easy-liveblogs.php:122
+#: easy-liveblogs.php:110
 #, php-format
 msgid "There are %s updates."
 msgstr "Er zijn %s updates."
 
-#: easy-liveblogs.php:123
+#: easy-liveblogs.php:111
 msgid "That's it."
 msgstr "Dat was het."
 
@@ -151,14 +151,14 @@ msgstr "Liveblogs"
 msgid "Closed"
 msgstr "Gesloten"
 
+#: includes/elb-filters.php:144 includes/elb-functions.php:328
+#: includes/elb-metabox.php:18 includes/elb-metabox.php:21
+msgid "Liveblog"
+msgstr "Liveblog"
+
 #: includes/elb-functions.php:238
 msgid "Open"
 msgstr "Open"
-
-#: includes/elb-functions.php:328 includes/elb-metabox.php:18
-#: includes/elb-metabox.php:21
-msgid "Liveblog"
-msgstr "Liveblog"
 
 #: includes/elb-metabox.php:87
 msgid "Enable liveblog"
@@ -173,11 +173,15 @@ msgstr "Status"
 msgid "This item is attached to a <a href=\"%s\">closed</a> liveblog."
 msgstr "Dit item is gekoppeld aan een <a href=\"%s\">gesloten</a> liveblog."
 
-#: includes/elb-metabox.php:131
+#: includes/elb-metabox.php:132
 msgid "Select liveblog"
 msgstr "Selecteer liveblog"
 
-#: includes/elb-metabox.php:138
+#: includes/elb-metabox.php:142
+msgid "Direct link to entry"
+msgstr "Directe link naar item"
+
+#: includes/elb-metabox.php:147
 msgid "There is no liveblog created yet."
 msgstr "Er is nog geen liveblog gemaakt."
 
