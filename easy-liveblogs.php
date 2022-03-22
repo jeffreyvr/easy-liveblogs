@@ -8,22 +8,10 @@ Author: Jeffrey van Rossum
 Author URI: https://www.vanrossum.dev
 Text Domain: easy-liveblogs
 Domain Path: /languages
-License: GPL-2.0+
+License: MIT
 
 ------------------------------------------------------------------------
-Copyright 2020 vanrossum.dev, The Netherlands.
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-For the GNU General Public License, see http://www.gnu.org/licenses.
+Copyright 2022 vanrossum.dev, The Netherlands.
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
