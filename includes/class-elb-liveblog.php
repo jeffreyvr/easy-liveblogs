@@ -247,7 +247,13 @@ class ELB_Liveblog {
 
 		$liveblog_url = get_permalink();
 
-		foreach ( $this->get_posts( array( 'showposts' => -1 ) ) as $post ) {
+		$items = get_transient( 'elb_all_liveblog_items_' . $post->ID );
+
+		if ( $items === false ) {
+			$items = $this->get_posts( array( 'showposts' => -1 ) );
+		}
+
+		foreach ( $items as $post ) {
 			setup_postdata( $post );
 
 			$entry_url = add_query_arg( 'entry', $post->ID, $liveblog_url );
@@ -275,6 +281,8 @@ class ELB_Liveblog {
 		}
 
 		wp_reset_postdata();
+
+		set_transient( 'elb_all_liveblog_items_' . $post->ID, $items, 10 * MINUTE_IN_SECONDS );
 
 		$metadata['liveBlogUpdate'] = $entries ?? array();
 
