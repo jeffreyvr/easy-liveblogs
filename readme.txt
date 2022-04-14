@@ -38,6 +38,8 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+
+= 1.7.1, April 14, 2022 =
 * Fix not loading more entries when last item contains a list item.
 
 = 1.7.0, March 22, 2022 =
