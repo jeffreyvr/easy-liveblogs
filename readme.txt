@@ -6,7 +6,7 @@ Tags: liveblog
 Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
 Tested up to: 5.9
-Stable Tag: 1.7.0
+Stable Tag: 1.7.1
 License: MIT
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
