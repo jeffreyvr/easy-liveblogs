@@ -30,7 +30,7 @@
 					action: 'elb_update_liveblog',
 					exclude: elb_exclude,
 					liveblog: elb.liveblog,
-					after: elb_liveblog.find('li:first').attr('data-elb-post-datetime')
+					after: elb_liveblog.find('> li:first').attr('data-elb-post-datetime')
 				},
 				success: function (posts) {
 
@@ -79,7 +79,7 @@
 		/////////
 
 		elb_load_new_btn.click(function () { // reset
-			$('.elb-liveblog-list li').not(':visible').fadeIn();
+			$('.elb-liveblog-list > li').not(':visible').fadeIn();
 			elb_new_posts = 0;
 			elb_load_new_btn.hide();
 			$(document).find('title').text(elb_document_title);
@@ -97,7 +97,7 @@
 				data: {
 					liveblog: elb.liveblog,
 					action: 'elb_load_more',
-					before: elb_liveblog.find('li:last').attr('data-elb-post-datetime')
+					before: elb_liveblog.find('> li:last').attr('data-elb-post-datetime')
 				},
 				success: function (posts) {
 					elb_load_more_btn.removeAttr('disabled');
