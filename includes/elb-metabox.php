@@ -79,27 +79,25 @@ function elb_render_liveblog_options( $post_id ) {
 
 	do_action( 'elb_render_before_liveblog_options', $post_id );
 	?>
-	<div>
-		<label for="elb-is-liveblog">
-			<input type="checkbox" name="_elb_is_liveblog" value="1" <?php checked( $is_liveblog, '1', true ); ?> id="elb-is-liveblog">
-			<?php _e( 'Enable liveblog', ELB_TEXT_DOMAIN ); ?>
-		</label>
-	</div>
+	<label for="elb-is-liveblog">
+		<input type="checkbox" name="_elb_is_liveblog" value="1" <?php checked( $is_liveblog, '1', true ); ?> id="elb-is-liveblog">
+		<?php _e( 'Enable liveblog', ELB_TEXT_DOMAIN ); ?>
+	</label>
 	<?php
 
 	if ( ! empty( $is_liveblog ) ) {
 		$status = get_post_meta( $post_id, '_elb_status', true );
 		?>
-		<div>
+		<div class="elb-input-group">
 			<label for="elb_status"><?php _e( 'Status', ELB_TEXT_DOMAIN ); ?></label>
 			<select name="_elb_status" id="elb_status">
 				<?php foreach ( elb_get_liveblog_status_options() as $option_value => $option_name ) { ?>
 					<option value="<?php echo $option_value; ?>" <?php selected( $option_value, $status, true ); ?>><?php echo $option_name; ?></option>
 				<?php } ?>
-				</select>
+			</select>
 		</div>
-		<div>
-			<label for="elb-liveblog-endpoint"><?php _e( 'API-endpoint URL', ELB_TEXT_DOMAIN ); ?><label>
+		<div class="elb-input-group">
+			<label for="elb-liveblog-endpoint"><?php _e( 'API-endpoint URL', ELB_TEXT_DOMAIN ); ?></label>
 			<input type="text" id="elb-liveblog-endpoint" onclick="this.focus(); this.select()" value="<?php echo elb_get_liveblog_api_endpoint( $post_id ); ?>" readonly="readonly" class="widefat">
 		</div>
 		<?php
@@ -130,8 +128,8 @@ function elb_render_entry_options( $post_id ) {
 	<?php if ( $status === 'closed' ) { ?>
 		<p><?php printf( __( 'This item is attached to a <a href="%s">closed</a> liveblog.', ELB_TEXT_DOMAIN ), get_edit_post_link( $liveblog ) ); ?></p>
 	<?php } elseif ( $liveblogs ) { ?>
-		<div>
-			<label for="elb-liveblog"><?php _e( 'Select liveblog', ELB_TEXT_DOMAIN ); ?><label>
+		<div class="elb-input-group">
+			<label for="elb-liveblog"><?php _e( 'Select liveblog', ELB_TEXT_DOMAIN ); ?></label>
 			<select name="_elb_liveblog" id="elb-liveblog" class="elb-selectize">
 				<?php foreach ( $liveblogs as $liveblog_id => $liveblog_title ) { ?>
 					<option value="<?php echo $liveblog_id; ?>" <?php selected( $liveblog, $liveblog_id, true ); ?>><?php echo $liveblog_title; ?></option>
@@ -140,8 +138,8 @@ function elb_render_entry_options( $post_id ) {
 		</div>
 
 		<?php if ( ! empty( $liveblog ) ) { ?>
-			<div>
-				<label for="elb-liveblog-entry-link"><?php _e( 'Direct link to entry', ELB_TEXT_DOMAIN ); ?><label>
+			<div class="elb-input-group">
+				<label for="elb-liveblog-entry-link"><?php _e( 'Direct link to entry', ELB_TEXT_DOMAIN ); ?></label>
 				<input type="text" id="elb-liveblog-entry-link" onclick="this.focus(); this.select()" value="<?php echo add_query_arg( 'entry', $post_id, get_permalink( $liveblog ) ); ?>" readonly="readonly" class="widefat">
 			</div>
 		<?php } ?>
