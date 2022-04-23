@@ -8,6 +8,7 @@
 		var elb_load_new_btn = $('#elb-show-new-posts');
 		var elb_load_more_btn = $('#elb-load-more');
 		var elb_liveblog = $('.elb-liveblog');
+		var elb_liveblog_loader = $('.elb-loader');
 		var elb_liveblog_list = $('.elb-liveblog-list');
 		var elb_status_message = $('.elb-liveblog-closed-message');
 		var elb_liveblog_endpoint = elb_liveblog.data('endpoint');
@@ -21,6 +22,7 @@
 				dataType: 'json',
 				success: function (feed) {
 					elb_liveblog_list.html();
+					elb_liveblog_loader.hide();
 
 					$.each(feed.updates, function (index, post) {
 						var go_to = false;
@@ -77,8 +79,8 @@
 
 					elb_first_load = false;
 
-					if (elb_liveblog_list.find('> li').length > 0) {
-						$('.elb-no-liveblog-entries-message').remove();
+					if (elb_liveblog_list.find('> li').length == 0) {
+						$('.elb-no-liveblog-entries-message').show();
 					}
 
 					if (elb_new_posts > 0) {

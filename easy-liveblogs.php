@@ -71,6 +71,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			require_once $this->get_plugin_path() . 'includes/elb-post-types.php';
 			require_once $this->get_plugin_path() . 'includes/elb-metabox.php';
 			require_once $this->get_plugin_path() . 'includes/elb-functions.php';
+			require_once $this->get_plugin_path() . 'includes/elb-shortcodes.php';
 			require_once $this->get_plugin_path() . 'includes/elb-filters.php';
 			require_once $this->get_plugin_path() . 'includes/elb-social-logos.php';
 			require_once $this->get_plugin_path() . 'includes/admin/elb-pages.php';
@@ -149,7 +150,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				$theme = elb_get_theme();
 
 				if ( $theme !== 'none' ) {
-					wp_enqueue_style( 'elb', $this->get_plugin_url() . 'assets/css/easy-liveblogs.css', null, $this->get_plugin_version() );
+					wp_enqueue_style( 'elb-theme-' . $theme, $this->get_plugin_url() . 'assets/css/themes/'.$theme.'.css', null, $this->get_plugin_version() );
 				}
 			}
 		}

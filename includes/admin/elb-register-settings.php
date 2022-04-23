@@ -102,6 +102,7 @@ function elb_get_registered_settings() {
 				'options'       => array(
 					'light' => __( 'Light', ELB_TEXT_DOMAIN ),
 					'dark'  => __( 'Dark', ELB_TEXT_DOMAIN ),
+					'light-alt' => __( 'Light (Less theme dependent)', ELB_TEXT_DOMAIN ),
 					'none'  => __( 'None', ELB_TEXT_DOMAIN ),
 				),
 				'default_value' => 'light',

@@ -1,0 +1,90 @@
+.elb-liveblog-list {
+	list-style: none;
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+.elb-liveblog {
+	padding-left: 30px;
+	border-left: 1px dotted #bbb;
+}
+
+.elb-liveblog-list li.elb-liveblog-post {
+    list-style-type: none !important;
+    position: relative;
+	padding-bottom: 30px;
+}
+
+.elb-liveblog-list li.elb-liveblog-post .elb-liveblog-post-heading {
+    font-size: 1.33333em !important;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+}
+
+.elb-liveblog li.elb-liveblog-post .elb-liveblog-post-time {
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    font-size: .75em !important;
+    font-weight: medium;
+    color: #555;
+}
+
+.elb-liveblog-post-sharing {
+    display: flex;
+    gap: 12px;
+}
+
+.elb-liveblog-post-sharing a {
+    color: #999 !important;
+}
+
+.elb-liveblog-post-sharing a:hover {
+    color: #555 !important;
+}
+
+.elb-liveblog .elb-liveblog-post::before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: -36px;
+	top: 9px;
+	width: 11px;
+	height: 11px;
+	line-height: 11px;
+	font-size: 11px;
+	border-radius: 50%;
+	background-color: #eee;
+	border: 3px solid #ddd;
+}
+
+@keyframes elb-liveblog-highlight {
+	0% {
+	  background: #fefcbf;
+	}
+	100% {
+	  background: none;
+	}
+  }
+}
+
+.elb-hide {
+	display: none;
+}
+
+.elb-button {
+    cursor: pointer;
+    background-color: #333;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #fff;
+}
+
+.elb-loader {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+}
