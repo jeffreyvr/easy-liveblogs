@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 /**
  * Parse filter.
  *
@@ -171,3 +170,22 @@ function elb_populate_elb_entry_liveblog_column( $column, $post_id ) {
 	}
 }
 add_action( 'manage_elb_entry_posts_custom_column', 'elb_populate_elb_entry_liveblog_column', 10, 2 );
+
+/**
+ * Maybe append the liveblog to the post contnet.
+ *
+ * @param string $content
+ * @return string
+ */
+function elb_maybe_add_liveblog( $content ) {
+	if ( ! elb_is_liveblog() ) {
+		return $content;
+	}
+
+	$liveblog = ELB_Liveblog::fromId( get_the_ID() );
+	$content  = $content;
+	$content .= $liveblog->render();
+
+	return $content;
+}
+add_filter( 'the_content', 'elb_maybe_add_liveblog' );

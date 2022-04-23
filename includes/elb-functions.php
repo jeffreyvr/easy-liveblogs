@@ -99,27 +99,27 @@ function elb_get_liveblogs_by_status( $status ) {
 		array(
 			'key'     => '_elb_is_liveblog',
 			'compare' => 'EXISTS',
-		)
+		),
 	);
 
 	if ( $status === 'closed' ) {
 		$meta_query[] = array(
 			'key'     => '_elb_status',
 			'compare' => '=',
-			'value' => 'closed'
+			'value'   => 'closed',
 		);
-	} elseif( $status === 'open' ) {
+	} elseif ( $status === 'open' ) {
 		$meta_query[] = array(
 			'relation' => 'OR',
 			array(
 				'key'     => '_elb_status',
-				'compare' => 'NOT EXISTS'
+				'compare' => 'NOT EXISTS',
 			),
 			array(
 				'key'     => '_elb_status',
 				'compare' => 'IS',
-				'value' => 'open'
-			)
+				'value'   => 'open',
+			),
 		);
 	}
 
@@ -127,11 +127,11 @@ function elb_get_liveblogs_by_status( $status ) {
 		'post_type'   => elb_get_supported_post_types(),
 		'post_status' => 'publish',
 		'showposts'   => -1,
-		'meta_query'  => $meta_query
+		'meta_query'  => $meta_query,
 	);
 
 	if ( $status === 'all' ) {
-		$args = apply_filters( "elb_get_liveblogs_args", $args );
+		$args = apply_filters( 'elb_get_liveblogs_args', $args );
 	} else {
 		$args = apply_filters( "elb_get_{$status}_liveblogs_args", $args );
 	}
@@ -145,7 +145,7 @@ function elb_get_liveblogs_by_status( $status ) {
 	}
 
 	if ( $status === 'all' ) {
-		return apply_filters( "elb_get_liveblogs", $result );
+		return apply_filters( 'elb_get_liveblogs', $result );
 	}
 
 	return apply_filters( "elb_get_{$status}_liveblogs", $result );
@@ -224,6 +224,32 @@ function elb_get_liveblog_status( $post_id = null ) {
 	}
 
 	return get_post_meta( $post_id, '_elb_status', true );
+}
+
+/**
+ * Get liveblog
+ *
+ * @param int|null $post_id
+ * @return mixed
+ */
+function elb_get_liveblog( $post_id = null ) {
+	if ( ! $post_id ) {
+		global $post;
+
+		return $post;
+	}
+
+	return get_post( $post_id );
+}
+
+/**
+ * Get liveblog API endpoint URL.
+ *
+ * @param int $id
+ * @return string
+ */
+function elb_get_liveblog_api_endpoint( $id ) {
+	return get_rest_url( null, "easy-liveblogs/v1/liveblog/{$id}" );
 }
 
 /**
@@ -382,15 +408,7 @@ function elb_get_highlighted_entry_id() {
 		return;
 	}
 
-	global $post;
-
-	$entry_id = filter_input( INPUT_GET, 'entry', FILTER_SANITIZE_NUMBER_INT );
-
-	if ( get_post_meta( $entry_id, '_elb_liveblog', true ) != $post->ID ) {
-		return;
-	}
-
-	return get_post( $entry_id );
+	return filter_input( INPUT_GET, 'entry', FILTER_SANITIZE_NUMBER_INT );
 }
 
 /**
@@ -404,4 +422,153 @@ function elb_get_entry_url() {
 	$liveblog_id = get_post_meta( $post->ID, '_elb_liveblog', true );
 
 	return add_query_arg( 'entry', $post->ID, get_permalink( $liveblog_id ) );
+}
+
+/**
+ * Determine if assets should be enqueued.
+ *
+ * @return bool
+ */
+function elb_page_contains_liveblog() {
+	if ( ! is_singular() ) {
+		return false;
+	}
+
+	global $post;
+
+	if ( strpos( apply_filters( 'the_content', $post->post_content ), 'elb-liveblog' ) === false ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Flush liveblog cache.
+ *
+ * @param int $liveblog
+ * @return void
+ */
+function elb_flush_liveblog_cache( $liveblog ) {
+	delete_transient( 'elb_' . $liveblog . '_cache' );
+}
+
+/**
+ * Adds body class and meta data to head.
+ *
+ * @return void
+ */
+function elb_header_hooks() {
+	if ( elb_page_contains_liveblog() ) {
+		add_filter( 'body_class', 'elb_add_theme_body_class' );
+		add_action( 'wp_head', 'elb_add_meta_data' );
+	}
+}
+
+add_action( 'wp', 'elb_header_hooks' );
+
+/**
+ * Maybe add body class.
+ *
+ * @param array $classes
+ * @return array
+ */
+function elb_add_theme_body_class( $classes ) {
+	$classes[] = 'elb-theme-' . elb_get_theme();
+
+	return $classes;
+}
+
+/**
+ * Add meta data.
+ *
+ * @return void
+ */
+function elb_add_meta_data() {
+	global $post;
+
+	if ( ! elb_is_liveblog() ) {
+		return;
+	}
+
+	$metadata = array(
+		'@type' => 'LiveBlogPosting',
+	);
+
+	$liveblog_url = get_permalink();
+
+	$items = elb_get_liveblog_feed( elb_get_liveblog_api_endpoint( $post->ID ) );
+
+	foreach ( $items['updates'] as $entry ) {
+		$post = $entry['post'];
+
+		setup_postdata( $post );
+
+		$entry_url = add_query_arg( 'entry', $post->ID, $liveblog_url );
+
+		$entry = array(
+			'@type'            => 'BlogPosting',
+			'headline'         => get_the_title(),
+			'url'              => $entry_url,
+			'mainEntityOfPage' => $entry_url,
+			'datePublished'    => get_the_date( 'c' ),
+			'dateModified'     => get_the_modified_date( 'c' ),
+			'articleBody'      => array(
+				'@type' => 'Text',
+			),
+		);
+
+		if ( elb_display_author_name() ) {
+			$entry['author'] = array(
+				'@type' => 'Person',
+				'name'  => get_the_author(),
+			);
+		}
+
+		$entries[] = $entry;
+	}
+
+	wp_reset_postdata();
+
+	$metadata['liveBlogUpdate'] = $entries ?? array();
+
+	$metadata = apply_filters( 'easy_liveblogs_liveblog_metadata', $metadata, $post );
+	?>
+	<script type="application/ld+json"><?php echo wp_json_encode( $metadata ); ?></script>
+	<?php
+}
+
+/**
+ * Get liveblog feed based on the endpoint url.
+ *
+ * @param string $endpoint
+ * @return array
+ */
+function elb_get_liveblog_feed( $endpoint ) {
+	$result = json_decode(
+		file_get_contents(
+			$endpoint,
+			false,
+			stream_context_create(
+				array(
+					'ssl' => array(
+						'verify_peer'      => false,
+						'verify_peer_name' => false,
+					),
+				)
+			)
+		),
+		true
+	);
+
+	$result['updates'] = array_map(
+		function( $item ) {
+			$item['post'] = new WP_Post( (object) $item['post'] );
+
+			return $item;
+		},
+		$result['updates']
+	);
+
+	return $result;
 }

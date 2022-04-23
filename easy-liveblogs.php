@@ -27,7 +27,11 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		private $plugin_name    = 'Easy Liveblogs';
 		private $plugin_version = '1.7.1';
 		private $text_domain    = 'easy-liveblogs';
-		public $liveblog;
+
+		/**
+		 * @deprecated 2.0.0
+		 */
+		public $liveblog = null;
 
 		/**
 		 * Creates or returns an instance of this class.
@@ -42,13 +46,12 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				self::$instance->define_constants();
 				self::$instance->includes();
 
-				self::$instance->liveblog = new ELB_Liveblog();
-
 				add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 				add_action( 'wp_enqueue_scripts', array( self::$instance, 'register_styles' ) );
 				add_action( 'admin_enqueue_scripts', array( self::$instance, 'register_styles' ) );
 				add_action( 'wp_enqueue_scripts', array( self::$instance, 'register_scripts' ) );
 				add_action( 'admin_enqueue_scripts', array( self::$instance, 'register_scripts' ) );
+				add_action( 'init', array( self::$instance, 'setup_api' ) );
 			}
 
 			return self::$instance;
@@ -71,6 +74,8 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			require_once $this->get_plugin_path() . 'includes/elb-filters.php';
 			require_once $this->get_plugin_path() . 'includes/elb-social-logos.php';
 			require_once $this->get_plugin_path() . 'includes/admin/elb-pages.php';
+			require_once $this->get_plugin_path() . 'includes/api/class-elb-entry.php';
+			require_once $this->get_plugin_path() . 'includes/api/class-elb-feed.php';
 		}
 
 		/**
@@ -87,25 +92,30 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			return $this->plugin_path;
 		}
 
+		public function get_plugin_version() {
+			if(wp_get_environment_type() === 'development') {
+				return time();
+			}
+
+			return $this-plugin_version;
+		}
+
 		/**
 		 * Enqueue and register JavaScript files here.
 		 */
 		public function register_scripts() {
 			if ( is_admin() ) {
 				wp_enqueue_script( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.min.js', array( 'jquery' ), '0.12.4' );
-				wp_enqueue_script( 'elb-admin', $this->get_plugin_url() . 'assets/js/easy-liveblogs-admin.js', array( 'jquery', 'selectize' ), $this->plugin_version );
+				wp_enqueue_script( 'elb-admin', $this->get_plugin_url() . 'assets/js/easy-liveblogs-admin.js', array( 'jquery', 'selectize' ), $this->get_plugin_version() );
 			}
 
-			if ( ! is_admin() && is_singular( elb_get_supported_post_types() ) && elb_is_liveblog() ) {
-				wp_enqueue_script( 'elb', $this->get_plugin_url() . 'assets/js/easy-liveblogs.js', array( 'jquery' ), $this->plugin_version );
+			if ( ! is_admin() && elb_page_contains_liveblog() ) {
+				wp_enqueue_script( 'elb', $this->get_plugin_url() . 'assets/js/easy-liveblogs.js', array( 'jquery' ), $this->get_plugin_version() );
 				wp_localize_script(
 					'elb',
 					'elb',
 					array(
-						'ajax_url'       => admin_url( 'admin-ajax.php' ),
 						'interval'       => elb_get_update_interval(),
-						'status'         => elb_get_liveblog_status(),
-						'liveblog'       => get_the_ID(),
 						'new_post_msg'   => __( 'There is %s update.', ELB_TEXT_DOMAIN ),
 						'new_posts_msg'  => __( 'There are %s updates.', ELB_TEXT_DOMAIN ),
 						'now_more_posts' => __( "That's it.", ELB_TEXT_DOMAIN ),
@@ -126,14 +136,14 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 
 			} else {
 
-				if ( ! elb_is_liveblog() && ! is_singular( elb_get_supported_post_types() ) ) {
+				if ( ! elb_page_contains_liveblog() ) {
 					return;
 				}
 
 				$theme = elb_get_theme();
 
 				if ( $theme !== 'none' ) {
-					wp_enqueue_style( 'elb', $this->get_plugin_url() . 'assets/css/easy-liveblogs.css', null, $this->plugin_version );
+					wp_enqueue_style( 'elb', $this->get_plugin_url() . 'assets/css/easy-liveblogs.css', null, $this->get_plugin_version() );
 				}
 			}
 		}
@@ -181,6 +191,10 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		 */
 		public function settings() {
 			return elb_get_settings();
+		}
+
+		public function setup_api() {
+			new EasyLiveblogs\API\Feed;
 		}
 	}
 }

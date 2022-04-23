@@ -150,6 +150,12 @@ function elb_get_registered_settings() {
 				'desc' => __( 'Automatically puts "Liveblog" in front of your liveblogs titles.', ELB_TEXT_DOMAIN ),
 				'type' => 'checkbox',
 			),
+			array(
+				'id'   => 'cache_enabled',
+				'name' => __( 'Enable caching', ELB_TEXT_DOMAIN ),
+				'desc' => __( 'Caches the liveblog feed using a transient.', ELB_TEXT_DOMAIN ),
+				'type' => 'checkbox',
+			),
 		),
 	);
 

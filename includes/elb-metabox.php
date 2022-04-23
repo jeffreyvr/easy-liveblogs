@@ -52,9 +52,7 @@ function elb_entry_meta_box_fields() {
 /**
  * Render liveblog meta box
  */
-function elb_render_liveblog_meta_box() {
-	global $post;
-
+function elb_render_liveblog_meta_box( $post ) {
 	do_action( 'elb_liveblog_meta_box_fields', $post->ID );
 
 	wp_nonce_field( basename( __FILE__ ), 'elb_liveblog_meta_box_nonce' );
@@ -93,12 +91,16 @@ function elb_render_liveblog_options( $post_id ) {
 		$status = get_post_meta( $post_id, '_elb_status', true );
 		?>
 		<div>
-		<label for="elb_status"><?php _e( 'Status', ELB_TEXT_DOMAIN ); ?></label>
+			<label for="elb_status"><?php _e( 'Status', ELB_TEXT_DOMAIN ); ?></label>
 			<select name="_elb_status" id="elb_status">
 				<?php foreach ( elb_get_liveblog_status_options() as $option_value => $option_name ) { ?>
 					<option value="<?php echo $option_value; ?>" <?php selected( $option_value, $status, true ); ?>><?php echo $option_name; ?></option>
 				<?php } ?>
 				</select>
+		</div>
+		<div>
+			<label for="elb-liveblog-endpoint"><?php _e( 'API-endpoint URL', ELB_TEXT_DOMAIN ); ?><label>
+			<input type="text" id="elb-liveblog-endpoint" onclick="this.focus(); this.select()" value="<?php echo elb_get_liveblog_api_endpoint( $post_id ); ?>" readonly="readonly" class="widefat">
 		</div>
 		<?php
 	}
@@ -113,9 +115,9 @@ add_action( 'elb_liveblog_meta_box_fields', 'elb_render_liveblog_options', 1 );
  */
 function elb_render_entry_options( $post_id ) {
 	$liveblog = get_post_meta( $post_id, '_elb_liveblog', true );
-	$status = false;
+	$status   = false;
 
-	if ( !empty( $liveblog ) ) {
+	if ( ! empty( $liveblog ) ) {
 		$status = elb_get_liveblog_status( $liveblog );
 	}
 
@@ -137,7 +139,7 @@ function elb_render_entry_options( $post_id ) {
 			</select>
 		</div>
 
-		<?php if ( ! empty( $liveblog_id ) ) { ?>
+		<?php if ( ! empty( $liveblog ) ) { ?>
 			<div>
 				<label for="elb-liveblog-entry-link"><?php _e( 'Direct link to entry', ELB_TEXT_DOMAIN ); ?><label>
 				<input type="text" id="elb-liveblog-entry-link" onclick="this.focus(); this.select()" value="<?php echo add_query_arg( 'entry', $post_id, get_permalink( $liveblog ) ); ?>" readonly="readonly" class="widefat">
@@ -233,5 +235,30 @@ function elb_entry_meta_box_save( $post_id, $post ) {
 
 	do_action( 'elb_entry_save', $post_id, $post );
 
+	$liveblog = get_post_meta( $post_id, '_elb_liveblog', true );
+
+	elb_flush_liveblog_cache( $liveblog );
 }
 add_action( 'save_post', 'elb_entry_meta_box_save', 10, 2 );
+
+/**
+ * Flush cache when entry is put in trash.
+ *
+ * @param int $post_id
+ * @return void
+ */
+function elb_entry_trash( $post_id ) {
+	if ( get_post_type( $post->post_type ) != 'elb_entry' ) {
+		return;
+	}
+
+	$liveblog = get_post_meta( $post_id, '_elb_liveblog', true );
+
+	if ( empty( $liveblog ) ) {
+		return;
+	}
+
+	elb_flush_liveblog_cache( $liveblog );
+}
+
+add_action( 'trashed_post', 'elb_entry_trash', 10 );

@@ -31,7 +31,7 @@ ul.elb-liveblog-list {
   }
 
 .elb-liveblog .elb-liveblog-highlight {
-	animation: elb-liveblog-highlight 2s;
+	animation: elb-liveblog-highlight 3s;
 }
 
 .elb-liveblog .elb-liveblog-post:last-child {
@@ -155,4 +155,8 @@ ul.elb-liveblog-list {
 
 #elb-show-new-posts {
 	margin-bottom: 15px;
+}
+
+.elb-hide {
+	display: none;
 }
