@@ -55,6 +55,11 @@ class ELB_Liveblog {
 	 * Construct
 	 */
 	private function __construct() {
+		wp_enqueue_script( 'elb' );
+		wp_enqueue_style( 'elb-theme-' . elb_get_theme() );
+
+		add_filter( 'body_class', 'elb_add_theme_body_class' );
+		add_action( 'wp_head', 'elb_add_meta_data' );
 	}
 
 	/**

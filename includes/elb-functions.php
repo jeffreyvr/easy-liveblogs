@@ -454,20 +454,6 @@ function elb_flush_liveblog_cache( $liveblog ) {
 }
 
 /**
- * Adds body class and meta data to head.
- *
- * @return void
- */
-function elb_header_hooks() {
-	if ( elb_page_contains_liveblog() ) {
-		add_filter( 'body_class', 'elb_add_theme_body_class' );
-		add_action( 'wp_head', 'elb_add_meta_data' );
-	}
-}
-
-add_action( 'wp', 'elb_header_hooks' );
-
-/**
  * Maybe add body class.
  *
  * @param array $classes

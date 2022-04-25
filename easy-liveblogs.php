@@ -99,7 +99,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		 * @return string
 		 */
 		public function get_plugin_version() {
-			if ( wp_get_environment_type() === 'development' ) {
+			if ( function_exists( 'wp_get_environment_type' ) && wp_get_environment_type() === 'development' ) {
 				return time();
 			}
 
@@ -111,12 +111,12 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		 */
 		public function register_scripts() {
 			if ( is_admin() ) {
-				wp_enqueue_script( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.min.js', array( 'jquery' ), '0.12.4' );
-				wp_enqueue_script( 'elb-admin', $this->get_plugin_url() . 'assets/js/easy-liveblogs-admin.js', array( 'jquery', 'selectize' ), $this->get_plugin_version() );
+				wp_register_script( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.min.js', array( 'jquery' ), '0.12.4' );
+				wp_register_script( 'elb-admin', $this->get_plugin_url() . 'assets/js/easy-liveblogs-admin.js', array( 'jquery', 'selectize' ), $this->get_plugin_version() );
 			}
 
-			if ( ! is_admin() && elb_page_contains_liveblog() ) {
-				wp_enqueue_script( 'elb', $this->get_plugin_url() . 'assets/js/easy-liveblogs.js', array( 'jquery' ), $this->get_plugin_version() );
+			if ( ! is_admin() ) {
+				wp_register_script( 'elb', $this->get_plugin_url() . 'assets/js/easy-liveblogs.js', array( 'jquery' ), $this->get_plugin_version() );
 				wp_localize_script(
 					'elb',
 					'elb',
@@ -130,7 +130,6 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			}
 		}
 
-
 		/**
 		 * Enqueue and register CSS files here.
 		 */
@@ -138,19 +137,15 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 
 			if ( is_admin() ) {
 
-				wp_enqueue_style( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.default.css', null, '0.12.4' );
-				wp_enqueue_style( 'elb-admin', $this->get_plugin_url() . 'assets/css/easy-liveblogs-admin.css', null, $this->get_plugin_version() );
+				wp_register_style( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.default.css', null, '0.12.4' );
+				wp_register_style( 'elb-admin', $this->get_plugin_url() . 'assets/css/easy-liveblogs-admin.css', null, $this->get_plugin_version() );
 
 			} else {
-
-				if ( ! elb_page_contains_liveblog() ) {
-					return;
-				}
 
 				$theme = elb_get_theme();
 
 				if ( $theme !== 'none' ) {
-					wp_enqueue_style( 'elb-theme-' . $theme, $this->get_plugin_url() . 'assets/css/themes/'.$theme.'.css', null, $this->get_plugin_version() );
+					wp_register_style( 'elb-theme-' . $theme, $this->get_plugin_url() . 'assets/css/themes/'.$theme.'.css', null, $this->get_plugin_version() );
 				}
 			}
 		}
