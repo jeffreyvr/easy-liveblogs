@@ -77,6 +77,8 @@
 						}
 					});
 
+					typeof elb_after_feed_load === 'function' && elb_after_feed_load(feed);
+
 					elb_first_load = false;
 
 					if (elb_liveblog_list.find('> li').length == 0) {
