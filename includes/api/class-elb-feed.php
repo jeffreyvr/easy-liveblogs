@@ -42,6 +42,7 @@ class Feed {
 		$entries = $this->get_entries( $request->get_param( 'id' ) );
 
 		$feed = array(
+			'id'          => $liveblog->ID,
 			'title'       => $liveblog->post_title,
 			'url'         => get_permalink( $liveblog->ID ),
 			'status'      => get_post_meta( $liveblog->ID, '_elb_status', true ),
