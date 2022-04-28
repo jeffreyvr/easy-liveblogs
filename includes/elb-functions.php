@@ -249,7 +249,7 @@ function elb_get_liveblog( $post_id = null ) {
  * @return string
  */
 function elb_get_liveblog_api_endpoint( $id ) {
-	return get_rest_url( null, "easy-liveblogs/v1/liveblog/{$id}" );
+	return apply_filters( 'elb_liveblog_api_endpoint', get_rest_url( null, "easy-liveblogs/v1/liveblog/{$id}" ), $id );
 }
 
 /**

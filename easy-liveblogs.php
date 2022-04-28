@@ -127,6 +127,8 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 						'now_more_posts' => __( "That's it.", ELB_TEXT_DOMAIN ),
 					)
 				);
+
+				wp_enqueue_script( 'elb' );
 			}
 		}
 
@@ -147,6 +149,8 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				if ( $theme !== 'none' ) {
 					wp_register_style( 'elb-theme-' . $theme, $this->get_plugin_url() . 'assets/css/themes/'.$theme.'.css', null, $this->get_plugin_version() );
 				}
+
+				wp_enqueue_style( 'elb-theme-' . $theme );
 			}
 		}
 
