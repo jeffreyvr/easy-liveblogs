@@ -8,7 +8,6 @@ class Entry {
 	public $content;
 	public $time;
 	public $datetime;
-	public $post;
 
 	public function __construct() {
 	}
@@ -19,7 +18,6 @@ class Entry {
 		$post = new \WP_Post( (object) $_post );
 
 		$instance           = new self();
-		$instance->post     = $post;
 		$instance->id       = $post->ID;
 		$instance->title    = $post->post_title;
 		$instance->content  = apply_filters( 'the_content', $post->post_content );
