@@ -18,10 +18,8 @@ do_action( 'elb_before_liveblog_post', $post );
 
 <?php echo elb_get_template_part( 'sharing' ); ?>
 
-<?php if ( current_user_can( 'edit_post', $post ) ) { ?>
-	<div class="elb-liveblog-actions">
-		<?php edit_post_link(); ?>
-	</div>
-<?php } ?>
+<div class="elb-liveblog-actions">
+	<?php elb_edit_entry_link(); ?>
+</div>
 
 <?php do_action( 'elb_after_liveblog_post', $post ); ?>

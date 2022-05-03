@@ -99,11 +99,16 @@ ul.elb-liveblog-list {
 	font-size: .9rem;
 	margin-top: 15px;
 	opacity: .9;
+    display: none;
 }
 
 .elb-liveblog-actions a {
 	margin-right: 6px;
 	display: inline-block;
+}
+
+.elb-is-editor .elb-liveblog-actions {
+	display: block;
 }
 
 .elb-liveblog-post-time {

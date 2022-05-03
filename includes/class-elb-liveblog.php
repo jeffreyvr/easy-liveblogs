@@ -102,10 +102,16 @@ class ELB_Liveblog {
 			return apply_filters( 'elb_liveblog_html', $content );
 		}
 
+		$classes = array( 'elb-liveblog' );
+
+		if ( current_user_can( 'edit_post', $this->get_liveblog_id() ) ) {
+			$classes[] = 'elb-is-editor';
+		}
+
 		$content .= do_action( 'elb_before_liveblog', $this->get_liveblog_id(), array() );
 
 		$content .= '<div class="elb-theme-' . elb_get_theme() . '">';
-		$content .= '<div id="elb-liveblog" class="elb-liveblog" data-status="' . elb_get_liveblog_status() . '" data-highlighted-entry="' . elb_get_highlighted_entry_id() . '" data-show-entries="' . elb_get_show_entries() . '" data-endpoint="' . $this->endpoint . '">';
+		$content .= '<div id="elb-liveblog" class="' . implode( ' ', $classes ) . '" data-status="' . elb_get_liveblog_status() . '" data-highlighted-entry="' . elb_get_highlighted_entry_id() . '" data-show-entries="' . elb_get_show_entries() . '" data-endpoint="' . $this->endpoint . '">';
 
 		$content .= '<div class="elb-liveblog-closed-message" style="display: none;">' . __( 'The liveblog has ended.', ELB_TEXT_DOMAIN ) . '</div>';
 

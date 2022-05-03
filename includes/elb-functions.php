@@ -423,6 +423,32 @@ function elb_get_entry_url() {
 }
 
 /**
+ * Get edit entry url.
+ *
+ * @param int $post_id
+ * @return string
+ */
+function elb_get_edit_entry_url( $post_id ) {
+	return add_query_arg( array( 'post' => $post_id, 'action' => 'edit' ), admin_url( 'post.php' ) );
+}
+
+/**
+ * Edit entry link.
+ *
+ * @param int $post_id
+ * @return void
+ */
+function elb_edit_entry_link() {
+	global $post;
+
+	if ( empty( $post->ID ) ) {
+		return;
+	}
+
+	echo '<a href="' . elb_get_edit_entry_url( $post->ID ) . '">' . __( 'Edit This' ) . '</a>';
+}
+
+/**
  * Determine if assets should be enqueued.
  *
  * @return bool

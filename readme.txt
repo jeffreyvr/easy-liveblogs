@@ -39,6 +39,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 = Unreleased =
 * Set default value of '_elb_status' meta key on 'open'.
+* Use elb_edit_entry_link instead of function edit_post_link.
 
 = 1.7.1, April 14, 2022 =
 * Fix not loading more entries when last item contains a list item.

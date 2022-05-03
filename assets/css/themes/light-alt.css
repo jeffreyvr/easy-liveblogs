@@ -88,3 +88,19 @@
     align-items: center;
     justify-content: center;
 }
+
+.elb-liveblog-actions {
+	font-size: .9rem;
+	margin-top: 15px;
+	opacity: .9;
+    display: none;
+}
+
+.elb-is-editor .elb-liveblog-actions {
+	display: block;
+}
+
+.elb-liveblog-actions a {
+	margin-right: 6px;
+	display: inline-block;
+}
