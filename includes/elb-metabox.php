@@ -190,6 +190,11 @@ function elb_liveblog_meta_box_save( $post_id, $post ) {
 		}
 	}
 
+	// If no status is set, we default to 'open'.
+	if ( empty( get_post_meta( $post_id, '_elb_status', true ) ) ) {
+		update_post_meta( $post_id, '_elb_status', 'open' );
+	}
+
 	do_action( 'elb_liveblog_after_save', $post_id, $post, $fields );
 
 }

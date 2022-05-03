@@ -362,11 +362,9 @@ function elb_get_liveblog_title_prefix() {
 function elb_get_entry_content() {
 	global $post, $wp_embed;
 
-	$content = do_shortcode( $post->post_content );
-	$content = $wp_embed->autoembed( $content );
-	$content = wpautop( $content );
+	$content = apply_filters( 'elb_entry_content', $post->post_content );
 
-	return apply_filters( 'elb_entry_content', $content );
+	return apply_filters( 'the_content', $content );
 }
 
 /**

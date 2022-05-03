@@ -142,6 +142,8 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				wp_register_style( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.default.css', null, '0.12.4' );
 				wp_register_style( 'elb-admin', $this->get_plugin_url() . 'assets/css/easy-liveblogs-admin.css', null, $this->get_plugin_version() );
 
+				wp_enqueue_style( 'elb-admin' );
+
 			} else {
 
 				$theme = elb_get_theme();

@@ -38,6 +38,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+* Set default value of '_elb_status' meta key on 'open'.
 
 = 1.7.1, April 14, 2022 =
 * Fix not loading more entries when last item contains a list item.
