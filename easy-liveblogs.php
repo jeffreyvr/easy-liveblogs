@@ -103,7 +103,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				return time();
 			}
 
-			return $this-plugin_version;
+			return $this->plugin_version;
 		}
 
 		/**
