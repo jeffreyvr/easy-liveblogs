@@ -251,7 +251,7 @@ add_action( 'save_post', 'elb_entry_meta_box_save', 10, 2 );
  * @return void
  */
 function elb_entry_trash( $post_id ) {
-	if ( get_post_type( $post->post_type ) != 'elb_entry' ) {
+	if ( get_post_type( $post_id ) != 'elb_entry' ) {
 		return;
 	}
 
