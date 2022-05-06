@@ -17,14 +17,20 @@ class Entry {
 
 		$post = new \WP_Post( (object) $_post );
 
+		setup_postdata($post);
+
 		$instance           = new self();
 		$instance->id       = $post->ID;
 		$instance->title    = $post->post_title;
 		$instance->content  = apply_filters( 'the_content', $post->post_content );
 		$instance->time     = get_the_date( 'H:i', $post );
-		$instance->datetime = get_the_date( 'Y-m-d H:i:s', $post );
+		$instance->datetime = get_the_date( 'c', $post );
 		$instance->date     = get_the_date( 'Y-m-d', $post );
 		$instance->html     = $instance->get_html();
+		$instance->modified = get_the_modified_date( 'c' );
+		$instance->author = get_the_author();
+
+		wp_reset_postdata();
 
 		return apply_filters( 'elb_api_entry', $instance );
 	}

@@ -2,6 +2,10 @@
 
 	$(document).ready(function () {
 
+		if($('.elb-liveblog').length === 0) {
+			return false;
+		}
+
 		var elb_first_load = true;
 		var elb_document_title = $(document).find('title').text();
 		var elb_new_posts = 0;

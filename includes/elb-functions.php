@@ -484,10 +484,13 @@ function elb_flush_liveblog_cache( $liveblog ) {
  * @return array
  */
 function elb_add_theme_body_class( $classes ) {
-	$classes[] = 'elb-theme-' . elb_get_theme();
+	if ( elb_is_liveblog() ) {
+		$classes[] = 'elb-theme-' . elb_get_theme();
+	}
 
 	return $classes;
 }
+add_filter( 'body_class', 'elb_add_theme_body_class' );
 
 /**
  * Add meta data.
@@ -510,19 +513,15 @@ function elb_add_meta_data() {
 	$items = elb_get_liveblog_feed( elb_get_liveblog_api_endpoint( $post->ID ) );
 
 	foreach ( $items['updates'] as $entry ) {
-		$post = $entry['post'];
-
-		setup_postdata( $post );
-
-		$entry_url = add_query_arg( 'entry', $post->ID, $liveblog_url );
+		$entry_url = add_query_arg( 'entry', $entry['id'], $liveblog_url );
 
 		$entry = array(
 			'@type'            => 'BlogPosting',
-			'headline'         => get_the_title(),
+			'headline'         => $entry['title'],
 			'url'              => $entry_url,
 			'mainEntityOfPage' => $entry_url,
-			'datePublished'    => get_the_date( 'c' ),
-			'dateModified'     => get_the_modified_date( 'c' ),
+			'datePublished'    => $entry['datetime'],
+			'dateModified'     => $entry['modified'],
 			'articleBody'      => array(
 				'@type' => 'Text',
 			),
@@ -531,7 +530,7 @@ function elb_add_meta_data() {
 		if ( elb_display_author_name() ) {
 			$entry['author'] = array(
 				'@type' => 'Person',
-				'name'  => get_the_author(),
+				'name'  => $entry['author'],
 			);
 		}
 
@@ -547,6 +546,7 @@ function elb_add_meta_data() {
 	<script type="application/ld+json"><?php echo wp_json_encode( $metadata ); ?></script>
 	<?php
 }
+add_action( 'wp_head', 'elb_add_meta_data' );
 
 /**
  * Get liveblog feed based on the endpoint url.
@@ -569,15 +569,6 @@ function elb_get_liveblog_feed( $endpoint ) {
 			)
 		),
 		true
-	);
-
-	$result['updates'] = array_map(
-		function( $item ) {
-			$item['post'] = new WP_Post( (object) $item['post'] );
-
-			return $item;
-		},
-		$result['updates']
 	);
 
 	return $result;
