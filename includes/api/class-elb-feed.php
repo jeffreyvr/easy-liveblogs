@@ -54,7 +54,7 @@ class Feed {
 			set_transient( 'elb_' . $request->get_param( 'id' ) . '_cache', $feed, ( 5 * MINUTE_IN_SECONDS ) );
 		}
 
-		return $feed;
+		return apply_filters( 'elb_api_feed', $feed, $liveblog, $liveblog->ID );
 	}
 
 	/**
