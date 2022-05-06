@@ -157,6 +157,12 @@ function elb_get_registered_settings() {
 				'desc' => __( 'Caches the liveblog feed using a transient.', ELB_TEXT_DOMAIN ),
 				'type' => 'checkbox',
 			),
+			array(
+				'id'   => 'append_timestamp',
+				'name' => __( 'Append timestamp', ELB_TEXT_DOMAIN ),
+				'desc' => __( 'Appends a timestamp to the liveblog feed URL.', ELB_TEXT_DOMAIN ),
+				'type' => 'checkbox',
+			),
 		),
 	);
 

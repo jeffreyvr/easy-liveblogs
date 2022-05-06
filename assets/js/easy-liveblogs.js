@@ -2,7 +2,7 @@
 
 	$(document).ready(function () {
 
-		if($('.elb-liveblog').length === 0) {
+		if ($('.elb-liveblog').length === 0) {
 			return false;
 		}
 
@@ -17,11 +17,28 @@
 		var elb_status_message = $('.elb-liveblog-closed-message');
 		var elb_liveblog_endpoint = elb_liveblog.data('endpoint');
 		var elb_show_entries = elb_liveblog.data('showEntries');
+		var elb_append_timestamp = elb_liveblog.data('appendTimestamp');
 		var elb_highlighted_entry = elb_liveblog.data('highlightedEntry');
 
+		function elb_get_time() {
+			var d = new Date();
+			var time = d.getTime();
+
+			if (time === 0) {
+				return 0;
+			}
+			return Math.round(time / 60000);
+		}
+
 		function elb_refresh_liveblog() {
+			var elb_liveblog_endpoint_url = elb_liveblog_endpoint;
+
+			if (elb_append_timestamp) {
+				elb_liveblog_endpoint_url = elb_liveblog_endpoint + '?_' + elb_get_time();
+			}
+
 			$.ajax({
-				url: elb_liveblog_endpoint,
+				url: elb_liveblog_endpoint_url,
 				method: 'get',
 				dataType: 'json',
 				success: function (feed) {
