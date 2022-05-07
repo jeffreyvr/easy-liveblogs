@@ -37,45 +37,12 @@ class Feed {
 			return $feed;
 		}
 
-		$liveblog = elb_get_liveblog( $request->get_param( 'id' ) );
-
-		$entries = $this->get_entries( $request->get_param( 'id' ) );
-
-		$feed = array(
-			'id'          => $liveblog->ID,
-			'title'       => $liveblog->post_title,
-			'url'         => get_permalink( $liveblog->ID ),
-			'status'      => get_post_meta( $liveblog->ID, '_elb_status', true ),
-			'last_update' => $entries[0]->datetime,
-			'updates'     => $entries,
-		);
+		$feed = FeedFactory::make( $request->get_param( 'id' ) );
 
 		if ( elb_get_option( 'cache_enabled', false ) ) {
 			set_transient( 'elb_' . $request->get_param( 'id' ) . '_cache', $feed, ( 5 * MINUTE_IN_SECONDS ) );
 		}
 
-		return apply_filters( 'elb_api_feed', $feed, $liveblog, $liveblog->ID );
-	}
-
-	/**
-	 * Get the liveblog entries.
-	 *
-	 * @param int $liveblog_id
-	 * @return array
-	 */
-	public function get_entries( $liveblog_id ) {
-		$args = array(
-			'post_type'  => 'elb_entry',
-			'showposts'  => -1,
-			'meta_key'   => '_elb_liveblog',
-			'meta_value' => $liveblog_id,
-		);
-
-		return array_map(
-			function( $post ) {
-				return Entry::fromPost( $post );
-			},
-			get_posts( $args )
-		);
+		return $feed;
 	}
 }
