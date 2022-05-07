@@ -34,7 +34,7 @@
 			var elb_liveblog_endpoint_url = elb_liveblog_endpoint;
 
 			if (elb_append_timestamp) {
-				elb_liveblog_endpoint_url = elb_liveblog_endpoint + '?_' + elb_get_time();
+				elb_liveblog_endpoint_url = elb_liveblog_endpoint + '?_=' + elb_get_time();
 			}
 
 			$.ajax({
