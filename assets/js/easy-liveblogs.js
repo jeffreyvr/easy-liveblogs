@@ -92,7 +92,7 @@
 
 							elb_new_posts++;
 
-							elb_liveblog_list.prepend(new_post.html());
+							elb_liveblog_list.find('> li:first').prepend(new_post.html());
 
 							return;
 						}

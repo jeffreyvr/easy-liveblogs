@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2022-03-22 15:00+0100\n"
-"PO-Revision-Date: 2022-03-22 15:00+0100\n"
+"POT-Creation-Date: 2022-05-11 11:59+0200\n"
+"PO-Revision-Date: 2022-05-11 12:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -21,17 +21,17 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: easy-liveblogs.php:109
+#: easy-liveblogs.php:126
 #, php-format
 msgid "There is %s update."
 msgstr "Er is %s update."
 
-#: easy-liveblogs.php:110
+#: easy-liveblogs.php:127
 #, php-format
 msgid "There are %s updates."
 msgstr "Er zijn %s updates."
 
-#: easy-liveblogs.php:111
+#: easy-liveblogs.php:128
 msgid "That's it."
 msgstr "Dat was het."
 
@@ -68,105 +68,134 @@ msgid "Dark"
 msgstr "Donker"
 
 #: includes/admin/elb-register-settings.php:105
+msgid "Light (Less theme dependent)"
+msgstr ""
+
+#: includes/admin/elb-register-settings.php:106
 msgid "None"
 msgstr "Geen"
 
-#: includes/admin/elb-register-settings.php:111
+#: includes/admin/elb-register-settings.php:112
 msgid "Display author"
 msgstr "Toon auteur"
 
-#: includes/admin/elb-register-settings.php:112
+#: includes/admin/elb-register-settings.php:113
 msgid "Display the author name on liveblog entries."
 msgstr "Geef de naam van de auteur weer in liveblog-items."
 
-#: includes/admin/elb-register-settings.php:117
+#: includes/admin/elb-register-settings.php:118
 msgid "Display social sharing"
 msgstr "Toon delen op social media"
 
-#: includes/admin/elb-register-settings.php:118
+#: includes/admin/elb-register-settings.php:119
 msgid "Display the social sharing options."
 msgstr "Geef de opties voor sociaal delen weer."
 
-#: includes/admin/elb-register-settings.php:123
+#: includes/admin/elb-register-settings.php:124
 msgid "Update interval"
 msgstr "Update interval"
 
-#: includes/admin/elb-register-settings.php:124
+#: includes/admin/elb-register-settings.php:125
 msgid "Per how many seconds should be checked for new liveblog updates."
 msgstr "Per hoeveel seconden gecontroleerd moet worden op liveblog updates."
 
-#: includes/admin/elb-register-settings.php:132
+#: includes/admin/elb-register-settings.php:133
 msgid "Show entries"
 msgstr "Toon items"
 
-#: includes/admin/elb-register-settings.php:133
+#: includes/admin/elb-register-settings.php:134
 msgid "The amount of entries visible before the load more button."
 msgstr "Het aantal items dat zichtbaar is voor de toon meer button."
 
-#: includes/admin/elb-register-settings.php:141
+#: includes/admin/elb-register-settings.php:142
 msgid "Post types"
 msgstr "Post types"
 
-#: includes/admin/elb-register-settings.php:142
+#: includes/admin/elb-register-settings.php:143
 msgid "Select the post types that need to support liveblogs."
 msgstr "Selecteer de post types die liveblogs moeten ondersteunen."
 
-#: includes/admin/elb-register-settings.php:149
+#: includes/admin/elb-register-settings.php:150
 msgid "Prefix title"
 msgstr "Voorvoegsel titel"
 
-#: includes/admin/elb-register-settings.php:150
+#: includes/admin/elb-register-settings.php:151
 msgid "Automatically puts \"Liveblog\" in front of your liveblogs titles."
 msgstr "Zet automatisch \"Liveblog\" voor uw titels van liveblogs."
 
-#: includes/admin/elb-register-settings.php:167
+#: includes/admin/elb-register-settings.php:156
+msgid "Enable caching"
+msgstr "Caching inschakelen"
+
+#: includes/admin/elb-register-settings.php:157
+msgid "Caches the liveblog feed using a transient."
+msgstr "Hiermee wordt de liveblog-feed gecached met transient caching."
+
+#: includes/admin/elb-register-settings.php:162
+msgid "Append timestamp"
+msgstr "Tijdstempel toevoegen"
+
+#: includes/admin/elb-register-settings.php:163
+msgid "Appends a timestamp to the liveblog feed URL."
+msgstr ""
+"Hiermee wordt een tijdstempel toegevoegd aan de URL van de liveblog-feed."
+
+#: includes/admin/elb-register-settings.php:180
 #, php-format
 msgid "The callback function used for the %s setting is missing."
 msgstr "De callback-functie voor %s ontbreekt."
 
-#: includes/class-elb-liveblog.php:62
+#: includes/class-elb-liveblog.php:99
 #, php-format
 msgid ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">View the liveblog</a>"
 msgstr ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">Bekijk de liveblog</a>"
 
-#: includes/class-elb-liveblog.php:74
+#: includes/class-elb-liveblog.php:115
 msgid "The liveblog has ended."
 msgstr "Dit liveblog is afgelopen."
 
-#: includes/class-elb-liveblog.php:80
+#: includes/class-elb-liveblog.php:119
 msgid "No liveblog updates yet."
 msgstr "Er zijn nog geen liveblog-updates."
 
-#: includes/class-elb-liveblog.php:113
+#: includes/class-elb-liveblog.php:170
 msgid "Load more"
 msgstr "Toon meer"
 
-#: includes/elb-filters.php:57
+#: includes/elb-filters.php:56
 msgid "Liveblogs"
 msgstr "Liveblogs"
 
-#: includes/elb-filters.php:87 includes/elb-functions.php:239
+#: includes/elb-filters.php:86 includes/elb-functions.php:265
 msgid "Closed"
 msgstr "Gesloten"
 
-#: includes/elb-filters.php:144 includes/elb-functions.php:328
+#: includes/elb-filters.php:143 includes/elb-functions.php:354
 #: includes/elb-metabox.php:18 includes/elb-metabox.php:21
 msgid "Liveblog"
 msgstr "Liveblog"
 
-#: includes/elb-functions.php:238
+#: includes/elb-functions.php:264
 msgid "Open"
 msgstr "Open"
 
-#: includes/elb-metabox.php:87
+#: includes/elb-functions.php:448
+msgid "Edit This"
+msgstr ""
+
+#: includes/elb-metabox.php:84
 msgid "Enable liveblog"
 msgstr "Liveblog inschakelen"
 
-#: includes/elb-metabox.php:96
+#: includes/elb-metabox.php:92
 msgid "Status"
 msgstr "Status"
+
+#: includes/elb-metabox.php:100
+msgid "API-endpoint URL"
+msgstr ""
 
 #: includes/elb-metabox.php:129
 #, php-format
