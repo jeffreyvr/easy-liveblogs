@@ -429,7 +429,13 @@ function elb_get_entry_url() {
  * @return string
  */
 function elb_get_edit_entry_url( $post_id ) {
-	return add_query_arg( array( 'post' => $post_id, 'action' => 'edit' ), admin_url( 'post.php' ) );
+	return add_query_arg(
+		array(
+			'post'   => $post_id,
+			'action' => 'edit',
+		),
+		admin_url( 'post.php' )
+	);
 }
 
 /**
@@ -562,4 +568,43 @@ function elb_get_liveblog_feed( $endpoint ) {
 	);
 
 	return $result;
+}
+
+/**
+ * Return the site datetime format.
+ *
+ * @return void
+ */
+function elb_get_datetime_format() {
+	return get_option( 'date_format' ) . ' ' . get_option( 'time_format' );
+}
+
+/**
+ * Get entry display date.
+ *
+ * @return void
+ */
+function elb_get_entry_display_date() {
+	global $post;
+
+	setup_postdata( $post );
+
+	$display = elb_get_option( 'entry_date_format', 'human' );
+
+	if ( $display === 'human' ) {
+		?>
+			<time class="elb-js-update-time" datetime="<?php echo get_the_time( 'Y-m-d H:i' ); ?>"><?php printf( _x( '%s ago', '%s = human-readable time difference', ELB_TEXT_DOMAIN ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></time>
+		<?php
+	} else {
+		if ( $display === 'time' ) {
+			$format = get_option( 'time_format' );
+		} elseif ( $display === 'date' ) {
+			$format = get_option( 'date_format' );
+		} else {
+			$format = elb_get_datetime_format();
+		}
+		?>
+			<time datetime="<?php echo get_the_time( 'Y-m-d H:i' ); ?>"><?php echo get_the_time( $format ); ?></time>
+		<?php
+	}
 }

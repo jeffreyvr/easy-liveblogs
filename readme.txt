@@ -38,8 +38,14 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+* Complete rewrite of the liveblog rendering, now fully through JavaScript.
+* A liveblog is rendered using an endpoint available through the WP Rest API.
 * Set default value of '_elb_status' meta key on 'open'.
 * Use elb_edit_entry_link instead of function edit_post_link.
+* Added option to use object or transient caching.
+* Added option to set a date(time)-format to be displayed with the liveblog entries.
+
+Developers upgrade guide: https://github.com/jeffreyvr/easy-liveblogs/wiki/Upgrade-from-v1-to-v2
 
 = 1.7.1, April 14, 2022 =
 * Fix not loading more entries when last item contains a list item.

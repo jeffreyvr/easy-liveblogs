@@ -39,7 +39,7 @@ class Feed {
 
 		$feed = FeedFactory::make( $request->get_param( 'id' ) );
 
-		do_action( 'elb_process_feed_result', $request->get_param( 'id' ), $feed );
+		do_action( 'elb_cache_feed', $request->get_param( 'id' ), $feed );
 
 		return $feed;
 	}

@@ -79,8 +79,8 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			require_once $this->get_plugin_path() . 'includes/api/class-elb-feed-factory.php';
 			require_once $this->get_plugin_path() . 'includes/api/class-elb-entry.php';
 			require_once $this->get_plugin_path() . 'includes/api/class-elb-feed.php';
-			require_once $this->get_plugin_path() . 'includes/caching/class-elb-file.php';
 			require_once $this->get_plugin_path() . 'includes/caching/class-elb-transient.php';
+			require_once $this->get_plugin_path() . 'includes/caching/class-elb-object.php';
 		}
 
 		/**
@@ -125,10 +125,12 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 					'elb',
 					'elb',
 					array(
-						'interval'       => elb_get_update_interval(),
-						'new_post_msg'   => __( 'There is %s update.', ELB_TEXT_DOMAIN ),
-						'new_posts_msg'  => __( 'There are %s updates.', ELB_TEXT_DOMAIN ),
-						'now_more_posts' => __( "That's it.", ELB_TEXT_DOMAIN ),
+						'datetime_format' => elb_get_option( 'entry_date_format', 'human' ),
+						'locale'          => get_locale(),
+						'interval'        => elb_get_update_interval(),
+						'new_post_msg'    => __( 'There is %s update.', ELB_TEXT_DOMAIN ),
+						'new_posts_msg'   => __( 'There are %s updates.', ELB_TEXT_DOMAIN ),
+						'now_more_posts'  => __( "That's it.", ELB_TEXT_DOMAIN ),
 					)
 				);
 
@@ -212,10 +214,10 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		public function setup_caching() {
 			$cache = elb_get_option( 'cache_enabled', false );
 
-			if ( $cache == 'file' ) {
-				EasyLiveblogs\Caching\File::init();
-			} elseif( $cache == 'transient' ) {
-				EasyLiveblogs\Caching\Transient::init();
+			if ( $cache == 'object' ) {
+				EasyLiveblogs\Caching\ObjectCaching::init();
+			} elseif ( $cache == 'transient' ) {
+				EasyLiveblogs\Caching\TransientCaching::init();
 			}
 		}
 	}

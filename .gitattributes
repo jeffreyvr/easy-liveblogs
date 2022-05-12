@@ -3,6 +3,7 @@
 /.github export-ignore
 /.vscode export-ignore
 /.idea export-ignore
+/node-modules export-ignore
 
 # Files
 /.gitattributes export-ignore

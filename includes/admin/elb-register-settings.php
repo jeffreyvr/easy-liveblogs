@@ -100,10 +100,10 @@ function elb_get_registered_settings() {
 				'desc'          => __( 'Select a theme for your liveblog.', ELB_TEXT_DOMAIN ),
 				'type'          => 'select',
 				'options'       => array(
-					'light' => __( 'Light', ELB_TEXT_DOMAIN ),
-					'dark'  => __( 'Dark', ELB_TEXT_DOMAIN ),
+					'light'     => __( 'Light', ELB_TEXT_DOMAIN ),
+					'dark'      => __( 'Dark', ELB_TEXT_DOMAIN ),
 					'light-alt' => __( 'Light (Less theme dependent)', ELB_TEXT_DOMAIN ),
-					'none'  => __( 'None', ELB_TEXT_DOMAIN ),
+					'none'      => __( 'None', ELB_TEXT_DOMAIN ),
 				),
 				'default_value' => 'light',
 			),
@@ -152,15 +152,27 @@ function elb_get_registered_settings() {
 				'type' => 'checkbox',
 			),
 			array(
-				'id'   => 'cache_enabled',
-				'name' => __( 'Enable caching', ELB_TEXT_DOMAIN ),
-				'desc' => __( 'Caches the liveblog feed with the selected method.', ELB_TEXT_DOMAIN ),
-				'type' => 'select',
+				'id'      => 'entry_date_format',
+				'name'    => __( 'Entry date format', ELB_TEXT_DOMAIN ),
+				'desc'    => __( 'The format of the date displayed on liveblog entries.', ELB_TEXT_DOMAIN ),
+				'type'    => 'select',
 				'options' => array(
-					'' => __( 'Disabled', ELB_TEXT_DOMAIN ),
+					''         => __( 'Human readable', ELB_TEXT_DOMAIN ),
+					'datetime' => sprintf( __( 'Date and time format: %s', ELB_TEXT_DOMAIN ), elb_get_datetime_format() ),
+					'date'     => sprintf( __( 'Date: %s', ELB_TEXT_DOMAIN ), get_option( 'date_format' ) ),
+					'time'     => sprintf( __( 'Time: %s', ELB_TEXT_DOMAIN ), get_option( 'time_format' ) ),
+				),
+			),
+			array(
+				'id'      => 'cache_enabled',
+				'name'    => __( 'Enable caching', ELB_TEXT_DOMAIN ),
+				'desc'    => __( 'Caches the liveblog feed with the selected method.', ELB_TEXT_DOMAIN ),
+				'type'    => 'select',
+				'options' => array(
+					''          => __( 'Disabled', ELB_TEXT_DOMAIN ),
 					'transient' => __( 'Transient', ELB_TEXT_DOMAIN ),
-					'file' => __( 'File', ELB_TEXT_DOMAIN )
-				)
+					'object'    => __( 'Object', ELB_TEXT_DOMAIN ),
+				),
 			),
 			array(
 				'id'   => 'append_timestamp',

@@ -1,0 +1,25 @@
+{
+  "name": "easy-liveblogs",
+  "version": "1.0.0",
+  "description": "Live blogging made easy with the Easy Liveblogs plugin from [vanrossum.dev](https://vanrossum.dev).",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreyvr/easy-liveblogs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffreyvr/easy-liveblogs/issues"
+  },
+  "homepage": "https://github.com/jeffreyvr/easy-liveblogs#readme",
+  "devDependencies": {
+    "laravel-mix": "^6.0.43"
+  },
+  "dependencies": {
+    "moment": "^2.29.3"
+  }
+}

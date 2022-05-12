@@ -197,7 +197,7 @@ function elb_liveblog_meta_box_save( $post_id, $post ) {
 
 	do_action( 'elb_liveblog_after_save', $post_id, $post, $fields );
 
-	do_action( 'elb_purge_cache', $post_id );
+	do_action( 'elb_purge_feed_cache', $post_id );
 }
 add_action( 'save_post', 'elb_liveblog_meta_box_save', 10, 2 );
 
@@ -241,6 +241,10 @@ function elb_entry_meta_box_save( $post_id, $post ) {
 		return;
 	}
 
+	if ( $post->post_type != 'elb_entry' ) {
+		return;
+	}
+
 	$fields = elb_entry_meta_box_fields();
 
 	foreach ( $fields as $field ) {
@@ -257,7 +261,9 @@ function elb_entry_meta_box_save( $post_id, $post ) {
 
 	$liveblog = get_post_meta( $post_id, '_elb_liveblog', true );
 
-	do_action( 'elb_purge_cache', $liveblog );
+	if ( ! empty( $liveblog ) ) {
+		do_action( 'elb_purge_feed_cache', $liveblog );
+	}
 }
 add_action( 'save_post', 'elb_entry_meta_box_save', 10, 2 );
 
@@ -278,7 +284,7 @@ function elb_entry_trash( $post_id ) {
 		return;
 	}
 
-	do_action( 'elb_purge_cache', $liveblog );
+	do_action( 'elb_purge_feed_cache', $liveblog );
 }
 
 add_action( 'trashed_post', 'elb_entry_trash', 10 );

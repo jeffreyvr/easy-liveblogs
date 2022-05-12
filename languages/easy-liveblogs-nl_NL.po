@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2022-05-12 17:46+0200\n"
-"PO-Revision-Date: 2022-05-12 17:47+0200\n"
+"POT-Creation-Date: 2022-05-12 22:48+0200\n"
+"PO-Revision-Date: 2022-05-12 22:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -21,17 +21,17 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: easy-liveblogs.php:129
+#: easy-liveblogs.php:131
 #, php-format
 msgid "There is %s update."
 msgstr "Er is %s update."
 
-#: easy-liveblogs.php:130
+#: easy-liveblogs.php:132
 #, php-format
 msgid "There are %s updates."
 msgstr "Er zijn %s updates."
 
-#: easy-liveblogs.php:131
+#: easy-liveblogs.php:133
 msgid "That's it."
 msgstr "Dat was het."
 
@@ -69,7 +69,7 @@ msgstr "Donker"
 
 #: includes/admin/elb-register-settings.php:105
 msgid "Light (Less theme dependent)"
-msgstr ""
+msgstr "Licht (minder afhankelijk van het thema)"
 
 #: includes/admin/elb-register-settings.php:106
 msgid "None"
@@ -124,35 +124,62 @@ msgid "Automatically puts \"Liveblog\" in front of your liveblogs titles."
 msgstr "Zet automatisch \"Liveblog\" voor uw titels van liveblogs."
 
 #: includes/admin/elb-register-settings.php:156
+msgid "Entry date format"
+msgstr "Datum-notatie liveblog-items"
+
+#: includes/admin/elb-register-settings.php:157
+msgid "The format of the date displayed on liveblog entries."
+msgstr "De notatie van de datum die wordt weergegeven bij liveblog-items."
+
+#: includes/admin/elb-register-settings.php:160
+msgid "Human readable"
+msgstr "Menselijk leesbaar"
+
+#: includes/admin/elb-register-settings.php:161
+#, php-format
+msgid "Date and time format: %s"
+msgstr "Datum- en tijdnotatie: %s"
+
+#: includes/admin/elb-register-settings.php:162
+#, php-format
+msgid "Date: %s"
+msgstr "Datum: %s"
+
+#: includes/admin/elb-register-settings.php:163
+#, php-format
+msgid "Time: %s"
+msgstr "Tijd: %s"
+
+#: includes/admin/elb-register-settings.php:168
 msgid "Enable caching"
 msgstr "Caching inschakelen"
 
-#: includes/admin/elb-register-settings.php:157
+#: includes/admin/elb-register-settings.php:169
 msgid "Caches the liveblog feed with the selected method."
 msgstr "Cachet de liveblogfeed met de geselecteerde methode."
 
-#: includes/admin/elb-register-settings.php:160
+#: includes/admin/elb-register-settings.php:172
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: includes/admin/elb-register-settings.php:161
+#: includes/admin/elb-register-settings.php:173
 msgid "Transient"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:162
-msgid "File"
+#: includes/admin/elb-register-settings.php:174
+msgid "Object"
 msgstr ""
 
-#: includes/admin/elb-register-settings.php:167
+#: includes/admin/elb-register-settings.php:179
 msgid "Append timestamp"
 msgstr "Tijdstempel toevoegen"
 
-#: includes/admin/elb-register-settings.php:168
+#: includes/admin/elb-register-settings.php:180
 msgid "Appends a timestamp to the liveblog feed URL."
 msgstr ""
 "Hiermee wordt een tijdstempel toegevoegd aan de URL van de liveblog-feed."
 
-#: includes/admin/elb-register-settings.php:185
+#: includes/admin/elb-register-settings.php:197
 #, php-format
 msgid "The callback function used for the %s setting is missing."
 msgstr "De callback-functie voor %s ontbreekt."
@@ -193,9 +220,15 @@ msgstr "Liveblog"
 msgid "Open"
 msgstr "Open"
 
-#: includes/elb-functions.php:448
+#: includes/elb-functions.php:454
 msgid "Edit This"
 msgstr "Bewerk dit"
+
+#: includes/elb-functions.php:596
+#, php-format
+msgctxt "%s = human-readable time difference"
+msgid "%s ago"
+msgstr "%s geleden"
 
 #: includes/elb-metabox.php:84
 msgid "Enable liveblog"
@@ -277,13 +310,7 @@ msgstr "Geen liveblog-items gevonden in de prullenbak"
 msgid "Easy Liveblogs"
 msgstr "Easy Liveblogs"
 
-#: templates/post.php:9
-#, php-format
-msgctxt "%s = human-readable time difference"
-msgid "%s ago"
-msgstr "%s geleden"
-
-#: templates/post.php:12
+#: templates/post.php:14
 #, php-format
 msgid "By %s"
 msgstr "Door %s"

@@ -2,7 +2,7 @@
 
 namespace EasyLiveblogs\Caching;
 
-class TransientCaching {
+class ObjectCaching {
 	public static function init() {
 		return new self();
 	}
@@ -14,18 +14,18 @@ class TransientCaching {
 	}
 
 	public function get_feed( $contents, $liveblog_id ) {
-		return get_transient( 'elb_' . $liveblog_id . '_cache' );
+		return wp_cache_get( 'elb_' . $liveblog_id, 'easy-liveblogs' );
 	}
 
 	public function set_feed( $liveblog_id, $contents ) {
-		return set_transient( 'elb_' . $liveblog_id . '_cache', $contents, $this->get_lifespan_in_seconds() );
+		return wp_cache_set( 'elb_' . $liveblog_id, $contents, 'easy-liveblogs', $this->get_lifespan_in_seconds() );
 	}
 
 	public function purge_feed( $liveblog_id ) {
-		return delete_transient( 'elb_' . $liveblog_id . '_cache' );
+		return wp_cache_delete( 'elb_' . $liveblog_id, 'easy-liveblogs' );
 	}
 
 	public function get_lifespan_in_seconds() {
-		return apply_filters( 'elb_transient_cache_lifespan', ( 5 * MINUTE_IN_SECONDS ) );
+		return apply_filters( 'elb_object_cache_lifespan', ( 5 * MINUTE_IN_SECONDS ) );
 	}
 }
