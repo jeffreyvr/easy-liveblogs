@@ -250,7 +250,7 @@ function elb_select_callback( $args ) {
 		foreach ( $args['options'] as $option_value => $option_name ) {
 			$selected = selected( $value, $option_value, false );
 
-			$html .= '<option value=' . $option_value . ' ' . $selected . '>' . $option_name . '</option>';
+			$html .= '<option value="' . $option_value . '" ' . $selected . '>' . $option_name . '</option>';
 		}
 	}
 
@@ -279,7 +279,7 @@ function elb_multiple_select_callback( $args ) {
 
 			$selected = in_array( $option_value, is_array( $value ) ? $value : array() ) ? 'selected' : null;
 
-			$html .= '<option value=' . $option_value . ' ' . $selected . '>' . $option_name . '</option>';
+			$html .= '<option value="' . $option_value . '" ' . $selected . '>' . $option_name . '</option>';
 		}
 	}
 

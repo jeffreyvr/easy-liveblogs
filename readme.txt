@@ -37,7 +37,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 == Changelog ==
 
-= Unreleased =
+= 2.0.0, Unreleased =
 * Complete rewrite of the liveblog rendering, now fully through JavaScript.
 * A liveblog is rendered using an endpoint available through the WP Rest API.
 * Set default value of '_elb_status' meta key on 'open'.
