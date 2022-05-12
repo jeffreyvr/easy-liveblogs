@@ -4,6 +4,7 @@
 /.vscode export-ignore
 /.idea export-ignore
 /node-modules export-ignore
+/resources export-ignore
 
 # Files
 /.gitattributes export-ignore
