@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2022-05-11 11:59+0200\n"
-"PO-Revision-Date: 2022-05-11 12:01+0200\n"
+"POT-Creation-Date: 2022-05-12 17:46+0200\n"
+"PO-Revision-Date: 2022-05-12 17:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -21,17 +21,17 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: easy-liveblogs.php:126
+#: easy-liveblogs.php:129
 #, php-format
 msgid "There is %s update."
 msgstr "Er is %s update."
 
-#: easy-liveblogs.php:127
+#: easy-liveblogs.php:130
 #, php-format
 msgid "There are %s updates."
 msgstr "Er zijn %s updates."
 
-#: easy-liveblogs.php:128
+#: easy-liveblogs.php:131
 msgid "That's it."
 msgstr "Dat was het."
 
@@ -128,39 +128,51 @@ msgid "Enable caching"
 msgstr "Caching inschakelen"
 
 #: includes/admin/elb-register-settings.php:157
-msgid "Caches the liveblog feed using a transient."
-msgstr "Hiermee wordt de liveblog-feed gecached met transient caching."
+msgid "Caches the liveblog feed with the selected method."
+msgstr "Cachet de liveblogfeed met de geselecteerde methode."
+
+#: includes/admin/elb-register-settings.php:160
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: includes/admin/elb-register-settings.php:161
+msgid "Transient"
+msgstr ""
 
 #: includes/admin/elb-register-settings.php:162
+msgid "File"
+msgstr ""
+
+#: includes/admin/elb-register-settings.php:167
 msgid "Append timestamp"
 msgstr "Tijdstempel toevoegen"
 
-#: includes/admin/elb-register-settings.php:163
+#: includes/admin/elb-register-settings.php:168
 msgid "Appends a timestamp to the liveblog feed URL."
 msgstr ""
 "Hiermee wordt een tijdstempel toegevoegd aan de URL van de liveblog-feed."
 
-#: includes/admin/elb-register-settings.php:180
+#: includes/admin/elb-register-settings.php:185
 #, php-format
 msgid "The callback function used for the %s setting is missing."
 msgstr "De callback-functie voor %s ontbreekt."
 
-#: includes/class-elb-liveblog.php:99
+#: includes/class-elb-liveblog.php:98
 #, php-format
 msgid ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">View the liveblog</a>"
 msgstr ""
 "<a class=\"elb-view-liveblog-link button\" href=\"%s\">Bekijk de liveblog</a>"
 
-#: includes/class-elb-liveblog.php:115
+#: includes/class-elb-liveblog.php:113
 msgid "The liveblog has ended."
 msgstr "Dit liveblog is afgelopen."
 
-#: includes/class-elb-liveblog.php:119
+#: includes/class-elb-liveblog.php:117
 msgid "No liveblog updates yet."
 msgstr "Er zijn nog geen liveblog-updates."
 
-#: includes/class-elb-liveblog.php:170
+#: includes/class-elb-liveblog.php:164
 msgid "Load more"
 msgstr "Toon meer"
 
@@ -183,7 +195,7 @@ msgstr "Open"
 
 #: includes/elb-functions.php:448
 msgid "Edit This"
-msgstr ""
+msgstr "Bewerk dit"
 
 #: includes/elb-metabox.php:84
 msgid "Enable liveblog"

@@ -19,13 +19,13 @@ jQuery(function ($) {
 			this.loader = '.elb-loader';
 			this.list = '.elb-liveblog-list';
 			this.status_message = '.elb-liveblog-closed-message';
-			
+
 			this.fetch();
-			
+
 			this.getElement('show_new_button').click(() => {
 				this.showNew();
 			});
-			
+
 			this.getElement('load_more_button').click(() => {
 				this.loadMore();
 			});
@@ -38,15 +38,20 @@ jQuery(function ($) {
 		getElement: function(name) {
 			return this.getLiveblog().find(this[name]);
 		},
-		
+
 		fetch: function() {
 			$.ajax({
 				url: this.getEndpoint(),
 				method: 'get',
 				dataType: 'json',
 				success: (feed) => {
+					var new_posts = [];
+
 					this.getElement('list').html();
 					this.getElement('loader').hide();
+
+					this.getElement('list').find('.elb-new').remove();
+					this.resetUpdateCounter();
 
 					$.each(feed.updates, (index, post) => {
 						var go_to = false;
@@ -56,7 +61,7 @@ jQuery(function ($) {
 						if (this.first_load) {
 							if ((index + 1) > this.getLiveblog().data('showEntries')) {
 								new_post.find('> li').addClass('elb-hide elb-liveblog-initial-post');
-								
+
 								this.getElement('load_more_button').show();
 							}
 
@@ -94,12 +99,18 @@ jQuery(function ($) {
 							new_post.find('li').hide();
 
 							this.new_posts = this.new_posts + 1;
-							
-							this.getElement('list').prepend(new_post.html());
+
+							new_posts.push(new_post.html());
 
 							return;
 						}
 					});
+
+					if(new_posts.length > 0 ) {
+						$.each(new_posts.reverse(), (index, html) => {
+							this.getElement('list').prepend(html);
+						});
+					}
 
 					typeof elb_after_feed_load === 'function' && elb_after_feed_load(feed);
 
@@ -153,32 +164,37 @@ jQuery(function ($) {
 
 			return url;
 		},
-		
+
 		showNew: function() {
 			this.getElement('list').find('> li.elb-new').not(':visible').fadeIn();
-			
-			this.new_posts = 0;
-			
+			this.getElement('list').find('> li.elb-new').removeClass('elb-new');
+
 			this.getElement('show_new_button').hide();
-			
+
+			this.resetUpdateCounter();
+		},
+
+		resetUpdateCounter: function() {
+			this.new_posts = 0;
+
 			$(document).find('title').text(this.document_title);
 		},
-		
+
 		loadMore: function() {
 			var liveblog = this.getLiveblog();
-			
+
 			this.getElement('list').find('> li.elb-hide.elb-liveblog-initial-post').each(function (index, post) {
 				if (liveblog.data('showEntries') > index) {
 					$(this).removeClass('elb-hide');
 				}
 			});
-			
+
 			if (this.getElement('list').find('> li.elb-hide.elb-liveblog-initial-post').length == 0) {
 				this.getElement('load_more_button').text(elb.now_more_posts).delay(2000).fadeOut(1000);
 			}
-			
+
 			typeof elb_after_load_more_callback === 'function' && elb_after_load_more_callback();
-		}	
+		}
 	}
 
 	elb_liveblog.init();

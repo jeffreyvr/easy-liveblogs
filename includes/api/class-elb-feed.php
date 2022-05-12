@@ -33,15 +33,13 @@ class Feed {
 	 * @return array
 	 */
 	public function feed( \WP_REST_Request $request ) {
-		if ( $feed = get_transient( 'elb_' . $request->get_param( 'id' ) . '_cache' ) ) {
+		if ( $feed = apply_filters( 'elb_feed_from_cache', false, $request->get_param( 'id' ) ) ) {
 			return $feed;
 		}
 
 		$feed = FeedFactory::make( $request->get_param( 'id' ) );
 
-		if ( elb_get_option( 'cache_enabled', false ) ) {
-			set_transient( 'elb_' . $request->get_param( 'id' ) . '_cache', $feed, ( 5 * MINUTE_IN_SECONDS ) );
-		}
+		do_action( 'elb_process_feed_result', $request->get_param( 'id' ), $feed );
 
 		return $feed;
 	}

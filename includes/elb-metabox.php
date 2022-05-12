@@ -197,8 +197,25 @@ function elb_liveblog_meta_box_save( $post_id, $post ) {
 
 	do_action( 'elb_liveblog_after_save', $post_id, $post, $fields );
 
+	do_action( 'elb_purge_cache', $post_id );
 }
 add_action( 'save_post', 'elb_liveblog_meta_box_save', 10, 2 );
+
+/**
+ * Hook in on liveblog deletion.
+ *
+ * @param int $post_id
+ * @return void
+ */
+function elb_liveblog_delete( $post_id ) {
+	if ( ! get_post_meta( $post_id, '_elb_is_liveblog', true ) ) {
+		return;
+	}
+
+	do_action( 'elb_delete_cache', $post_id );
+}
+
+add_action( 'before_delete_post', 'elb_liveblog_delete', 10 );
 
 /**
  * Liveblog meta box save
@@ -240,7 +257,7 @@ function elb_entry_meta_box_save( $post_id, $post ) {
 
 	$liveblog = get_post_meta( $post_id, '_elb_liveblog', true );
 
-	elb_flush_liveblog_cache( $liveblog );
+	do_action( 'elb_purge_cache', $liveblog );
 }
 add_action( 'save_post', 'elb_entry_meta_box_save', 10, 2 );
 
@@ -261,7 +278,7 @@ function elb_entry_trash( $post_id ) {
 		return;
 	}
 
-	elb_flush_liveblog_cache( $liveblog );
+	do_action( 'elb_purge_cache', $liveblog );
 }
 
 add_action( 'trashed_post', 'elb_entry_trash', 10 );

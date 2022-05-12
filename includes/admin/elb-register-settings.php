@@ -154,8 +154,13 @@ function elb_get_registered_settings() {
 			array(
 				'id'   => 'cache_enabled',
 				'name' => __( 'Enable caching', ELB_TEXT_DOMAIN ),
-				'desc' => __( 'Caches the liveblog feed using a transient.', ELB_TEXT_DOMAIN ),
-				'type' => 'checkbox',
+				'desc' => __( 'Caches the liveblog feed with the selected method.', ELB_TEXT_DOMAIN ),
+				'type' => 'select',
+				'options' => array(
+					'' => __( 'Disabled', ELB_TEXT_DOMAIN ),
+					'transient' => __( 'Transient', ELB_TEXT_DOMAIN ),
+					'file' => __( 'File', ELB_TEXT_DOMAIN )
+				)
 			),
 			array(
 				'id'   => 'append_timestamp',

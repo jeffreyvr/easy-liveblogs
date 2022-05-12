@@ -51,6 +51,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				add_action( 'admin_enqueue_scripts', array( self::$instance, 'register_styles' ) );
 				add_action( 'wp_enqueue_scripts', array( self::$instance, 'register_scripts' ) );
 				add_action( 'admin_enqueue_scripts', array( self::$instance, 'register_scripts' ) );
+				add_action( 'init', array( self::$instance, 'setup_caching' ) );
 				add_action( 'init', array( self::$instance, 'setup_api' ) );
 			}
 
@@ -78,6 +79,8 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			require_once $this->get_plugin_path() . 'includes/api/class-elb-feed-factory.php';
 			require_once $this->get_plugin_path() . 'includes/api/class-elb-entry.php';
 			require_once $this->get_plugin_path() . 'includes/api/class-elb-feed.php';
+			require_once $this->get_plugin_path() . 'includes/caching/class-elb-file.php';
+			require_once $this->get_plugin_path() . 'includes/caching/class-elb-transient.php';
 		}
 
 		/**
@@ -150,7 +153,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				$theme = elb_get_theme();
 
 				if ( $theme !== 'none' ) {
-					wp_register_style( 'elb-theme-' . $theme, $this->get_plugin_url() . 'assets/css/themes/'.$theme.'.css', null, $this->get_plugin_version() );
+					wp_register_style( 'elb-theme-' . $theme, $this->get_plugin_url() . 'assets/css/themes/' . $theme . '.css', null, $this->get_plugin_version() );
 				}
 
 				wp_enqueue_style( 'elb-theme-' . $theme );
@@ -203,7 +206,17 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		}
 
 		public function setup_api() {
-			new EasyLiveblogs\API\Feed;
+			new EasyLiveblogs\API\Feed();
+		}
+
+		public function setup_caching() {
+			$cache = elb_get_option( 'cache_enabled', false );
+
+			if ( $cache == 'file' ) {
+				EasyLiveblogs\Caching\File::init();
+			} elseif( $cache == 'transient' ) {
+				EasyLiveblogs\Caching\Transient::init();
+			}
 		}
 	}
 }

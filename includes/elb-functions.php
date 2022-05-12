@@ -468,16 +468,6 @@ function elb_page_contains_liveblog() {
 }
 
 /**
- * Flush liveblog cache.
- *
- * @param int $liveblog
- * @return void
- */
-function elb_flush_liveblog_cache( $liveblog ) {
-	delete_transient( 'elb_' . $liveblog . '_cache' );
-}
-
-/**
  * Maybe add body class.
  *
  * @param array $classes
