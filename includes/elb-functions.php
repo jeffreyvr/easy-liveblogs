@@ -511,7 +511,7 @@ function elb_add_meta_data() {
 	foreach ( $items['updates'] as $entry ) {
 		$entry_url = add_query_arg( 'entry', $entry['id'], $liveblog_url );
 
-		$entry = array(
+		$_entry = array(
 			'@type'            => 'BlogPosting',
 			'headline'         => $entry['title'],
 			'url'              => $entry_url,
@@ -524,13 +524,13 @@ function elb_add_meta_data() {
 		);
 
 		if ( elb_display_author_name() ) {
-			$entry['author'] = array(
+			$_entry['author'] = array(
 				'@type' => 'Person',
 				'name'  => $entry['author'],
 			);
 		}
 
-		$entries[] = $entry;
+		$entries[] = $_entry;
 	}
 
 	wp_reset_postdata();
