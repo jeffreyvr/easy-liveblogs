@@ -1,37 +1,12 @@
-ul.elb-liveblog-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
+@import "../easy-liveblogs.css";
 
-.elb-liveblog {
-	padding-left: 30px;
-}
-
-.elb-theme-light .elb-liveblog {
-	border-left: 1px dotted #bbb;
-}
-
-.elb-theme-dark .elb-liveblog {
+.elb-liveblog ul.elb-liveblog-list {
 	border-left: 1px dotted #eee;
 }
 
 .elb-liveblog .elb-liveblog-post {
 	position: relative;
 	padding-bottom: 30px;
-}
-
-@keyframes elb-liveblog-highlight {
-	0% {
-	  background: #fefcbf;
-	}
-	100% {
-	  background: none;
-	}
-  }
-
-.elb-liveblog .elb-liveblog-highlight {
-	animation: elb-liveblog-highlight 3s;
 }
 
 .elb-liveblog .elb-liveblog-post:last-child {
@@ -51,12 +26,7 @@ ul.elb-liveblog-list {
 	border-radius: 50%;
 }
 
-.elb-theme-light .elb-liveblog-post::before {
-	background-color: #eee;
-	border: 3px solid #ddd;
-}
-
-.elb-theme-dark .elb-liveblog-post::before {
+.elb-liveblog-post::before {
 	background-color: #fff;
 	border: 3px solid #eee;
 }
@@ -122,46 +92,26 @@ ul.elb-liveblog-list {
 	font-size: 14px;
 }
 
-.elb-theme-light .elb-liveblog-post-time {
-	color: #666;
-}
-
-.elb-theme-light .elb-liveblog-post-author {
-	color: #111;
-}
-
-.elb-theme-dark .elb-liveblog-post-time {
+.elb-liveblog-post-time {
 	color: #eee;
 }
 
-.elb-theme-dark .elb-liveblog-post-author {
+.elb-liveblog-post-author {
 	color: #fff;
 }
 
-.elb-theme-dark .elb-liveblog-post-sharing a {
+.elb-liveblog-post-sharing a {
 	color: rgba( 255, 255, 255, .6 );
 }
 
-.elb-theme-dark .elb-liveblog-post-sharing a:hover {
+.elb-liveblog-post-sharing a:hover {
 	color: rgba( 255, 255, 255, 1 );
 }
 
-#elb-load-more {
-	border: 0;
-}
-
-.elb-theme-light .elb-button {
-	color: #fff;
-}
-
-.elb-theme-dark .elb-button {
+.elb-button {
 	color: #000;
 }
 
 #elb-show-new-posts {
 	margin-bottom: 15px;
-}
-
-.elb-hide {
-	display: none;
 }

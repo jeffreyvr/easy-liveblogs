@@ -1,83 +1,86 @@
-(function ($) {
+jQuery(function ($) {
+	var elb_liveblog = {
+		liveblog: null,
+		document_title: null,
+		first_load: true,
+		new_posts: 0,
+		timestamp: false,
+		loader: null,
+		show_new_button: null,
+		load_more_button: null,
+		list: null,
+		status_message: null,
 
-	$(document).ready(function () {
+		init: function() {
+			this.document_title = $(document).find('title').text();
+			this.liveblog = '.elb-liveblog';
+			this.show_new_button = '#elb-show-new-posts';
+			this.load_more_button = '#elb-load-more';
+			this.loader = '.elb-loader';
+			this.list = '.elb-liveblog-list';
+			this.status_message = '.elb-liveblog-closed-message';
+			
+			this.fetch();
+			
+			this.getElement('show_new_button').click(() => {
+				this.showNew();
+			});
+			
+			this.getElement('load_more_button').click(() => {
+				this.loadMore();
+			});
+		},
 
-		if ($('.elb-liveblog').length === 0) {
-			return false;
-		}
+		getLiveblog: function() {
+			return $(this.liveblog);
+		},
 
-		var elb_first_load = true;
-		var elb_document_title = $(document).find('title').text();
-		var elb_new_posts = 0;
-		var elb_load_new_btn = $('#elb-show-new-posts');
-		var elb_load_more_btn = $('#elb-load-more');
-		var elb_liveblog = $('.elb-liveblog');
-		var elb_liveblog_loader = $('.elb-loader');
-		var elb_liveblog_list = $('.elb-liveblog-list');
-		var elb_status_message = $('.elb-liveblog-closed-message');
-		var elb_liveblog_endpoint = elb_liveblog.data('endpoint');
-		var elb_show_entries = elb_liveblog.data('showEntries');
-		var elb_append_timestamp = elb_liveblog.data('appendTimestamp');
-		var elb_highlighted_entry = elb_liveblog.data('highlightedEntry');
-
-		function elb_get_time() {
-			var d = new Date();
-			var time = d.getTime();
-
-			if (time === 0) {
-				return 0;
-			}
-			return Math.round(time / 60000);
-		}
-
-		function elb_refresh_liveblog() {
-			var elb_liveblog_endpoint_url = elb_liveblog_endpoint;
-
-			if (elb_append_timestamp) {
-				elb_liveblog_endpoint_url = elb_liveblog_endpoint + '?_=' + elb_get_time();
-			}
-
+		getElement: function(name) {
+			return this.getLiveblog().find(this[name]);
+		},
+		
+		fetch: function() {
 			$.ajax({
-				url: elb_liveblog_endpoint_url,
+				url: this.getEndpoint(),
 				method: 'get',
 				dataType: 'json',
-				success: function (feed) {
-					elb_liveblog_list.html();
-					elb_liveblog_loader.hide();
+				success: (feed) => {
+					this.getElement('list').html();
+					this.getElement('loader').hide();
 
-					$.each(feed.updates, function (index, post) {
+					$.each(feed.updates, (index, post) => {
 						var go_to = false;
 						var new_post = $('<div>' + post.html + '</div>');
-						var current_post = elb_liveblog_list.find('li[data-elb-post-id="' + post.id + '"]');
+						var current_post = this.getElement('list').find('li[data-elb-post-id="' + post.id + '"]');
 
-						if (elb_first_load) {
-							if ((index + 1) > elb_show_entries) {
-								new_post.find('> li').addClass('elb-hide');
-								new_post.find('> li').addClass('elb-liveblog-initial-post');
-								elb_load_more_btn.show();
+						if (this.first_load) {
+							if ((index + 1) > this.getLiveblog().data('showEntries')) {
+								new_post.find('> li').addClass('elb-hide elb-liveblog-initial-post');
+								
+								this.getElement('load_more_button').show();
 							}
 
-							if (post.id === elb_highlighted_entry) {
+							if (post.id === this.getLiveblog().data('highlightedEntry')) {
 								go_to = true;
 
 								new_post.find('> li').addClass('elb-liveblog-highlight');
 								new_post.find('> li').removeClass('elb-hide');
 							}
 
-							elb_liveblog_list.append(new_post.html());
+							this.getElement('list').append(new_post.html());
 
 							if (go_to) {
-								$(document).scrollTop(elb_liveblog_list.find('> li[data-elb-post-id="' + post.id + '"]').offset().top);
+								$(document).scrollTop(this.getElement('list').find('> li[data-elb-post-id="' + post.id + '"]').offset().top);
 							}
 
 							return;
 						}
 
-						if (!elb_first_load && current_post.length != 0) {
+						if (!this.first_load && current_post.length != 0) {
 							current_post.find('time').replaceWith(new_post.find('time'));
 							current_post.find('.elb-liveblog-post-heading').replaceWith(new_post.find('.elb-liveblog-post-heading'));
 
-							// Update content only if it doens't contain iframe's due to possible layout shifts.
+							// Update content only if it doesn't contain iframe's due to possible layout shifts.
 							if (current_post.find('.elb-liveblog-post-content iframe').length == 0) {
 								current_post.find('.elb-liveblog-post-content').replaceWith(new_post.find('.elb-liveblog-post-content'));
 							}
@@ -85,14 +88,14 @@
 							return;
 						}
 
-						if (!elb_first_load && current_post.length == 0) {
+						if (!this.first_load && current_post.length == 0) {
 							new_post.find('li').addClass('elb-new');
 
 							new_post.find('li').hide();
 
-							elb_new_posts++;
-
-							elb_liveblog_list.find('> li:first').prepend(new_post.html());
+							this.new_posts = this.new_posts + 1;
+							
+							this.getElement('list').prepend(new_post.html());
 
 							return;
 						}
@@ -100,64 +103,83 @@
 
 					typeof elb_after_feed_load === 'function' && elb_after_feed_load(feed);
 
-					elb_first_load = false;
+					this.first_load = false;
 
-					if (elb_liveblog_list.find('> li').length == 0) {
+					if (this.getElement('list').find('> li').length == 0) {
 						$('.elb-no-liveblog-entries-message').show();
 					}
 
-					if (elb_new_posts > 0) {
-						$(document).find('title').text('(' + elb_new_posts + ') ' + elb_document_title);
+					if (this.new_posts > 0) {
+						$(document).find('title').text('(' + this.new_posts + ') ' + this.document_title);
 
 						var elb_update_message;
 
-						if (elb_new_posts === 1) {
-							elb_update_message = elb.new_post_msg.replace("%s", elb_new_posts);
+						if (this.new_posts === 1) {
+							elb_update_message = elb.new_post_msg.replace("%s", this.new_posts);
 						} else {
-							elb_update_message = elb.new_posts_msg.replace("%s", elb_new_posts);
+							elb_update_message = elb.new_posts_msg.replace("%s", this.new_posts);
 						}
 
-						elb_load_new_btn.show().text(elb_update_message);
+						this.getElement('show_new_button').show().text(elb_update_message);
 
 						typeof elb_after_update_liveblog_callback === 'function' && elb_after_update_liveblog_callback();
 					}
 
 					if (feed.status === 'closed') {
-						elb_status_message.show();
+						this.getElement('status_message').show();
+					} else {
+						setTimeout(() => { this.fetch() }, elb.interval * 1000);
 					}
 				}
 			});
+		},
 
-			setTimeout(elb_refresh_liveblog, elb.interval * 1000);
-		}
+		getTime: function() {
+			var d = new Date();
+			var time = d.getTime();
 
-		elb_refresh_liveblog();
+			if (time === 0) {
+				return 0;
+			}
+			return Math.round(time / 60000);
+		},
 
-		/////////
+		getEndpoint: function() {
+			var url = this.getLiveblog().data('endpoint');
 
-		elb_load_new_btn.click(function () { // reset
-			$('.elb-liveblog-list > li.elb-new').not(':visible').fadeIn();
-			elb_new_posts = 0;
-			elb_load_new_btn.hide();
-			$(document).find('title').text(elb_document_title);
-		});
+			if (this.getLiveblog().data('appendTimestamp')) {
+				url = url + '?_=' + this.getTime();
+			}
 
-		/////////
-
-		elb_load_more_btn.click(function () { // load more
-			$('.elb-liveblog-list li.elb-hide.elb-liveblog-initial-post').each(function (index, post) {
-				if (elb_show_entries > index) {
+			return url;
+		},
+		
+		showNew: function() {
+			this.getElement('list').find('> li.elb-new').not(':visible').fadeIn();
+			
+			this.new_posts = 0;
+			
+			this.getElement('show_new_button').hide();
+			
+			$(document).find('title').text(this.document_title);
+		},
+		
+		loadMore: function() {
+			var liveblog = this.getLiveblog();
+			
+			this.getElement('list').find('> li.elb-hide.elb-liveblog-initial-post').each(function (index, post) {
+				if (liveblog.data('showEntries') > index) {
 					$(this).removeClass('elb-hide');
 				}
 			});
-
-			if ($('.elb-liveblog-list li.elb-hide.elb-liveblog-initial-post').length == 0) {
-				elb_load_more_btn.text(elb.now_more_posts).delay(2000).fadeOut(1000);
+			
+			if (this.getElement('list').find('> li.elb-hide.elb-liveblog-initial-post').length == 0) {
+				this.getElement('load_more_button').text(elb.now_more_posts).delay(2000).fadeOut(1000);
 			}
-
+			
 			typeof elb_after_load_more_callback === 'function' && elb_after_load_more_callback();
-		});
+		}	
+	}
 
-	});
-
-})(jQuery);
+	elb_liveblog.init();
+});
