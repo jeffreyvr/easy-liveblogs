@@ -50,6 +50,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 * Use elb_edit_entry_link instead of function edit_post_link.
 * Added option to use object or transient caching.
 * Added option to set a date(time)-format to be displayed with the liveblog entries.
+* Added shortcode [elb_liveblog]. You can either pass the ID ([elb_liveblog id="1"]) or the endpoint-URL ([elb_liveblog endpoint="https://"]).
 * Upgrade guide for developers: https://github.com/jeffreyvr/easy-liveblogs/wiki/Upgrade-from-v1-to-v2
 
 = 1.7.1, April 14, 2022 =
