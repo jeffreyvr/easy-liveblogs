@@ -242,7 +242,7 @@ function elb_text_callback( $args ) {
 function elb_select_callback( $args ) {
 	global $elb_options;
 
-	$value = isset( $elb_options[ $args['id'] ] ) ? $elb_options[ $args['id'] ] : $args['default_value'];
+	$value = isset( $elb_options[ $args['id'] ] ) ? $elb_options[ $args['id'] ] : ( $args['default_value'] ?? null );
 
 	$html = '<select id="elb_settings[' . $args['id'] . ']" name="elb_settings[' . $args['id'] . ']" />';
 
