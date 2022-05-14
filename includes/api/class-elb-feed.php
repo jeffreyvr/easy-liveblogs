@@ -21,6 +21,7 @@ class Feed {
 			'/liveblog/(?P<id>\d+)',
 			array(
 				'methods'  => 'GET',
+				'permission_callback' => '__return_true',
 				'callback' => array( $this, 'feed' ),
 			)
 		);

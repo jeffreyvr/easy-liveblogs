@@ -26,6 +26,6 @@ class ObjectCaching {
 	}
 
 	public function get_lifespan_in_seconds() {
-		return apply_filters( 'elb_object_cache_lifespan', ( 5 * MINUTE_IN_SECONDS ) );
+		return apply_filters( 'elb_object_cache_lifespan', 0 );
 	}
 }
