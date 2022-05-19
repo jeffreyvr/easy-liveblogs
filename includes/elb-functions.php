@@ -500,13 +500,27 @@ function elb_add_meta_data() {
 		return;
 	}
 
-	$metadata = array(
-		'@type' => 'LiveBlogPosting',
-	);
-
 	$liveblog_url = get_permalink();
 
 	$items = elb_get_liveblog_feed( elb_get_liveblog_api_endpoint( $post->ID ) );
+
+	$organization = array(
+		'@type' => 'Organization',
+		'name'  => get_bloginfo( 'name' ),
+	);
+
+	$metadata = array(
+		'@type'             => 'LiveBlogPosting',
+		'@context'          => 'https://schema.org',
+		'@id'               => $liveblog_url,
+		'headline'          => get_the_title(),
+		'description'       => trim( preg_replace( '/\s+/', ' ', strip_tags( get_the_content() ) ) ),
+		'coverageStartTime' => get_the_date( 'c', $post ),
+		'coverageEndTime'   => wp_date( 'c', strtotime( $items['last_update'] . ' + 1 hour' ) ),
+		'dateModified'      => $items['last_update'],
+		'url'               => $liveblog_url,
+		'publisher'         => $organization
+	);
 
 	foreach ( $items['updates'] as $entry ) {
 		$entry_url = add_query_arg( 'entry', $entry['id'], $liveblog_url );
@@ -518,16 +532,11 @@ function elb_add_meta_data() {
 			'mainEntityOfPage' => $entry_url,
 			'datePublished'    => $entry['datetime'],
 			'dateModified'     => $entry['modified'],
-			'articleBody'      => array(
-				'@type' => 'Text',
-			),
+			'articleBody'      => trim( preg_replace( '/\s+/', ' ', strip_tags( $entry['content'] ) ) ),
 		);
 
 		if ( elb_display_author_name() ) {
-			$_entry['author'] = array(
-				'@type' => 'Person',
-				'name'  => $entry['author'],
-			);
+			$_entry['author'] = $organization;
 		}
 
 		$entries[] = $_entry;

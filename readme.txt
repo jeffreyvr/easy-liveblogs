@@ -37,6 +37,9 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 == Changelog ==
 
+= Unreleased =
+* Added several properties to the structured data JSON-LD.
+
 = 2.0.2, May 14th, 2022 =
 * Fix: notice error when no default value is set for select setting.
 
