@@ -5,8 +5,8 @@ Contributors: jeffreyvr
 Tags: liveblog
 Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
-Tested up to: 5.9
-Stable Tag: 2.1.0
+Tested up to: 6.0
+Stable Tag: 2.1.1
 License: MIT
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -36,6 +36,9 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 7. Settings
 
 == Changelog ==
+
+= 2.1.1, June 6th, 2022 =
+* Added 'nofollow' to post edit link.
 
 = 2.1.0, May 20th, 2022 =
 * Added several properties to the structured data JSON-LD.
