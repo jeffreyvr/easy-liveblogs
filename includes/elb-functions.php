@@ -451,7 +451,7 @@ function elb_edit_entry_link() {
 		return;
 	}
 
-	echo '<a href="' . elb_get_edit_entry_url( $post->ID ) . '">' . __( 'Edit This' ) . '</a>';
+	echo '<a href="' . elb_get_edit_entry_url( $post->ID ) . '" rel="nofollow">' . __( 'Edit This' ) . '</a>';
 }
 
 /**
