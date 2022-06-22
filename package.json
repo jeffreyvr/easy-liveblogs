@@ -1,6 +1,6 @@
 {
   "name": "easy-liveblogs",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Live blogging made easy with the Easy Liveblogs plugin from [vanrossum.dev](https://vanrossum.dev).",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

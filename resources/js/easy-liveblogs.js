@@ -24,6 +24,10 @@ jQuery(function ($) {
             this.list = '.elb-liveblog-list';
             this.status_message = '.elb-liveblog-closed-message';
 
+            if($(this.liveblog).length === 0) {
+                return;
+            }
+
             this.fetch();
 
             this.getElement('show_new_button').click(() => {
