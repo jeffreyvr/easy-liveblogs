@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
 "POT-Creation-Date: 2022-06-27 13:38+0200\n"
-"PO-Revision-Date: 2022-06-27 13:38+0200\n"
+"PO-Revision-Date: 2022-06-27 20:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -69,7 +69,7 @@ msgstr "Oscuro"
 
 #: includes/admin/elb-register-settings.php:105
 msgid "Light (Less theme dependent)"
-msgstr ""
+msgstr "Claro (Menos dependiente del tema)"
 
 #: includes/admin/elb-register-settings.php:106
 msgid "None"
@@ -77,19 +77,19 @@ msgstr "Ninguno"
 
 #: includes/admin/elb-register-settings.php:112
 msgid "Display author"
-msgstr ""
+msgstr "Mostrar autor"
 
 #: includes/admin/elb-register-settings.php:113
 msgid "Display the author name on liveblog entries."
-msgstr ""
+msgstr "Mostrar el nombre del autor en las entradas del liveblog."
 
 #: includes/admin/elb-register-settings.php:118
 msgid "Display social sharing"
-msgstr ""
+msgstr "Mostrar Compartir en redes sociales"
 
 #: includes/admin/elb-register-settings.php:119
 msgid "Display the social sharing options."
-msgstr ""
+msgstr "Mostrar las opciones para compartir en redes sociales."
 
 #: includes/admin/elb-register-settings.php:124
 msgid "Update interval"
@@ -130,11 +130,11 @@ msgstr ""
 
 #: includes/admin/elb-register-settings.php:156
 msgid "Entry date format"
-msgstr ""
+msgstr "Formato de la fecha de las entradas"
 
 #: includes/admin/elb-register-settings.php:157
 msgid "The format of the date displayed on liveblog entries."
-msgstr ""
+msgstr "Formato de la fecha mostrada en las entradas del liveblog."
 
 #: includes/admin/elb-register-settings.php:160
 msgid "Human readable"
@@ -143,47 +143,47 @@ msgstr ""
 #: includes/admin/elb-register-settings.php:161
 #, php-format
 msgid "Date and time format: %s"
-msgstr ""
+msgstr "Formato de la fecha y hora: %s"
 
 #: includes/admin/elb-register-settings.php:162
 #, php-format
 msgid "Date: %s"
-msgstr ""
+msgstr "Fecha: %s"
 
 #: includes/admin/elb-register-settings.php:163
 #, php-format
 msgid "Time: %s"
-msgstr ""
+msgstr "Hora: %s"
 
 #: includes/admin/elb-register-settings.php:168
 #, fuzzy
 #| msgid "Enable liveblog"
 msgid "Enable caching"
-msgstr "Habilitar liveblog"
+msgstr "Habilitar caché"
 
 #: includes/admin/elb-register-settings.php:169
 msgid "Caches the liveblog feed with the selected method."
-msgstr ""
+msgstr "Almacena el feed del liveblog con el método seleccionado."
 
 #: includes/admin/elb-register-settings.php:172
 msgid "Disabled"
-msgstr ""
+msgstr "Deshabilitado"
 
 #: includes/admin/elb-register-settings.php:173
 msgid "Transient"
-msgstr ""
+msgstr "Temporal"
 
 #: includes/admin/elb-register-settings.php:174
 msgid "Object"
-msgstr ""
+msgstr "Objeto"
 
 #: includes/admin/elb-register-settings.php:179
 msgid "Append timestamp"
-msgstr ""
+msgstr "Añadir marca de tiempo"
 
 #: includes/admin/elb-register-settings.php:180
 msgid "Appends a timestamp to the liveblog feed URL."
-msgstr ""
+msgstr "Añade una marca de tiempo a la URL del liveblog."
 
 #: includes/admin/elb-register-settings.php:197
 #, php-format
@@ -228,7 +228,7 @@ msgstr "Abrir"
 
 #: includes/elb-functions.php:454
 msgid "Edit This"
-msgstr ""
+msgstr "Editar"
 
 #: includes/elb-functions.php:605
 #, php-format
@@ -246,12 +246,12 @@ msgstr "Estatus"
 
 #: includes/elb-metabox.php:100
 msgid "API-endpoint URL"
-msgstr ""
+msgstr "Enlace del API-endpoint"
 
 #: includes/elb-metabox.php:129
 #, php-format
 msgid "This item is attached to a <a href=\"%s\">closed</a> liveblog."
-msgstr ""
+msgstr "Esta entrada está adjuntada a un liveblog <a href=\"%s\">cerrado</a>."
 
 #: includes/elb-metabox.php:132
 msgid "Select liveblog"
@@ -259,7 +259,7 @@ msgstr "Seleccionar liveblog"
 
 #: includes/elb-metabox.php:142
 msgid "Direct link to entry"
-msgstr ""
+msgstr "Enlace directo a la entrada del liveblog"
 
 #: includes/elb-metabox.php:147
 msgid "There is no liveblog created yet."
@@ -319,19 +319,19 @@ msgstr ""
 #: templates/post.php:14
 #, php-format
 msgid "By %s"
-msgstr ""
+msgstr "Por %s"
 
 #: templates/sharing.php:5
 msgid "Share via Facebook"
-msgstr ""
+msgstr "Compartir vía Facebook"
 
 #: templates/sharing.php:9
 msgid "Share via Twitter"
-msgstr ""
+msgstr "Compartir vía Twitter"
 
 #: templates/sharing.php:13
 msgid "Share via email"
-msgstr ""
+msgstr "Compartir vía email"
 
 #. Plugin URI of the plugin/theme
 msgid "https://vanrossum.dev"
