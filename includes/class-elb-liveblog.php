@@ -91,6 +91,8 @@ class ELB_Liveblog {
 	 * @return string
 	 */
 	public function render() {
+        wp_enqueue_script( 'wp-embed' );
+
 		$content = '';
 
 		// AMP is not supported at this moment
