@@ -39,6 +39,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 
 = Unreleased =
 * Added Spanish translation. (By hugocm99)
+* Enqueue wp-embed script to fix WordPress embeds.
 
 = 2.1.2, June 22th, 2022 =
 * Fix: check if liveblog needs to be init.
