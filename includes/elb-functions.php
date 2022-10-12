@@ -402,24 +402,29 @@ function elb_entry_title() {
  * @return mixed
  */
 function elb_get_highlighted_entry_id() {
-	if ( ! isset( $_GET['entry'] ) ) {
-		return;
-	}
+    $entry_id = apply_filters( 'elb_highlighted_entry_id', filter_input( INPUT_GET, 'entry', FILTER_SANITIZE_NUMBER_INT ) );
 
-	return filter_input( INPUT_GET, 'entry', FILTER_SANITIZE_NUMBER_INT );
+	return $entry_id;
 }
 
 /**
  * Get entry URL.
  *
+ * @param WP_Post|int|null $post
  * @return string
  */
-function elb_get_entry_url() {
-	global $post;
+function elb_get_entry_url( $post = null ) {
+    if ( is_null( $post ) ) {
+	    global $post;
+    } elseif( is_numeric( $post ) ) {
+        $post = get_post( $post );
+    }
 
 	$liveblog_id = get_post_meta( $post->ID, '_elb_liveblog', true );
 
-	return add_query_arg( 'entry', $post->ID, get_permalink( $liveblog_id ) );
+	$url = add_query_arg( 'entry', $post->ID, get_permalink( $liveblog_id ) );
+
+    return apply_filters( 'elb_entry_url', $url, $liveblog_id, $post );
 }
 
 /**

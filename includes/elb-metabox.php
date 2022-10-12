@@ -140,7 +140,7 @@ function elb_render_entry_options( $post_id ) {
 		<?php if ( ! empty( $liveblog ) ) { ?>
 			<div class="elb-input-group">
 				<label for="elb-liveblog-entry-link"><?php _e( 'Direct link to entry', ELB_TEXT_DOMAIN ); ?></label>
-				<input type="text" id="elb-liveblog-entry-link" onclick="this.focus(); this.select()" value="<?php echo add_query_arg( 'entry', $post_id, get_permalink( $liveblog ) ); ?>" readonly="readonly" class="widefat">
+				<input type="text" id="elb-liveblog-entry-link" onclick="this.focus(); this.select()" value="<?php echo elb_get_entry_url( $post_id ); ?>" readonly="readonly" class="widefat">
 			</div>
 		<?php } ?>
 	<?php } else { ?>

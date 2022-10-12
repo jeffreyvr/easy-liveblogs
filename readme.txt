@@ -38,6 +38,8 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+* Added filter hook (elb_entry_url) on entry url.
+* Added filter hook (elb_highlighted_entry_id) on highlighted entry id.
 
 = 2.1.3, July 19th, 2022 =
 * Added Spanish translation. (By hugocm99)
