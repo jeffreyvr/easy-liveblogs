@@ -6,7 +6,7 @@ Tags: liveblog
 Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
 Tested up to: 6.0
-Stable Tag: 2.1.2
+Stable Tag: 2.2.0
 License: MIT
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -38,6 +38,8 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+
+= 2.2.0, October 12th, 2022 =
 * Added filter hook (elb_entry_url) on entry url.
 * Added filter hook (elb_highlighted_entry_id) on highlighted entry id.
 
