@@ -38,6 +38,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+* Only enqueue scripts when liveblog is active on page.
 
 = 2.2.0, October 12th, 2022 =
 * Added filter hook (elb_entry_url) on entry url.
