@@ -96,8 +96,8 @@ class ELB_Liveblog {
 		$content = '';
 
 		// AMP is not supported at this moment
-		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
-			$content .= '<p>' . sprintf( __( '<a class="elb-view-liveblog-link button" href="%s">View the liveblog</a>', ELB_TEXT_DOMAIN ), get_permalink() . '#elb-liveblog' ) . '</p>';
+		if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
+			$content .= '<p>' . sprintf( __( '<a rel="noamphtml" class="elb-view-liveblog-link button" href="%s">View the liveblog</a>', ELB_TEXT_DOMAIN ), esc_url( amp_remove_paired_endpoint( amp_get_current_url() ) ) . '#elb-liveblog' ) . '</p>';
 
 			return apply_filters( 'elb_liveblog_html', $content );
 		}

@@ -38,6 +38,7 @@ The plugin has tons of filter and action hooks so that developers can adjust the
 == Changelog ==
 
 = Unreleased =
+* Fix non-AMP URL fallback when using AMP.
 
 = 2.3.0, November 23th, 2022 =
 * Only enqueue scripts when liveblog is active on page.
