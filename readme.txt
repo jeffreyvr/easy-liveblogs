@@ -19,6 +19,20 @@ Covering a conference, sports event, breaking news or other quickly developing e
 
 The plugin has tons of filter and action hooks so that developers can adjust the plugin to their liking. Feel free to contribute on [GitHub](https://github.com/jeffreyvr/easy-liveblogs).
 
+== Frequently Asked Questions ==
+
+= Which post types can be used for liveblogs? =
+
+You may choose which post types can support liveblogs through the plugin settings.
+
+= Can I embed a liveblog with a shortcode? =
+
+You can embed a liveblog with a shortcode by using `[elb_liveblog id="the_id_of_your_liveblog"]`.
+
+= Does this plugin support AMP? =
+
+AMP is not supported, but a fallback link to the original page is displayed on AMP pages.
+
 == Installation ==
 
 1. Install the plugin from your WordPress admin, or upload and install the plugin folder to your plugins directory (e.g. /wp-content/plugins/)
