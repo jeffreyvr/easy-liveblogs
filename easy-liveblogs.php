@@ -3,7 +3,7 @@
 Plugin Name: Easy Liveblogs
 Plugin URI: https://vanrossum.dev
 Description: Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
-Version: 2.3.1
+Version: 2.3.2
 Author: Jeffrey van Rossum
 Author URI: https://www.vanrossum.dev
 Text Domain: easy-liveblogs
@@ -25,7 +25,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		private $plugin_path;
 		private $plugin_url;
 		private $plugin_name    = 'Easy Liveblogs';
-		private $plugin_version = '2.3.1';
+		private $plugin_version = '2.3.2';
 		private $text_domain    = 'easy-liveblogs';
 
 		/**
@@ -110,33 +110,6 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			return $this->plugin_version;
 		}
 
-        /**
-         * Check if liveblog is active on page.
-         *
-         * @return boolean
-         */
-        public static function is_liveblog_detected() {
-            global $post, $wp_query;
-
-            if ( is_singular() ) {
-                $content = elb_maybe_add_liveblog( do_shortcode( $post->post_content ) );
-
-                return strpos( $content, 'elb-liveblog' ) !== false || strpos( $content, 'elb_liveblog' ) !== false;
-            }
-
-            $posts = $wp_query->posts ?? [];
-
-            foreach ( $posts as $post ){
-                $content = elb_maybe_add_liveblog( do_shortcode( $post->post_content ) );
-
-                if ( strpos( $content, 'elb-liveblog' ) !== false || strpos( $content, 'elb_liveblog' ) !== false) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
 		/**
 		 * Enqueue and register JavaScript files here.
 		 */
@@ -144,11 +117,9 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 			if ( is_admin() ) {
 				wp_register_script( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.min.js', array( 'jquery' ), '0.12.4' );
 				wp_register_script( 'elb-admin', $this->get_plugin_url() . 'assets/js/easy-liveblogs-admin.js', array( 'jquery', 'selectize' ), $this->get_plugin_version() );
+			}
 
-                return;
-            }
-
-			if ( ! is_admin() && self::is_liveblog_detected() ) {
+			if ( ! is_admin() ) {
 				wp_register_script( 'elb', $this->get_plugin_url() . 'assets/js/easy-liveblogs.js', array( 'jquery' ), $this->get_plugin_version() );
 				wp_localize_script(
 					'elb',
@@ -164,8 +135,6 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				);
 
 				wp_enqueue_script( 'elb' );
-
-                return;
 			}
 		}
 
@@ -173,16 +142,16 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		 * Enqueue and register CSS files here.
 		 */
 		public function register_styles() {
+
 			if ( is_admin() ) {
+
 				wp_register_style( 'selectize', $this->get_plugin_url() . 'assets/selectize/selectize.default.css', null, '0.12.4' );
 				wp_register_style( 'elb-admin', $this->get_plugin_url() . 'assets/css/easy-liveblogs-admin.css', null, $this->get_plugin_version() );
 
 				wp_enqueue_style( 'elb-admin' );
 
-                return;
-			}
+			} else {
 
-            if ( !is_admin() && self::is_liveblog_detected() ) {
 				$theme = elb_get_theme();
 
 				if ( $theme !== 'none' ) {
@@ -190,8 +159,6 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 				}
 
 				wp_enqueue_style( 'elb-theme-' . $theme );
-
-                return;
 			}
 		}
 
