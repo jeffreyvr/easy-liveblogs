@@ -3,7 +3,7 @@
 Plugin Name: Easy Liveblogs
 Plugin URI: https://vanrossum.dev
 Description: Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
-Version: 2.3.2
+Version: 2.3.4
 Author: Jeffrey van Rossum
 Author URI: https://www.vanrossum.dev
 Text Domain: easy-liveblogs
@@ -11,7 +11,7 @@ Domain Path: /languages
 License: MIT
 
 ------------------------------------------------------------------------
-Copyright 2022 vanrossum.dev, The Netherlands.
+Copyright 2023 vanrossum.dev, The Netherlands.
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,7 +25,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		private $plugin_path;
 		private $plugin_url;
 		private $plugin_name    = 'Easy Liveblogs';
-		private $plugin_version = '2.3.3';
+		private $plugin_version = '2.3.4';
 		private $text_domain    = 'easy-liveblogs';
 
 		/**
