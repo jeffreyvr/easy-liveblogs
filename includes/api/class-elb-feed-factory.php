@@ -45,7 +45,7 @@ class FeedFactory {
 			function( $post ) {
 				return Entry::fromPost( $post );
 			},
-			get_posts( $args )
+			get_posts( apply_filters( 'elb_api_get_entries_args', $args, $liveblog_id ) )
 		);
 	}
 }
