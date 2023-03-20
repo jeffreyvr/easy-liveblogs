@@ -6,7 +6,7 @@ Tags: liveblog
 Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
 Tested up to: 6.2
-Stable Tag: 2.3.2
+Stable Tag: 2.3.3
 License: MIT
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -52,7 +52,10 @@ AMP is not supported, but a fallback link to the original page is displayed on A
 == Changelog ==
 
 = Unreleased =
+
+= 2.3.3, March 20th, 2023 =
 * Fix AMP plugin validation message (enqueuing embed wp-embed.js).
+* Update Spanish translation.
 
 = 2.3.2, November 29th, 2022 =
 * Reverted enqueue adjustments from 2.3.0 release.
