@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Easy Liveblogs\n"
-"POT-Creation-Date: 2022-06-27 13:38+0200\n"
-"PO-Revision-Date: 2022-06-27 20:46+0200\n"
+"POT-Creation-Date: 2023-03-20 22:42+0100\n"
+"PO-Revision-Date: 2023-03-20 22:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -10,14 +10,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: easy-liveblogs.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -156,8 +156,6 @@ msgid "Time: %s"
 msgstr "Hora: %s"
 
 #: includes/admin/elb-register-settings.php:168
-#, fuzzy
-#| msgid "Enable liveblog"
 msgid "Enable caching"
 msgstr "Habilitar caché"
 
@@ -193,19 +191,21 @@ msgstr "La función de rellamada usada para %s no existe."
 #: includes/class-elb-liveblog.php:98
 #, php-format
 msgid ""
-"<a class=\"elb-view-liveblog-link button\" href=\"%s\">View the liveblog</a>"
+"<a rel=\"noamphtml\" class=\"elb-view-liveblog-link button\" "
+"href=\"%s\">View the liveblog</a>"
 msgstr ""
-"<a class=\"elb-view-liveblog-link button\" href=\"%s\">Ver el liveblog</a>"
+"<a rel=\"noamphtml\" class=\"elb-view-liveblog-link button\" href=\"%s\">Ver "
+"el liveblog</a>"
 
-#: includes/class-elb-liveblog.php:113
+#: includes/class-elb-liveblog.php:115
 msgid "The liveblog has ended."
 msgstr "El liveblog ha finalizado."
 
-#: includes/class-elb-liveblog.php:117
+#: includes/class-elb-liveblog.php:119
 msgid "No liveblog updates yet."
 msgstr "No hay actualizaciones todavía."
 
-#: includes/class-elb-liveblog.php:164
+#: includes/class-elb-liveblog.php:166
 msgid "Load more"
 msgstr "Cargar más"
 
@@ -226,11 +226,11 @@ msgstr "Liveblog"
 msgid "Open"
 msgstr "Abrir"
 
-#: includes/elb-functions.php:454
+#: includes/elb-functions.php:459
 msgid "Edit This"
 msgstr "Editar"
 
-#: includes/elb-functions.php:605
+#: includes/elb-functions.php:610
 #, php-format
 msgctxt "%s = human-readable time difference"
 msgid "%s ago"
