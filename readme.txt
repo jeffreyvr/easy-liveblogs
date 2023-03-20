@@ -52,6 +52,7 @@ AMP is not supported, but a fallback link to the original page is displayed on A
 == Changelog ==
 
 = Unreleased =
+* Fix AMP plugin validation message (enqueuing embed wp-embed.js).
 
 = 2.3.2, November 29th, 2022 =
 * Reverted enqueue adjustments from 2.3.0 release.

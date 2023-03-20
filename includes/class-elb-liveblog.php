@@ -91,16 +91,16 @@ class ELB_Liveblog {
 	 * @return string
 	 */
 	public function render() {
-        wp_enqueue_script( 'wp-embed' );
-
-		$content = '';
+        $content = '';
 
 		// AMP is not supported at this moment
 		if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
-			$content .= '<p>' . sprintf( __( '<a rel="noamphtml" class="elb-view-liveblog-link button" href="%s">View the liveblog</a>', ELB_TEXT_DOMAIN ), esc_url( amp_remove_paired_endpoint( amp_get_current_url() ) ) . '#elb-liveblog' ) . '</p>';
+            $content .= '<p>' . sprintf( __( '<a rel="noamphtml" class="elb-view-liveblog-link button" href="%s">View the liveblog</a>', ELB_TEXT_DOMAIN ), esc_url( amp_remove_paired_endpoint( amp_get_current_url() ) ) . '#elb-liveblog' ) . '</p>';
 
 			return apply_filters( 'elb_liveblog_html', $content );
 		}
+
+        wp_enqueue_script( 'wp-embed' );
 
 		$classes = array( 'elb-liveblog', 'elb-theme-' . elb_get_theme() );
 
