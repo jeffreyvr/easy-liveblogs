@@ -527,25 +527,27 @@ function elb_add_meta_data() {
 		'publisher'         => $organization
 	);
 
-	foreach ( $items['updates'] as $entry ) {
-		$entry_url = add_query_arg( 'entry', $entry['id'], $liveblog_url );
+    if ( ! empty( $items['updates'] ) ) {
+        foreach ( $items['updates'] as $entry ) {
+            $entry_url = add_query_arg( 'entry', $entry['id'], $liveblog_url );
 
-		$_entry = array(
-			'@type'            => 'BlogPosting',
-			'headline'         => $entry['title'],
-			'url'              => $entry_url,
-			'mainEntityOfPage' => $entry_url,
-			'datePublished'    => $entry['datetime'],
-			'dateModified'     => $entry['modified'],
-			'articleBody'      => trim( preg_replace( '/\s+/', ' ', strip_tags( $entry['content'] ) ) ),
-		);
+            $_entry = array(
+                '@type'            => 'BlogPosting',
+                'headline'         => $entry['title'],
+                'url'              => $entry_url,
+                'mainEntityOfPage' => $entry_url,
+                'datePublished'    => $entry['datetime'],
+                'dateModified'     => $entry['modified'],
+                'articleBody'      => trim( preg_replace( '/\s+/', ' ', strip_tags( $entry['content'] ) ) ),
+            );
 
-		if ( elb_display_author_name() ) {
-			$_entry['author'] = $organization;
-		}
+            if ( elb_display_author_name() ) {
+                $_entry['author'] = $organization;
+            }
 
-		$entries[] = $_entry;
-	}
+            $entries[] = $_entry;
+        }
+    }
 
 	wp_reset_postdata();
 
