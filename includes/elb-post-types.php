@@ -33,6 +33,7 @@ function elb_setup_post_types() {
 		'supports'        => array( 'title', 'author', 'editor' ),
 		'can_export'      => true,
 		'menu_icon'       => 'dashicons-image-rotate',
+		'show_in_rest'    => true, // Add support to use Gutenberg blocks
 	);
 	register_post_type( 'elb_entry', $args );
 }
