@@ -12,10 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function elb_liveblog_shortcode( $atts ) {
-	if ( ! empty( $atts['endpoint'] ) ) {
-		$liveblog = ELB_Liveblog::fromEndpoint( $atts['endpoint'] );
-	} elseif ( ! empty( $atts['id'] ) ) {
-		$liveblog = ELB_Liveblog::fromId( $atts['id'] );
+    $endpoint = !empty($atts['endpoint']) ? esc_attr($atts['endpoint']) : null;
+    $id = !empty($atts['id']) ? esc_attr($atts['id']) : null;
+
+	if ( $endpoint ) {
+		$liveblog = ELB_Liveblog::fromEndpoint( $endpoint );
+	} elseif ( $id ) {
+		$liveblog = ELB_Liveblog::fromId( $id );
 	} else {
 		return;
 	}

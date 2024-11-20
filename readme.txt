@@ -53,6 +53,8 @@ AMP is not supported, but a fallback link to the original page is displayed on A
 
 = Unreleased =
 
+* Escape attributes on liveblog render.
+
 = 2.3.5, August 22th, 2023 =
 * Replace Twitter with X.
 * Fix PHP notice when liveblog has no items yet.
