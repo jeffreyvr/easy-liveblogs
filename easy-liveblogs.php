@@ -25,7 +25,7 @@ if ( ! class_exists( 'Easy_Liveblogs' ) ) {
 		private $plugin_path;
 		private $plugin_url;
 		private $plugin_name    = 'Easy Liveblogs';
-		private $plugin_version = '2.3.5';
+		private $plugin_version = '2.3.6';
 		private $text_domain    = 'easy-liveblogs';
 
 		/**

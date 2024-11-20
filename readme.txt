@@ -5,8 +5,8 @@ Contributors: jeffreyvr
 Tags: liveblog
 Donate link: https://vanrossum.dev/donate
 Requires at least: 4.4
-Tested up to: 6.3
-Stable Tag: 2.3.5
+Tested up to: 6.7
+Stable Tag: 2.3.6
 License: MIT
 
 Live blogging made easy with the Easy Liveblogs plugin from vanrossum.dev.
@@ -53,6 +53,7 @@ AMP is not supported, but a fallback link to the original page is displayed on A
 
 = Unreleased =
 
+= 2.3.6, November 20th, 2024 =
 * Escape attributes on liveblog render.
 
 = 2.3.5, August 22th, 2023 =
